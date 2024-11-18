@@ -18,6 +18,8 @@ struct EventsScreenView: View {
             ChangeModeButtonsView(choosedMode: $choosedMode)
             
             Spacer()
+            
+            ExploreEventsButtonView()
         }
     }
 }

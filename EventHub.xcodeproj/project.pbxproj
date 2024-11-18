@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		796256532CEBC5A20019F6E4 /* EventsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796256522CEBC5A20019F6E4 /* EventsScreenView.swift */; };
 		796256562CEBCC240019F6E4 /* ChangeModeButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796256552CEBCC240019F6E4 /* ChangeModeButtonsView.swift */; };
+		796256582CEBCEDC0019F6E4 /* ExploreEventsButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796256572CEBCEDC0019F6E4 /* ExploreEventsButtonView.swift */; };
+		7962565B2CEBD68A0019F6E4 /* Font + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7962565A2CEBD68A0019F6E4 /* Font + Ext.swift */; };
 		93083D0F2CEB924D00A0C392 /* EventHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D0E2CEB924D00A0C392 /* EventHubApp.swift */; };
 		93083D112CEB924D00A0C392 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D102CEB924D00A0C392 /* ContentView.swift */; };
 		93083D132CEB924F00A0C392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93083D122CEB924F00A0C392 /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 /* Begin PBXFileReference section */
 		796256522CEBC5A20019F6E4 /* EventsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsScreenView.swift; sourceTree = "<group>"; };
 		796256552CEBCC240019F6E4 /* ChangeModeButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeModeButtonsView.swift; sourceTree = "<group>"; };
+		796256572CEBCEDC0019F6E4 /* ExploreEventsButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreEventsButtonView.swift; sourceTree = "<group>"; };
+		7962565A2CEBD68A0019F6E4 /* Font + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font + Ext.swift"; sourceTree = "<group>"; };
 		93083D0B2CEB924D00A0C392 /* EventHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93083D0E2CEB924D00A0C392 /* EventHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHubApp.swift; sourceTree = "<group>"; };
 		93083D102CEB924D00A0C392 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,13 +82,23 @@
 			isa = PBXGroup;
 			children = (
 				796256552CEBCC240019F6E4 /* ChangeModeButtonsView.swift */,
+				796256572CEBCEDC0019F6E4 /* ExploreEventsButtonView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		796256592CEBD6760019F6E4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7962565A2CEBD68A0019F6E4 /* Font + Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		93083D022CEB924D00A0C392 = {
 			isa = PBXGroup;
 			children = (
+				796256592CEBD6760019F6E4 /* Extensions */,
 				93083D0D2CEB924D00A0C392 /* EventHub */,
 				93083D0C2CEB924D00A0C392 /* Products */,
 			);
@@ -237,6 +251,8 @@
 				93083D182CEB924F00A0C392 /* Persistence.swift in Sources */,
 				93083D2A2CEB994500A0C392 /* ViewRouter.swift in Sources */,
 				93083D112CEB924D00A0C392 /* ContentView.swift in Sources */,
+				796256582CEBCEDC0019F6E4 /* ExploreEventsButtonView.swift in Sources */,
+				7962565B2CEBD68A0019F6E4 /* Font + Ext.swift in Sources */,
 				93083D2E2CEB996E00A0C392 /* TabBarIcon.swift in Sources */,
 				CB743ECC2CEB93AC00E22966 /* Font.swift in Sources */,
 				93083D272CEB984600A0C392 /* CircleButton.swift in Sources */,
