@@ -2,7 +2,7 @@
 //  EventHubApp.swift
 //  EventHub
 //
-//  Created by Мария Нестерова on 17.11.2024.
+//  Created by Kate Kashko on 18.11.2024.
 //
 
 import SwiftUI
