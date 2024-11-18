@@ -15,7 +15,7 @@ struct ExploreEventsButtonView: View {
             ZStack {
                 Text("EXPLORE EVENTS")
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .font(.custom(EventHubFont.h1))
+                    .font(.custom(EventHubFont.button))
                 
                 HStack {
                     Spacer()
@@ -26,7 +26,7 @@ struct ExploreEventsButtonView: View {
                         .foregroundColor(.white)
                 }
             }
-            .frame(width: UIScreen.main.bounds.width * 0.7)
+            .frame(width: UIScreen.main.bounds.width * 0.6)
             .foregroundStyle(.white)
             .padding()
             .background(.mainBlue)
