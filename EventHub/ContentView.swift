@@ -6,83 +6,71 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
+    @StateObject var viewRouter = ViewRouter()
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                            .font(.custom(EventHubFont.h1.name, size: EventHubFont.h1.size))
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                            .font(.custom(EventHubFont.body1.name, size: EventHubFont.body1.size))
-                    }
+        GeometryReader { geometry in
+            let dimensions = TabBarDimensions(geometry: geometry)
+            
+            VStack {
+                Spacer()
+                
+                // Display content based on the selected tab
+                switch viewRouter.currentTab {
+                case .explore:
+                    Text("Explore View")
+                case .events:
+                    Text("Events View")
+                case .add:
+                    Text("Favorites")
+                case .map:
+                    Text("Map View")
+                case .profile:
+                    Text("Profile View")
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+                
+                Spacer()
+                
+                // Custom Tab Bar
+                HStack {
+                    TabBarIcon(viewRouter: viewRouter,
+                               width: dimensions.iconWidth,
+                               height: dimensions.iconHeight,
+                               tab: .explore, iconName: "explore", tabName: "Explore")
+                    
+                    TabBarIcon(viewRouter: viewRouter,
+                               width: dimensions.iconWidth,
+                               height: dimensions.iconHeight,
+                               tab: .events, iconName: "calendar", tabName: "Events")
+                    
+                    CircleButton(viewRouter: viewRouter,
+                                 width: dimensions.circleSize,
+                                 height: dimensions.circleSize)
+                    
+                    TabBarIcon(viewRouter: viewRouter,
+                               width: dimensions.iconWidth,
+                               height: dimensions.iconHeight,
+                               tab: .map, iconName: "location", tabName: "Map")
+                    
+                    TabBarIcon(viewRouter: viewRouter,
+                               width: dimensions.iconWidth,
+                               height: dimensions.iconHeight,
+                               tab: .profile, iconName: "profile", tabName: "Profile")
                 }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
+                .frame(width: geometry.size.width, height: geometry.size.height / 8)
+                .background(Color("Bg")
+                    .shadow(color: Color(red: 0.61, green: 0.7, blue: 0.84).opacity(0.13), radius: 4, x: 0, y: -3))
             }
-            Text("Select an item")
+            .edgesIgnoringSafeArea(.bottom)
         }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
+        .environmentObject(viewRouter)
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 #Preview {
-    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    ContentView()
 }
+
