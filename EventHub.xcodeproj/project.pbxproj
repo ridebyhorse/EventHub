@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		796256532CEBC5A20019F6E4 /* EventsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796256522CEBC5A20019F6E4 /* EventsScreenView.swift */; };
 		93083D0F2CEB924D00A0C392 /* EventHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D0E2CEB924D00A0C392 /* EventHubApp.swift */; };
 		93083D112CEB924D00A0C392 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D102CEB924D00A0C392 /* ContentView.swift */; };
 		93083D132CEB924F00A0C392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93083D122CEB924F00A0C392 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		796256522CEBC5A20019F6E4 /* EventsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsScreenView.swift; sourceTree = "<group>"; };
 		93083D0B2CEB924D00A0C392 /* EventHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93083D0E2CEB924D00A0C392 /* EventHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHubApp.swift; sourceTree = "<group>"; };
 		93083D102CEB924D00A0C392 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		796256502CEBC5820019F6E4 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				796256512CEBC58C0019F6E4 /* EventsScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		796256512CEBC58C0019F6E4 /* EventsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				796256522CEBC5A20019F6E4 /* EventsScreenView.swift */,
+			);
+			path = EventsScreen;
+			sourceTree = "<group>";
+		};
 		93083D022CEB924D00A0C392 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +90,7 @@
 		93083D0D2CEB924D00A0C392 /* EventHub */ = {
 			isa = PBXGroup;
 			children = (
+				796256502CEBC5820019F6E4 /* Screens */,
 				CB743ECA2CEB938200E22966 /* Info.plist */,
 				CB743EC12CEB932400E22966 /* App */,
 				93083D102CEB924D00A0C392 /* ContentView.swift */,
@@ -211,6 +230,7 @@
 				CB743ECC2CEB93AC00E22966 /* Font.swift in Sources */,
 				93083D272CEB984600A0C392 /* CircleButton.swift in Sources */,
 				93083D1B2CEB924F00A0C392 /* EventHub.xcdatamodeld in Sources */,
+				796256532CEBC5A20019F6E4 /* EventsScreenView.swift in Sources */,
 				93083D2C2CEB995A00A0C392 /* TabBarDimensions.swift in Sources */,
 				93083D0F2CEB924D00A0C392 /* EventHubApp.swift in Sources */,
 			);
@@ -343,10 +363,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EventHub/Preview Content\"";
-				DEVELOPMENT_TEAM = 7PMP3UQ276;
+				DEVELOPMENT_TEAM = GNN7DQ637Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventHub/Info.plist;
@@ -363,6 +384,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.devrush.EventHub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -378,10 +400,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EventHub/Preview Content\"";
-				DEVELOPMENT_TEAM = 7PMP3UQ276;
+				DEVELOPMENT_TEAM = GNN7DQ637Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventHub/Info.plist;
@@ -398,6 +421,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.devrush.EventHub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
