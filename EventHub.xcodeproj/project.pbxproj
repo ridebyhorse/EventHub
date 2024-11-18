@@ -13,6 +13,10 @@
 		93083D162CEB924F00A0C392 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93083D152CEB924F00A0C392 /* Preview Assets.xcassets */; };
 		93083D182CEB924F00A0C392 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D172CEB924F00A0C392 /* Persistence.swift */; };
 		93083D1B2CEB924F00A0C392 /* EventHub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93083D192CEB924F00A0C392 /* EventHub.xcdatamodeld */; };
+		93083D272CEB984600A0C392 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D262CEB984600A0C392 /* CircleButton.swift */; };
+		93083D2A2CEB994500A0C392 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D292CEB994500A0C392 /* ViewRouter.swift */; };
+		93083D2C2CEB995A00A0C392 /* TabBarDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D2B2CEB995A00A0C392 /* TabBarDimensions.swift */; };
+		93083D2E2CEB996E00A0C392 /* TabBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D2D2CEB996E00A0C392 /* TabBarIcon.swift */; };
 		CB743EC72CEB936700E22966 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB743EC52CEB936700E22966 /* AirbnbCereal_W_Bk.otf */; };
 		CB743EC82CEB936700E22966 /* AirbnbCereal_W_Md.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB743EC62CEB936700E22966 /* AirbnbCereal_W_Md.otf */; };
 		CB743EC92CEB936700E22966 /* AirbnbCereal_W_Bd.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB743EC42CEB936700E22966 /* AirbnbCereal_W_Bd.otf */; };
@@ -27,6 +31,10 @@
 		93083D152CEB924F00A0C392 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		93083D172CEB924F00A0C392 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		93083D1A2CEB924F00A0C392 /* EventHub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventHub.xcdatamodel; sourceTree = "<group>"; };
+		93083D262CEB984600A0C392 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		93083D292CEB994500A0C392 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		93083D2B2CEB995A00A0C392 /* TabBarDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDimensions.swift; sourceTree = "<group>"; };
+		93083D2D2CEB996E00A0C392 /* TabBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIcon.swift; sourceTree = "<group>"; };
 		CB743EC42CEB936700E22966 /* AirbnbCereal_W_Bd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bd.otf; sourceTree = "<group>"; };
 		CB743EC52CEB936700E22966 /* AirbnbCereal_W_Bk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bk.otf; sourceTree = "<group>"; };
 		CB743EC62CEB936700E22966 /* AirbnbCereal_W_Md.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Md.otf; sourceTree = "<group>"; };
@@ -67,6 +75,7 @@
 				CB743ECA2CEB938200E22966 /* Info.plist */,
 				CB743EC12CEB932400E22966 /* App */,
 				93083D102CEB924D00A0C392 /* ContentView.swift */,
+				93083D282CEB991A00A0C392 /* TabBar */,
 				CB743EC22CEB934300E22966 /* Resources */,
 				93083D172CEB924F00A0C392 /* Persistence.swift */,
 				93083D192CEB924F00A0C392 /* EventHub.xcdatamodeld */,
@@ -81,6 +90,17 @@
 				93083D152CEB924F00A0C392 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		93083D282CEB991A00A0C392 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				93083D262CEB984600A0C392 /* CircleButton.swift */,
+				93083D292CEB994500A0C392 /* ViewRouter.swift */,
+				93083D2B2CEB995A00A0C392 /* TabBarDimensions.swift */,
+				93083D2D2CEB996E00A0C392 /* TabBarIcon.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		CB743EC12CEB932400E22966 /* App */ = {
@@ -185,9 +205,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				93083D182CEB924F00A0C392 /* Persistence.swift in Sources */,
+				93083D2A2CEB994500A0C392 /* ViewRouter.swift in Sources */,
 				93083D112CEB924D00A0C392 /* ContentView.swift in Sources */,
+				93083D2E2CEB996E00A0C392 /* TabBarIcon.swift in Sources */,
 				CB743ECC2CEB93AC00E22966 /* Font.swift in Sources */,
+				93083D272CEB984600A0C392 /* CircleButton.swift in Sources */,
 				93083D1B2CEB924F00A0C392 /* EventHub.xcdatamodeld in Sources */,
+				93083D2C2CEB995A00A0C392 /* TabBarDimensions.swift in Sources */,
 				93083D0F2CEB924D00A0C392 /* EventHubApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
