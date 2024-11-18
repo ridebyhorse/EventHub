@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct EventsScreenView: View {
+    @State private var choosedMode: ModeEvents = .upcoming
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Events")
+                .font(.title)
+            
+            ChangeModeButtonsView(choosedMode: $choosedMode)
+            
+            Spacer()
+        }
     }
 }
 
