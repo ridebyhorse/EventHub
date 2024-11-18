@@ -17,6 +17,7 @@ struct EventsScreenView: View {
             
             ChangeModeButtonsView(choosedMode: $choosedMode)
             
+            // TODO: - To create events' list with ScrollView
             Spacer()
             
             ExploreEventsButtonView()
