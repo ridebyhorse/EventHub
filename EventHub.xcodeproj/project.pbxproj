@@ -17,6 +17,10 @@
 		93083D2A2CEB994500A0C392 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D292CEB994500A0C392 /* ViewRouter.swift */; };
 		93083D2C2CEB995A00A0C392 /* TabBarDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D2B2CEB995A00A0C392 /* TabBarDimensions.swift */; };
 		93083D2E2CEB996E00A0C392 /* TabBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D2D2CEB996E00A0C392 /* TabBarIcon.swift */; };
+		AD9259962CEBE00800F74E65 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9259952CEBE00200F74E65 /* SignIn.swift */; };
+		AD9259982CEC2A9500F74E65 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9259972CEC2A8D00F74E65 /* CustomTextField.swift */; };
+		AD92599A2CEC74A900F74E65 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9259992CEC749100F74E65 /* SignUp.swift */; };
+		AD92599C2CEC75CC00F74E65 /* DefaultButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD92599B2CEC75C600F74E65 /* DefaultButtons.swift */; };
 		CB743EC72CEB936700E22966 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB743EC52CEB936700E22966 /* AirbnbCereal_W_Bk.otf */; };
 		CB743EC82CEB936700E22966 /* AirbnbCereal_W_Md.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB743EC62CEB936700E22966 /* AirbnbCereal_W_Md.otf */; };
 		CB743EC92CEB936700E22966 /* AirbnbCereal_W_Bd.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB743EC42CEB936700E22966 /* AirbnbCereal_W_Bd.otf */; };
@@ -35,6 +39,10 @@
 		93083D292CEB994500A0C392 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		93083D2B2CEB995A00A0C392 /* TabBarDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDimensions.swift; sourceTree = "<group>"; };
 		93083D2D2CEB996E00A0C392 /* TabBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIcon.swift; sourceTree = "<group>"; };
+		AD9259952CEBE00200F74E65 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		AD9259972CEC2A8D00F74E65 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		AD9259992CEC749100F74E65 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		AD92599B2CEC75C600F74E65 /* DefaultButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButtons.swift; sourceTree = "<group>"; };
 		CB743EC42CEB936700E22966 /* AirbnbCereal_W_Bd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bd.otf; sourceTree = "<group>"; };
 		CB743EC52CEB936700E22966 /* AirbnbCereal_W_Bk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bk.otf; sourceTree = "<group>"; };
 		CB743EC62CEB936700E22966 /* AirbnbCereal_W_Md.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Md.otf; sourceTree = "<group>"; };
@@ -80,6 +88,7 @@
 				93083D172CEB924F00A0C392 /* Persistence.swift */,
 				93083D192CEB924F00A0C392 /* EventHub.xcdatamodeld */,
 				93083D142CEB924F00A0C392 /* Preview Content */,
+				AD9259942CEBDFB000F74E65 /* Authorization */,
 			);
 			path = EventHub;
 			sourceTree = "<group>";
@@ -101,6 +110,17 @@
 				93083D2D2CEB996E00A0C392 /* TabBarIcon.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		AD9259942CEBDFB000F74E65 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				AD9259952CEBE00200F74E65 /* SignIn.swift */,
+				AD92599B2CEC75C600F74E65 /* DefaultButtons.swift */,
+				AD9259992CEC749100F74E65 /* SignUp.swift */,
+				AD9259972CEC2A8D00F74E65 /* CustomTextField.swift */,
+			);
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 		CB743EC12CEB932400E22966 /* App */ = {
@@ -205,12 +225,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				93083D182CEB924F00A0C392 /* Persistence.swift in Sources */,
+				AD92599A2CEC74A900F74E65 /* SignUp.swift in Sources */,
+				AD9259982CEC2A9500F74E65 /* CustomTextField.swift in Sources */,
+				AD92599C2CEC75CC00F74E65 /* DefaultButtons.swift in Sources */,
 				93083D2A2CEB994500A0C392 /* ViewRouter.swift in Sources */,
 				93083D112CEB924D00A0C392 /* ContentView.swift in Sources */,
 				93083D2E2CEB996E00A0C392 /* TabBarIcon.swift in Sources */,
 				CB743ECC2CEB93AC00E22966 /* Font.swift in Sources */,
 				93083D272CEB984600A0C392 /* CircleButton.swift in Sources */,
 				93083D1B2CEB924F00A0C392 /* EventHub.xcdatamodeld in Sources */,
+				AD9259962CEBE00800F74E65 /* SignIn.swift in Sources */,
 				93083D2C2CEB995A00A0C392 /* TabBarDimensions.swift in Sources */,
 				93083D0F2CEB924D00A0C392 /* EventHubApp.swift in Sources */,
 			);
