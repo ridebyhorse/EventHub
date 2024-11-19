@@ -20,7 +20,7 @@ struct ContentView: View {
                 // Display content based on the selected tab
                 switch viewRouter.currentTab {
                 case .explore:
-                    Text("Explore View")
+                   ExploreView()
                 case .events:
                     Text("Events View")
                 case .add:

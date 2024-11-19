@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CartView: View {
+struct CardView: View {
     
     var eventTitle: String
     var eventDate: String
@@ -110,16 +110,16 @@ struct CartView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 16)
             }
-            .frame(width: 237, height: 255) // Ограничиваем VStack
+            .frame(width: 237, height: 255)
         }
-        .frame(width: 237, height: 255) // Основное ограничение
+        .frame(width: 237, height: 255)
         
         
     }
 }
 
 #Preview {
-    CartView(
+    CardView(
         eventTitle: "International Band Music Festival",
         eventDate: "10 JUNE",
         attendees: ["person1", "person2", "person3", "person4"],
