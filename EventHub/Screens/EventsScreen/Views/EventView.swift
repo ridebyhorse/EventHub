@@ -35,6 +35,23 @@ struct EventView: View {
             
             VStack {
                 Text(event.date.formattedForEvent())
+                    .font(.custom(EventHubFont.subtitle2))
+                    .foregroundStyle(.mainBlue)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Text(event.title)
+                    .font(.custom(EventHubFont.body2))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                HStack {
+                    Image(systemName: "mappin.circle.fill")
+    
+                    Text(event.formattedLocation())
+                        .font(.custom(EventHubFont.subtitle2))
+                }
+                .padding(.top, 1)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .foregroundStyle(.gray)
             }
         }
     }
@@ -44,7 +61,7 @@ struct EventView: View {
     EventView(
         event: MockEvent(
             image: "MockEventImage",
-            title: "Jo Malone London’s Mother’s Day Presents",
+            title: "Jo Malone London’s Mother’s Day Presents ",
             date: .now,
             locationName: "Radius Gallery",
             city: "Santa Cruz, CA",
