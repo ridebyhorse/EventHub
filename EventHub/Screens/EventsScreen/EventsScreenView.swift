@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct EventsScreenView: View {
-    @State private var choosedMode: ModeEvents = .upcoming
-    
-    let events: [MockEvent]
+    @ObservedObject var viewModel: EventsScreenViewModel
     
     var body: some View {
         ZStack {
@@ -18,10 +16,15 @@ struct EventsScreenView: View {
                 Text("Events")
                     .font(.title)
                 
-                ChangeModeButtonsView(choosedMode: $choosedMode)
+                ChangeModeButtonsView(choosedMode: $viewModel.selectedMode)
+                    .onChange(of: viewModel.selectedMode) { _ in
+                        withAnimation {
+                            viewModel.filterEvents()
+                        }
+                    }
                 
                 ScrollView {
-                    ForEach(events, id: \.self) { event in
+                    ForEach(viewModel.filteredEvents, id: \.self) { event in
                         EventView(event: event)
                     }
                 }
@@ -38,7 +41,7 @@ struct EventsScreenView: View {
 }
 
 #Preview {
-    EventsScreenView(events: [
+    EventsScreenView(viewModel: EventsScreenViewModel(events: [
         MockEvent(
             image: "MockEventImage",
             title: "Jo Malone London’s Mother’s Day Presents ",
@@ -120,5 +123,5 @@ struct EventsScreenView: View {
             state: "CA",
             isUpcoming: true
         )
-    ])
+    ]))
 }
