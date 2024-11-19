@@ -21,7 +21,7 @@ struct ImagePageView: View {
         VStack {
             GeometryReader { geometry in
                 HStack(spacing: peekAmount - 2) {
-                    ForEach(0..<onboardingPageMock.count) { item in
+                    ForEach(0..<onboardingPageMock.count, id: \.self) { item in
                         VStack {
                             Image(onboardingPageMock[item].image)
                                 .resizable()
