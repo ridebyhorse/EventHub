@@ -25,6 +25,15 @@
 		CB743EC82CEB936700E22966 /* AirbnbCereal_W_Md.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB743EC62CEB936700E22966 /* AirbnbCereal_W_Md.otf */; };
 		CB743EC92CEB936700E22966 /* AirbnbCereal_W_Bd.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB743EC42CEB936700E22966 /* AirbnbCereal_W_Bd.otf */; };
 		CB743ECC2CEB93AC00E22966 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB743ECB2CEB93AC00E22966 /* Font.swift */; };
+		EB8D01E62CECBD7F000AB98A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01E52CECBD7F000AB98A /* SplashScreen.swift */; };
+		EB8D01E82CECBFE8000AB98A /* EllipseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01E72CECBFE8000AB98A /* EllipseView.swift */; };
+		EB8D01EB2CECC719000AB98A /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01EA2CECC719000AB98A /* OnboardingScreen.swift */; };
+		EB8D01EE2CECC915000AB98A /* ImagePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01ED2CECC915000AB98A /* ImagePageView.swift */; };
+		EB8D01F02CECC941000AB98A /* TextPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01EF2CECC941000AB98A /* TextPageView.swift */; };
+		EB8D01F22CECC95F000AB98A /* IndicatorPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01F12CECC95F000AB98A /* IndicatorPageView.swift */; };
+		EB8D01F42CECC976000AB98A /* ActionButtonPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01F32CECC976000AB98A /* ActionButtonPageView.swift */; };
+		EB8D01F62CECDB42000AB98A /* BackgroundEllipseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01F52CECDB42000AB98A /* BackgroundEllipseView.swift */; };
+		EB8D01FA2CECDD06000AB98A /* OnboardingPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01F92CECDD06000AB98A /* OnboardingPageModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +57,15 @@
 		CB743EC62CEB936700E22966 /* AirbnbCereal_W_Md.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Md.otf; sourceTree = "<group>"; };
 		CB743ECA2CEB938200E22966 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CB743ECB2CEB93AC00E22966 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		EB8D01E52CECBD7F000AB98A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		EB8D01E72CECBFE8000AB98A /* EllipseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipseView.swift; sourceTree = "<group>"; };
+		EB8D01EA2CECC719000AB98A /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
+		EB8D01ED2CECC915000AB98A /* ImagePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePageView.swift; sourceTree = "<group>"; };
+		EB8D01EF2CECC941000AB98A /* TextPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPageView.swift; sourceTree = "<group>"; };
+		EB8D01F12CECC95F000AB98A /* IndicatorPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorPageView.swift; sourceTree = "<group>"; };
+		EB8D01F32CECC976000AB98A /* ActionButtonPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonPageView.swift; sourceTree = "<group>"; };
+		EB8D01F52CECDB42000AB98A /* BackgroundEllipseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundEllipseView.swift; sourceTree = "<group>"; };
+		EB8D01F92CECDD06000AB98A /* OnboardingPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +82,9 @@
 		796256502CEBC5820019F6E4 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				EB8D01F72CECDB48000AB98A /* BackgroundEllipse */,
+				EB8D01E32CECBD41000AB98A /* SplashScreen */,
+				EB8D01E42CECBD49000AB98A /* Onboarding */,
 				796256512CEBC58C0019F6E4 /* EventsScreen */,
 			);
 			path = Screens;
@@ -175,6 +196,60 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		EB8D01E32CECBD41000AB98A /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EB8D01E52CECBD7F000AB98A /* SplashScreen.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		EB8D01E42CECBD49000AB98A /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				EB8D01EA2CECC719000AB98A /* OnboardingScreen.swift */,
+				EB8D01EC2CECC71F000AB98A /* Views */,
+				EB8D01F82CECDCE0000AB98A /* Model */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		EB8D01E92CECC1B2000AB98A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EB8D01E72CECBFE8000AB98A /* EllipseView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EB8D01EC2CECC71F000AB98A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EB8D01ED2CECC915000AB98A /* ImagePageView.swift */,
+				EB8D01EF2CECC941000AB98A /* TextPageView.swift */,
+				EB8D01F12CECC95F000AB98A /* IndicatorPageView.swift */,
+				EB8D01F32CECC976000AB98A /* ActionButtonPageView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EB8D01F72CECDB48000AB98A /* BackgroundEllipse */ = {
+			isa = PBXGroup;
+			children = (
+				EB8D01F52CECDB42000AB98A /* BackgroundEllipseView.swift */,
+				EB8D01E92CECC1B2000AB98A /* View */,
+			);
+			path = BackgroundEllipse;
+			sourceTree = "<group>";
+		};
+		EB8D01F82CECDCE0000AB98A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EB8D01F92CECDD06000AB98A /* OnboardingPageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -250,17 +325,26 @@
 			files = (
 				93083D182CEB924F00A0C392 /* Persistence.swift in Sources */,
 				93083D2A2CEB994500A0C392 /* ViewRouter.swift in Sources */,
+				EB8D01E62CECBD7F000AB98A /* SplashScreen.swift in Sources */,
+				EB8D01E82CECBFE8000AB98A /* EllipseView.swift in Sources */,
+				EB8D01EB2CECC719000AB98A /* OnboardingScreen.swift in Sources */,
 				93083D112CEB924D00A0C392 /* ContentView.swift in Sources */,
 				796256582CEBCEDC0019F6E4 /* ExploreEventsButtonView.swift in Sources */,
 				7962565B2CEBD68A0019F6E4 /* Font + Ext.swift in Sources */,
 				93083D2E2CEB996E00A0C392 /* TabBarIcon.swift in Sources */,
+				EB8D01EE2CECC915000AB98A /* ImagePageView.swift in Sources */,
+				EB8D01F02CECC941000AB98A /* TextPageView.swift in Sources */,
 				CB743ECC2CEB93AC00E22966 /* Font.swift in Sources */,
 				93083D272CEB984600A0C392 /* CircleButton.swift in Sources */,
+				EB8D01F62CECDB42000AB98A /* BackgroundEllipseView.swift in Sources */,
 				93083D1B2CEB924F00A0C392 /* EventHub.xcdatamodeld in Sources */,
 				796256532CEBC5A20019F6E4 /* EventsScreenView.swift in Sources */,
+				EB8D01F42CECC976000AB98A /* ActionButtonPageView.swift in Sources */,
 				796256562CEBCC240019F6E4 /* ChangeModeButtonsView.swift in Sources */,
 				93083D2C2CEB995A00A0C392 /* TabBarDimensions.swift in Sources */,
+				EB8D01F22CECC95F000AB98A /* IndicatorPageView.swift in Sources */,
 				93083D0F2CEB924D00A0C392 /* EventHubApp.swift in Sources */,
+				EB8D01FA2CECDD06000AB98A /* OnboardingPageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
