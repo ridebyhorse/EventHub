@@ -71,7 +71,7 @@ struct OnboardingScreen: View {
                                 .background(
                                     NavigationLink(
                                         /// change EventsScreenView on SignIn
-                                        destination: EventsScreenView(),
+                                        destination: EventsScreenView(viewModel: EventsScreenViewModel(events: MockEvent.mockEvents())),
                                         isActive: $isSignInActive,
                                         label: { EmptyView() }
                                     )
