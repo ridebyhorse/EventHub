@@ -14,6 +14,7 @@ struct MockEvent: Hashable {
     let locationName: String
     let city: String
     let state: String
+    let isUpcoming: Bool
     
     func formattedLocation() -> String {
         "\(locationName) • \(city), \(state)"
@@ -72,7 +73,8 @@ struct EventView: View {
             date: .now,
             locationName: "Radius Gallery",
             city: "Santa Cruz, CA",
-            state: "CA"
+            state: "CA",
+            isUpcoming: true
         )
     )
 }

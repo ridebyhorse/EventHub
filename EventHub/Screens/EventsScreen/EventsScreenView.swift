@@ -45,7 +45,8 @@ struct EventsScreenView: View {
             date: .now,
             locationName: "Radius Gallery",
             city: "Santa Cruz, CA",
-            state: "CA"
+            state: "CA",
+            isUpcoming: false
         ),
         MockEvent(
             image: "MockEventImage",
@@ -53,7 +54,8 @@ struct EventsScreenView: View {
             date: .now,
             locationName: "Radius Gallery",
             city: "Santa Cruz, CA",
-            state: "CA"
+            state: "CA",
+            isUpcoming: true
         ),
         MockEvent(
             image: "MockEventImage",
@@ -61,7 +63,8 @@ struct EventsScreenView: View {
             date: .now,
             locationName: "Radius Gallery",
             city: "Santa Cruz, CA",
-            state: "CA"
+            state: "CA",
+            isUpcoming: true
         ),
         MockEvent(
             image: "MockEventImage",
@@ -69,7 +72,8 @@ struct EventsScreenView: View {
             date: .now,
             locationName: "Radius Gallery",
             city: "Santa Cruz, CA",
-            state: "CA"
+            state: "CA",
+            isUpcoming: true
         ),
         MockEvent(
             image: "MockEventImage",
@@ -77,7 +81,8 @@ struct EventsScreenView: View {
             date: .now,
             locationName: "Radius Gallery",
             city: "Santa Cruz, CA",
-            state: "CA"
+            state: "CA",
+            isUpcoming: true
         ),
         MockEvent(
             image: "MockEventImage",
@@ -85,7 +90,8 @@ struct EventsScreenView: View {
             date: .now,
             locationName: "Radius Gallery",
             city: "Santa Cruz, CA",
-            state: "CA"
+            state: "CA",
+            isUpcoming: true
         ),
         MockEvent(
             image: "MockEventImage",
@@ -93,7 +99,8 @@ struct EventsScreenView: View {
             date: .now,
             locationName: "Radius Gallery",
             city: "Santa Cruz, CA",
-            state: "CA"
+            state: "CA",
+            isUpcoming: true
         ),
         MockEvent(
             image: "MockEventImage",
@@ -101,7 +108,17 @@ struct EventsScreenView: View {
             date: .now,
             locationName: "Radius Gallery",
             city: "Santa Cruz, CA",
-            state: "CA"
+            state: "CA",
+            isUpcoming: true
+        ),
+        MockEvent(
+            image: "MockEventImage",
+            title: "Jo Malone London’s Mother’s Day Presents ",
+            date: .now,
+            locationName: "Radius Gallery",
+            city: "Santa Cruz, CA",
+            state: "CA",
+            isUpcoming: true
         )
     ])
 }
