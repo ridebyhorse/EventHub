@@ -10,6 +10,7 @@
 		793CBF4C2CED03FE00E1B230 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793CBF4B2CED03FE00E1B230 /* EventView.swift */; };
 		793CBF4E2CED067000E1B230 /* Date + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793CBF4D2CED067000E1B230 /* Date + Ext.swift */; };
 		793CBF512CED0F1C00E1B230 /* EventsScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793CBF502CED0F1C00E1B230 /* EventsScreenViewModel.swift */; };
+		793CBF532CED11A500E1B230 /* EmptyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793CBF522CED11A500E1B230 /* EmptyEventsView.swift */; };
 		796256532CEBC5A20019F6E4 /* EventsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796256522CEBC5A20019F6E4 /* EventsScreenView.swift */; };
 		796256562CEBCC240019F6E4 /* ChangeModeButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796256552CEBCC240019F6E4 /* ChangeModeButtonsView.swift */; };
 		796256582CEBCEDC0019F6E4 /* ExploreEventsButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796256572CEBCEDC0019F6E4 /* ExploreEventsButtonView.swift */; };
@@ -34,6 +35,7 @@
 		793CBF4B2CED03FE00E1B230 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		793CBF4D2CED067000E1B230 /* Date + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Ext.swift"; sourceTree = "<group>"; };
 		793CBF502CED0F1C00E1B230 /* EventsScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsScreenViewModel.swift; sourceTree = "<group>"; };
+		793CBF522CED11A500E1B230 /* EmptyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyEventsView.swift; sourceTree = "<group>"; };
 		796256522CEBC5A20019F6E4 /* EventsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsScreenView.swift; sourceTree = "<group>"; };
 		796256552CEBCC240019F6E4 /* ChangeModeButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeModeButtonsView.swift; sourceTree = "<group>"; };
 		796256572CEBCEDC0019F6E4 /* ExploreEventsButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreEventsButtonView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				796256552CEBCC240019F6E4 /* ChangeModeButtonsView.swift */,
 				796256572CEBCEDC0019F6E4 /* ExploreEventsButtonView.swift */,
 				793CBF4B2CED03FE00E1B230 /* EventView.swift */,
+				793CBF522CED11A500E1B230 /* EmptyEventsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				796256582CEBCEDC0019F6E4 /* ExploreEventsButtonView.swift in Sources */,
 				7962565B2CEBD68A0019F6E4 /* Font + Ext.swift in Sources */,
 				793CBF512CED0F1C00E1B230 /* EventsScreenViewModel.swift in Sources */,
+				793CBF532CED11A500E1B230 /* EmptyEventsView.swift in Sources */,
 				93083D2E2CEB996E00A0C392 /* TabBarIcon.swift in Sources */,
 				CB743ECC2CEB93AC00E22966 /* Font.swift in Sources */,
 				93083D272CEB984600A0C392 /* CircleButton.swift in Sources */,
