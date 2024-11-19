@@ -33,6 +33,7 @@ struct ExploreEventsButtonView: View {
             .clipShape(RoundedRectangle(cornerRadius: 15))
         }
         .frame(maxWidth: .infinity)
+        .padding(.bottom, 50)
     }
 }
 

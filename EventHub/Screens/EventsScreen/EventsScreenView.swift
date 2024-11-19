@@ -23,12 +23,15 @@ struct EventsScreenView: View {
                         }
                     }
                 
-                ScrollView {
-                    ForEach(viewModel.filteredEvents, id: \.self) { event in
-                        EventView(event: event)
+                if !viewModel.filteredEvents.isEmpty {
+                    ScrollView {
+                        ForEach(viewModel.filteredEvents, id: \.self) { event in
+                            EventView(event: event)
+                        }
                     }
+                } else {
+                    EmptyEventsView(selectedMode: viewModel.selectedMode)
                 }
-                
             }
             
             VStack {
@@ -41,87 +44,5 @@ struct EventsScreenView: View {
 }
 
 #Preview {
-    EventsScreenView(viewModel: EventsScreenViewModel(events: [
-        MockEvent(
-            image: "MockEventImage",
-            title: "Jo Malone London’s Mother’s Day Presents ",
-            date: .now,
-            locationName: "Radius Gallery",
-            city: "Santa Cruz, CA",
-            state: "CA",
-            isUpcoming: false
-        ),
-        MockEvent(
-            image: "MockEventImage",
-            title: "Jo Malone London’s Mother’s Day Presents ",
-            date: .now,
-            locationName: "Radius Gallery",
-            city: "Santa Cruz, CA",
-            state: "CA",
-            isUpcoming: true
-        ),
-        MockEvent(
-            image: "MockEventImage",
-            title: "Jo Malone London’s Mother’s Day Presents ",
-            date: .now,
-            locationName: "Radius Gallery",
-            city: "Santa Cruz, CA",
-            state: "CA",
-            isUpcoming: true
-        ),
-        MockEvent(
-            image: "MockEventImage",
-            title: "Jo Malone London’s Mother’s Day Presents ",
-            date: .now,
-            locationName: "Radius Gallery",
-            city: "Santa Cruz, CA",
-            state: "CA",
-            isUpcoming: true
-        ),
-        MockEvent(
-            image: "MockEventImage",
-            title: "Jo Malone London’s Mother’s Day Presents ",
-            date: .now,
-            locationName: "Radius Gallery",
-            city: "Santa Cruz, CA",
-            state: "CA",
-            isUpcoming: true
-        ),
-        MockEvent(
-            image: "MockEventImage",
-            title: "Jo Malone London’s Mother’s Day Presents ",
-            date: .now,
-            locationName: "Radius Gallery",
-            city: "Santa Cruz, CA",
-            state: "CA",
-            isUpcoming: true
-        ),
-        MockEvent(
-            image: "MockEventImage",
-            title: "Jo Malone London’s Mother’s Day Presents ",
-            date: .now,
-            locationName: "Radius Gallery",
-            city: "Santa Cruz, CA",
-            state: "CA",
-            isUpcoming: true
-        ),
-        MockEvent(
-            image: "MockEventImage",
-            title: "Jo Malone London’s Mother’s Day Presents ",
-            date: .now,
-            locationName: "Radius Gallery",
-            city: "Santa Cruz, CA",
-            state: "CA",
-            isUpcoming: true
-        ),
-        MockEvent(
-            image: "MockEventImage",
-            title: "Jo Malone London’s Mother’s Day Presents ",
-            date: .now,
-            locationName: "Radius Gallery",
-            city: "Santa Cruz, CA",
-            state: "CA",
-            isUpcoming: true
-        )
-    ]))
+    EventsScreenView(viewModel: EventsScreenViewModel(events: MockEvent.mockEvents()))
 }

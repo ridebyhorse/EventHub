@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct EmptyEventsView: View {
+    @State var selectedMode: ModeEvents
+    
     var body: some View {
         VStack(spacing: 10) {
             Image(.emptyEvents)
@@ -17,7 +19,7 @@ struct EmptyEventsView: View {
                 .frame(width: 200, height: 200)
                 .offset(y: 20)
             
-            Text("No Upcoming Event")
+            Text("No \(selectedMode == .upcoming ? "Upcoming" : "Past") Event")
                 .font(.title)
             
             Text("Lorem ipsum dolor sit amet, consectetur")
@@ -28,9 +30,10 @@ struct EmptyEventsView: View {
                 .frame(maxWidth: .infinity, alignment: .center)
         }
         .frame(width: UIScreen.main.bounds.width * 0.7)
+        .frame(maxHeight: .infinity)
     }
 }
 
 #Preview {
-    EmptyEventsView()
+    EmptyEventsView(selectedMode: ModeEvents.upcoming)
 }
