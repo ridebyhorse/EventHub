@@ -21,6 +21,8 @@ struct MockEvent {
 }
 
 struct EventView: View {
+    let event: MockEvent
+    
     var body: some View {
         HStack {
             Image(.mockEvent)
@@ -30,10 +32,23 @@ struct EventView: View {
                     height: UIScreen.main.bounds.height * 0.1
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 10))
+            
+            VStack {
+                Text(event.date.formattedForEvent())
+            }
         }
     }
 }
 
 #Preview {
-    EventView()
+    EventView(
+        event: MockEvent(
+            image: "MockEventImage",
+            title: "Jo Malone London’s Mother’s Day Presents",
+            date: .now,
+            locationName: "Radius Gallery",
+            city: "Santa Cruz, CA",
+            state: "CA"
+        )
+    )
 }
