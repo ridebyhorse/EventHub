@@ -10,7 +10,6 @@
 		796256532CEBC5A20019F6E4 /* EventsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796256522CEBC5A20019F6E4 /* EventsScreenView.swift */; };
 		796256562CEBCC240019F6E4 /* ChangeModeButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796256552CEBCC240019F6E4 /* ChangeModeButtonsView.swift */; };
 		796256582CEBCEDC0019F6E4 /* ExploreEventsButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796256572CEBCEDC0019F6E4 /* ExploreEventsButtonView.swift */; };
-		7962565B2CEBD68A0019F6E4 /* Font + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7962565A2CEBD68A0019F6E4 /* Font + Ext.swift */; };
 		93083D0F2CEB924D00A0C392 /* EventHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D0E2CEB924D00A0C392 /* EventHubApp.swift */; };
 		93083D112CEB924D00A0C392 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D102CEB924D00A0C392 /* ContentView.swift */; };
 		93083D132CEB924F00A0C392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93083D122CEB924F00A0C392 /* Assets.xcassets */; };
@@ -29,6 +28,7 @@
 		CB743ECC2CEB93AC00E22966 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB743ECB2CEB93AC00E22966 /* Font.swift */; };
 		CBB7F1082CED1AC70065366F /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB7F1062CED1AC70065366F /* Persistence.swift */; };
 		CBB7F1092CED1AC70065366F /* EventHub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBB7F1052CED1AC70065366F /* EventHub.xcdatamodeld */; };
+		CBB7F10C2CED1B250065366F /* Font + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB7F10A2CED1B250065366F /* Font + Ext.swift */; };
 		EB8D01E62CECBD7F000AB98A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01E52CECBD7F000AB98A /* SplashScreen.swift */; };
 		EB8D01E82CECBFE8000AB98A /* EllipseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01E72CECBFE8000AB98A /* EllipseView.swift */; };
 		EB8D01EB2CECC719000AB98A /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01EA2CECC719000AB98A /* OnboardingScreen.swift */; };
@@ -44,7 +44,6 @@
 		796256522CEBC5A20019F6E4 /* EventsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsScreenView.swift; sourceTree = "<group>"; };
 		796256552CEBCC240019F6E4 /* ChangeModeButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeModeButtonsView.swift; sourceTree = "<group>"; };
 		796256572CEBCEDC0019F6E4 /* ExploreEventsButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreEventsButtonView.swift; sourceTree = "<group>"; };
-		7962565A2CEBD68A0019F6E4 /* Font + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font + Ext.swift"; sourceTree = "<group>"; };
 		93083D0B2CEB924D00A0C392 /* EventHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93083D0E2CEB924D00A0C392 /* EventHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHubApp.swift; sourceTree = "<group>"; };
 		93083D102CEB924D00A0C392 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,6 +64,7 @@
 		CB743ECB2CEB93AC00E22966 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		CBB7F1062CED1AC70065366F /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		CBB7F1072CED1AC70065366F /* EventHub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventHub.xcdatamodel; sourceTree = "<group>"; };
+		CBB7F10A2CED1B250065366F /* Font + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font + Ext.swift"; sourceTree = "<group>"; };
 		EB8D01E52CECBD7F000AB98A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		EB8D01E72CECBFE8000AB98A /* EllipseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipseView.swift; sourceTree = "<group>"; };
 		EB8D01EA2CECC719000AB98A /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 			children = (
 				93083D0D2CEB924D00A0C392 /* EventHub */,
 				93083D0C2CEB924D00A0C392 /* Products */,
-				CBB7F1042CED1AAD0065366F /* Recovered References */,
+				CBB7F10B2CED1B250065366F /* Extensions */,
 			);
 			sourceTree = "<group>";
 		};
@@ -216,12 +216,12 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
-		CBB7F1042CED1AAD0065366F /* Recovered References */ = {
+		CBB7F10B2CED1B250065366F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				7962565A2CEBD68A0019F6E4 /* Font + Ext.swift */,
+				CBB7F10A2CED1B250065366F /* Font + Ext.swift */,
 			);
-			name = "Recovered References";
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EB8D01E32CECBD41000AB98A /* SplashScreen */ = {
@@ -360,12 +360,12 @@
 				EB8D01EB2CECC719000AB98A /* OnboardingScreen.swift in Sources */,
 				93083D112CEB924D00A0C392 /* ContentView.swift in Sources */,
 				796256582CEBCEDC0019F6E4 /* ExploreEventsButtonView.swift in Sources */,
-				7962565B2CEBD68A0019F6E4 /* Font + Ext.swift in Sources */,
 				CBB7F1082CED1AC70065366F /* Persistence.swift in Sources */,
 				CBB7F1092CED1AC70065366F /* EventHub.xcdatamodeld in Sources */,
 				93083D2E2CEB996E00A0C392 /* TabBarIcon.swift in Sources */,
 				EB8D01EE2CECC915000AB98A /* ImagePageView.swift in Sources */,
 				EB8D01F02CECC941000AB98A /* TextPageView.swift in Sources */,
+				CBB7F10C2CED1B250065366F /* Font + Ext.swift in Sources */,
 				CB743ECC2CEB93AC00E22966 /* Font.swift in Sources */,
 				93083D272CEB984600A0C392 /* CircleButton.swift in Sources */,
 				EB8D01F62CECDB42000AB98A /* BackgroundEllipseView.swift in Sources */,
