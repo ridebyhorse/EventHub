@@ -24,7 +24,7 @@ struct SignUp: View {
     var placeholder3: String = "Confirm password"
     var lock: String = "lock"
     var buttonText: String = "Sign Up"
-    var profileLogo: String = "Profile"
+    var profileLogo: String = "authProfile"
     var arrowRight: String = "arrow.right"
     var choice: String = "OR"
     var mainIcon = "google"
