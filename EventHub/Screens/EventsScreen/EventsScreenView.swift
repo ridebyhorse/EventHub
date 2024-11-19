@@ -10,21 +10,98 @@ import SwiftUI
 struct EventsScreenView: View {
     @State private var choosedMode: ModeEvents = .upcoming
     
+    let events: [MockEvent]
+    
     var body: some View {
-        VStack {
-            Text("Events")
-                .font(.title)
+        ZStack {
+            VStack {
+                Text("Events")
+                    .font(.title)
+                
+                ChangeModeButtonsView(choosedMode: $choosedMode)
+                
+                ScrollView {
+                    ForEach(events, id: \.self) { event in
+                        EventView(event: event)
+                    }
+                }
+                
+            }
             
-            ChangeModeButtonsView(choosedMode: $choosedMode)
-            
-            // TODO: - To create events' list with ScrollView
-            Spacer()
-            
-            ExploreEventsButtonView()
+            VStack {
+                Spacer()
+                
+                ExploreEventsButtonView()
+            }
         }
     }
 }
 
 #Preview {
-    EventsScreenView()
+    EventsScreenView(events: [
+        MockEvent(
+            image: "MockEventImage",
+            title: "Jo Malone London’s Mother’s Day Presents ",
+            date: .now,
+            locationName: "Radius Gallery",
+            city: "Santa Cruz, CA",
+            state: "CA"
+        ),
+        MockEvent(
+            image: "MockEventImage",
+            title: "Jo Malone London’s Mother’s Day Presents ",
+            date: .now,
+            locationName: "Radius Gallery",
+            city: "Santa Cruz, CA",
+            state: "CA"
+        ),
+        MockEvent(
+            image: "MockEventImage",
+            title: "Jo Malone London’s Mother’s Day Presents ",
+            date: .now,
+            locationName: "Radius Gallery",
+            city: "Santa Cruz, CA",
+            state: "CA"
+        ),
+        MockEvent(
+            image: "MockEventImage",
+            title: "Jo Malone London’s Mother’s Day Presents ",
+            date: .now,
+            locationName: "Radius Gallery",
+            city: "Santa Cruz, CA",
+            state: "CA"
+        ),
+        MockEvent(
+            image: "MockEventImage",
+            title: "Jo Malone London’s Mother’s Day Presents ",
+            date: .now,
+            locationName: "Radius Gallery",
+            city: "Santa Cruz, CA",
+            state: "CA"
+        ),
+        MockEvent(
+            image: "MockEventImage",
+            title: "Jo Malone London’s Mother’s Day Presents ",
+            date: .now,
+            locationName: "Radius Gallery",
+            city: "Santa Cruz, CA",
+            state: "CA"
+        ),
+        MockEvent(
+            image: "MockEventImage",
+            title: "Jo Malone London’s Mother’s Day Presents ",
+            date: .now,
+            locationName: "Radius Gallery",
+            city: "Santa Cruz, CA",
+            state: "CA"
+        ),
+        MockEvent(
+            image: "MockEventImage",
+            title: "Jo Malone London’s Mother’s Day Presents ",
+            date: .now,
+            locationName: "Radius Gallery",
+            city: "Santa Cruz, CA",
+            state: "CA"
+        )
+    ])
 }

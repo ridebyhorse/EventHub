@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MockEvent {
+struct MockEvent: Hashable {
     let image: String
     let title: String
     let date: Date
@@ -43,7 +43,7 @@ struct EventView: View {
                     .font(.custom(EventHubFont.body2))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                HStack {
+                HStack(spacing: 4) {
                     Image(systemName: "mappin.circle.fill")
     
                     Text(event.formattedLocation())
@@ -53,7 +53,14 @@ struct EventView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundStyle(.gray)
             }
+            .frame(height: UIScreen.main.bounds.height * 0.1)
         }
+        .padding(10)
+        .background(.white)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .shadow(color: .black.opacity(0.05), radius: 5, x: 5, y: 5)
+        .padding(.horizontal, 32)
+        .padding(.top, 12)
     }
 }
 
