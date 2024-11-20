@@ -10,10 +10,7 @@ import SwiftUI
 struct SignUp: View {
     // MARK: - Property Wrappers
     @State var userText: String = ""
-    @State var email: String = ""
-    @State var password: String = ""
-    @State var confirmPass: String = ""
-    
+    @ObservedObject var Model:  AuthenticationModel
     //MARK: - Properties
     var signUpText: String = "Sign Up"
     var sfPro: String = "SF Pro"
@@ -62,7 +59,7 @@ struct SignUp: View {
                 
                 CustomTextField(
                     placeholder: placeholder,
-                    text: $email,
+                    text: $Model.emailText,
                     isSecure: false,
                     imageName: envelope,
                     keyboardType: .emailAddress
@@ -72,7 +69,7 @@ struct SignUp: View {
                 
                 CustomTextField(
                     placeholder: placeholder2,
-                    text: $password,
+                    text: $Model.passwordText,
                     isSecure: true,
                     imageName: lock
                 )
@@ -81,7 +78,7 @@ struct SignUp: View {
                 
                 CustomTextField(
                     placeholder: placeholder3,
-                    text: $confirmPass,
+                    text: $Model.confirmPass,
                     isSecure: true,
                     imageName: lock
                 )
@@ -90,20 +87,26 @@ struct SignUp: View {
             
             VStack{
                 DefaultSignInButton(buttonText: buttonText, arrowRight: arrowRight) {
-                   // action
+                    Task {
+                let success = await Model.SignUp()
+                    if success {
+                    // navigation to next page
+                    } else {
+                      // alert
+                        }
+                    }
                 }
                 .padding(.top, 30)
                 .padding(.horizontal, 28)
 
                 Text(choice)
-                    .foregroundColor(.midGray)
+                    .foregroundColor(.someGray)
                     .font(.custom(sfPro, size: EventHubFont.body3.size))
                     .padding(.vertical, 20)
                 
                 //MARK: - Login with Google
-                GoogleLoginButton(mainIcon: mainIcon, buttonText: logGoogle) {
-                    // action
-                }
+                GoogleLoginButton(Model: Model,mainIcon: mainIcon, buttonText: logGoogle)
+                
                 .padding(.horizontal, 50)
             }
             
@@ -126,5 +129,5 @@ struct SignUp: View {
 
 
 #Preview {
-    SignUp()
+    SignUp(Model: AuthenticationModel())
 }

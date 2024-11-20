@@ -2,6 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Google SignIn</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.973230403484-3p52b1rs8h9ejd6h4k00o2jd1j2nd1j2</string>
+			</array>
+		</dict>
+	</array>
+	<key>GIDClientID</key>
+	<string>973230403484-3p52b1rs8h9ejd6h4k00o2jd1j2nd1j2.apps.googleusercontent.com</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AirbnbCereal_W_Bd.otf</string>

@@ -40,6 +40,7 @@ struct CustomTextField: View {
                 }) {
                     Image(systemName: isSecureEntry ? "eye" : "eye.slash")
                         .resizable()
+                        .aspectRatio(contentMode: .fit)
                         .frame(width: 24, height: 24)
                         .foregroundColor(.eye)
                 }
@@ -65,3 +66,4 @@ struct CustomTextField: View {
 #Preview {
     CustomTextField(placeholder: "Your email", text: .constant(""), imageName: "envelope", keyboardType: .emailAddress)
 }
+
