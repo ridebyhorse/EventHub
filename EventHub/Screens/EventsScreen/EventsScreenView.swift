@@ -8,23 +8,41 @@
 import SwiftUI
 
 struct EventsScreenView: View {
-    @State private var choosedMode: ModeEvents = .upcoming
+    @ObservedObject var viewModel: EventsScreenViewModel
     
     var body: some View {
-        VStack {
-            Text("Events")
-                .font(.title)
+        ZStack {
+            VStack {
+                Text("Events")
+                    .font(.title)
+                
+                ChangeModeButtonsView(choosedMode: $viewModel.selectedMode)
+                    .onChange(of: viewModel.selectedMode) { _ in
+                        withAnimation {
+                            viewModel.filterEvents()
+                        }
+                    }
+                
+                if !viewModel.filteredEvents.isEmpty {
+                    ScrollView {
+                        ForEach(viewModel.filteredEvents, id: \.self) { event in
+                            EventView(event: event)
+                        }
+                    }
+                } else {
+                    EmptyEventsView(selectedMode: viewModel.selectedMode)
+                }
+            }
             
-            ChangeModeButtonsView(choosedMode: $choosedMode)
-            
-            // TODO: - To create events' list with ScrollView
-            Spacer()
-            
-            ExploreEventsButtonView()
+            VStack {
+                Spacer()
+                
+                ExploreEventsButtonView()
+            }
         }
     }
 }
 
 #Preview {
-    EventsScreenView()
+    EventsScreenView(viewModel: EventsScreenViewModel(events: MockEvent.mockEvents()))
 }
