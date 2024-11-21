@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum EventsType {
+    case upcoming
+    case past
+    case nearby
+}
+
 class NetworkService {
     static let shared = NetworkService()
     
@@ -23,7 +29,10 @@ class NetworkService {
         static let locationParameter = "&location="
         static let expandParameter = "&expand=place,dates"
         static let contentTypeParameter = "&ctype=events"
-        static let fieldsEventsParameter = "&fields="
+        static let fieldsEventsParameter = "&fields=id,publication_date,dates,title,short_title,slug,place,description,body_text,location,categories,tagline,price,is_free,images,favorites_count,comments_count,site_url,tags"
+        static let upcomingParameter = "&actual_since="
+        static let pastParameter = "&actual_until="
+        static let categoriesParameter = "&categories="
     }
     
     private init() {}
@@ -31,33 +40,23 @@ class NetworkService {
     func getEventCategories() async throws -> [EventCategoryModel] {
         let urlString = Constants.baseUrl + Constants.eventCategories + Constants.language
         
-        guard let url = URL(string: urlString) else {
-            throw URLError(.badURL)
-        }
-        let (data, _) = try await URLSession.shared.data(from: url)
-        let response = try JSONDecoder().decode([EventCategoryModel].self, from: data)
-        
-        return response
+        return try await request(url: urlString, response: [EventCategoryModel].self)
     }
     
     func getLocations() async throws -> [LocationModel] {
         let urlString = Constants.baseUrl + Constants.locations + Constants.language
         
-        guard let url = URL(string: urlString) else {
-            throw URLError(.badURL)
-        }
-        let (data, _) = try await URLSession.shared.data(from: url)
-        let response = try JSONDecoder().decode([LocationModel].self, from: data)
-        
-        return response
+        return try await request(url: urlString, response: [LocationModel].self)
     }
     
     func searchEvents(
+        location: Location,
         search: String,
         pageNumber: Int? = nil,
         pageSize: Int? = nil
     ) async throws -> SearchEventsModel {
         var urlString = Constants.baseUrl + Constants.search + Constants.language
+        urlString += Constants.locationParameter + location.rawValue
         urlString += Constants.searchQueryParameter + search
         
         if let pageNumber {
@@ -68,22 +67,26 @@ class NetworkService {
             urlString += Constants.pageSizeParameter + String(pageSize)
         }
         
-        guard let url = URL(string: urlString) else {
-            throw URLError(.badURL)
-        }
-        let (data, _) = try await URLSession.shared.data(from: url)
-        let response = try JSONDecoder().decode(SearchEventsModel.self, from: data)
-        
-        return response
+        return try await request(url: urlString, response: SearchEventsModel.self)
     }
     
-    func getEventsByLocation(
+    func getEvents(
+        type: EventsType,
         location: Location,
         pageNumber: Int? = nil,
         pageSize: Int? = nil
-    ) async throws -> [EventShortModel] {
-        var urlString = Constants.baseUrl + Constants.events + Constants.language
+    ) async throws -> EventsModel {
+        var urlString = Constants.baseUrl + Constants.events + Constants.language + Constants.fieldsEventsParameter
         urlString += Constants.locationParameter + location.rawValue
+        
+        switch type {
+        case .upcoming:
+            urlString += Constants.upcomingParameter + Date.now.ISO8601Format()
+        case .past:
+            urlString += Constants.pastParameter + Date.now.ISO8601Format()
+        case .nearby:
+            break
+        }
         
         if let pageNumber {
             urlString += Constants.pageParameter + String(pageNumber)
@@ -93,11 +96,36 @@ class NetworkService {
             urlString += Constants.pageSizeParameter + String(pageSize)
         }
         
-        guard let url = URL(string: urlString) else {
+        return try await request(url: urlString, response: EventsModel.self)
+    }
+    
+    func getEventsByCategory(
+        category: EventCategoryModel,
+        location: Location,
+        pageNumber: Int? = nil,
+        pageSize: Int? = nil
+    ) async throws -> EventsModel {
+        var urlString = Constants.baseUrl + Constants.events + Constants.language + Constants.fieldsEventsParameter
+        urlString += Constants.locationParameter + location.rawValue
+        urlString += Constants.categoriesParameter + category.slug
+        
+        if let pageNumber {
+            urlString += Constants.pageParameter + String(pageNumber)
+        }
+        
+        if let pageSize {
+            urlString += Constants.pageSizeParameter + String(pageSize)
+        }
+        
+        return try await request(url: urlString, response: EventsModel.self)
+    }
+    
+    private func request<T: Decodable>(url: String, response: T.Type) async throws -> T {
+        guard let url = URL(string: url) else {
             throw URLError(.badURL)
         }
         let (data, _) = try await URLSession.shared.data(from: url)
-        let response = try JSONDecoder().decode([EventShortModel].self, from: data)
+        let response = try JSONDecoder().decode(T.self, from: data)
         
         return response
     }
