@@ -14,7 +14,9 @@ import GoogleSignInSwift
 struct SignIn: View {
     // MARK: - Property Wrappers
     @State var isSaved: Bool = false
+    @State var navigate: Bool = false
     @ObservedObject var Model:  AuthenticationModel
+//    @EnvironmentObject var navigationManager: NavigationManager
     //MARK: - Properties
     var titleText: String = "EventHub"
     var titleImage: String = "titleLogo"
@@ -34,9 +36,9 @@ struct SignIn: View {
     var signUp: String = "Sign Up"
     var sfPro: String = "SF Pro"
     var togglePrompt: String = ""
-
     var body: some View {
         NavigationView {
+            
             VStack {
                 //MARK: - Title
                 VStack(spacing: 8) {
@@ -90,7 +92,9 @@ struct SignIn: View {
 
                     Spacer()
 
-                    Button(action: {}) {
+                    Button(action: {
+//                       navigate to reset password
+                    }) {
                         Text(forgotPass)
                             .foregroundColor(.mainBlack)
                             .font(.custom(EventHubFont.body3.name, size: EventHubFont.body3.size))
@@ -107,11 +111,11 @@ struct SignIn: View {
         DefaultSignInButton(buttonText: buttonText, arrowRight: arrowRight) {
                     Task {
                 // Call the async function inside Task
-                let success = await Model.SignIn()
+                        let success = try await Model.SignIn()
                     if success {
-                    // navigation to next page
+//                       navigate to contentview
                     } else {
-                      //
+                        Model.showAlert = true
                         }
                     }
             }
@@ -132,7 +136,9 @@ struct SignIn: View {
                     Text(noAccount)
                         .foregroundColor(.mainBlack)
                         .font(.custom(EventHubFont.body3.name, size: 14))
-                    Button(action: {}) {
+                    Button(action: {
+// navigate to sign up
+                    }) {
                         Text(signUp)
                             .foregroundColor(.primaryBlue)
                             .font(.custom(EventHubFont.body3.name, size: 14))
@@ -141,13 +147,23 @@ struct SignIn: View {
                 .padding(.top, 82)
                 .padding(.bottom, 20)
             }
+            
             .padding(.vertical, 20)
             .background(Color(.systemBackground))
             .ignoresSafeArea()
+            .navigationBarBackButtonHidden(true)
+            .alert(isPresented: $Model.showAlert) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text(Model.errorMessage),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
     }
 }
 
 #Preview {
     SignIn(Model:AuthenticationModel())
+    
 }

@@ -10,7 +10,8 @@ import SwiftUI
 
 struct ResetPassword: View {
     @State var emailText: String = ""
-    
+//    @EnvironmentObject var navigationManager: NavigationManager
+    @ObservedObject var Model: AuthenticationModel
     var sfPro: String = "SF Pro"
     var backButton: String = "arrow.left"
     var mainTitle: String = "Reset Password"
@@ -25,7 +26,7 @@ struct ResetPassword: View {
             VStack{
                 HStack{
                     Button(action:{
-                        
+//                       naviagate back
                     })
                     {
                         Image(systemName: backButton)
@@ -53,10 +54,21 @@ struct ResetPassword: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .lineSpacing(4)
                     
-                    CustomTextField(placeholder: placeholder, text: $emailText, imageName: envelope)
+                    CustomTextField(placeholder: placeholder, text: $Model.emailText, imageName: envelope)
                         .padding(.top, 10)
                     
-                    DefaultSignInButton(buttonText: buttonText, arrowRight: arrowRight, action: {})
+                    DefaultSignInButton(buttonText: buttonText, arrowRight: arrowRight){
+                        Task{
+                            let sucess = await
+                            Model.resetPassword(email: Model.emailText)
+                            if sucess{
+                              //navigate to Sign in
+                                
+                            } else {
+                                Model.showAlert = true
+                            }
+                        }
+                    }
                         .frame(maxWidth: .infinity)
                         .padding(.top, 20)
                 }
@@ -66,11 +78,18 @@ struct ResetPassword: View {
                 Spacer()
             }
             .background(Color.white)
+            .alert(isPresented: $Model.showAlert) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text(Model.errorMessage),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
     }
 }
 
     
 #Preview {
-    ResetPassword()
+    ResetPassword(Model: AuthenticationModel())
 }

@@ -68,6 +68,8 @@
 		CB406E1F2CEFA48F007C8F49 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB406E1C2CEFA48F007C8F49 /* ExploreView.swift */; };
 		CB406E202CEFA48F007C8F49 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB406E1A2CEFA48F007C8F49 /* CardView.swift */; };
 		CB406E212CEFA48F007C8F49 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB406E1D2CEFA48F007C8F49 /* HeaderView.swift */; };
+		ADA04A822CEEA7B70001F7E4 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA04A812CEEA7AC0001F7E4 /* NavigationManager.swift */; };
+		ADA04A842CEEA8460001F7E4 /* MainNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA04A832CEEA8340001F7E4 /* MainNavigation.swift */; };
 		CB743EC72CEB936700E22966 /* AirbnbCereal_W_Bk.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB743EC52CEB936700E22966 /* AirbnbCereal_W_Bk.otf */; };
 		CB743EC82CEB936700E22966 /* AirbnbCereal_W_Md.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB743EC62CEB936700E22966 /* AirbnbCereal_W_Md.otf */; };
 		CB743EC92CEB936700E22966 /* AirbnbCereal_W_Bd.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB743EC42CEB936700E22966 /* AirbnbCereal_W_Bd.otf */; };
@@ -124,6 +126,8 @@
 		CB406E1B2CEFA48F007C8F49 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		CB406E1C2CEFA48F007C8F49 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		CB406E1D2CEFA48F007C8F49 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		ADA04A812CEEA7AC0001F7E4 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
+		ADA04A832CEEA8340001F7E4 /* MainNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigation.swift; sourceTree = "<group>"; };
 		CB743EC42CEB936700E22966 /* AirbnbCereal_W_Bd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bd.otf; sourceTree = "<group>"; };
 		CB743EC52CEB936700E22966 /* AirbnbCereal_W_Bk.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Bk.otf; sourceTree = "<group>"; };
 		CB743EC62CEB936700E22966 /* AirbnbCereal_W_Md.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirbnbCereal_W_Md.otf; sourceTree = "<group>"; };
@@ -257,6 +261,7 @@
 				CB743EC12CEB932400E22966 /* App */,
 				796256502CEBC5820019F6E4 /* Screens */,
 				CB743ECA2CEB938200E22966 /* Info.plist */,
+				AD508F022CED687D00CA735C /* GoogleService-Info.plist */,
 				93083D102CEB924D00A0C392 /* ContentView.swift */,
 				CB743EC22CEB934300E22966 /* Resources */,
 				CBB7F1032CED0AE60065366F /* Storage */,
@@ -280,7 +285,6 @@
 				93083D292CEB994500A0C392 /* ViewRouter.swift */,
 				93083D2B2CEB995A00A0C392 /* TabBarDimensions.swift */,
 				93083D2D2CEB996E00A0C392 /* TabBarIcon.swift */,
-				AD508F022CED687D00CA735C /* GoogleService-Info.plist */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -298,6 +302,8 @@
 			children = (
 				AD508F3A2CED6E0400CA735C /* Model */,
 				AD9259952CEBE00200F74E65 /* SignIn.swift */,
+				ADA04A812CEEA7AC0001F7E4 /* NavigationManager.swift */,
+				ADA04A832CEEA8340001F7E4 /* MainNavigation.swift */,
 				AD92599B2CEC75C600F74E65 /* DefaultButtons.swift */,
 				AD9259992CEC749100F74E65 /* SignUp.swift */,
 				AD508EFE2CED67FB00CA735C /* ResetPassword.swift */,
@@ -546,6 +552,7 @@
 				796256582CEBCEDC0019F6E4 /* ExploreEventsButtonView.swift in Sources */,
 				CBB7F1082CED1AC70065366F /* Persistence.swift in Sources */,
 				CBB7F1092CED1AC70065366F /* EventHub.xcdatamodeld in Sources */,
+				ADA04A842CEEA8460001F7E4 /* MainNavigation.swift in Sources */,
 				793CBF512CED0F1C00E1B230 /* EventsScreenViewModel.swift in Sources */,
 				793CBF532CED11A500E1B230 /* EmptyEventsView.swift in Sources */,
 				93083D2E2CEB996E00A0C392 /* TabBarIcon.swift in Sources */,
@@ -562,6 +569,7 @@
 				EB8D01F62CECDB42000AB98A /* BackgroundEllipseView.swift in Sources */,
 				796256532CEBC5A20019F6E4 /* EventsScreenView.swift in Sources */,
 				AD508F012CED682700CA735C /* ChangePassword.swift in Sources */,
+				ADA04A822CEEA7B70001F7E4 /* NavigationManager.swift in Sources */,
 				EB8D01F42CECC976000AB98A /* ActionButtonPageView.swift in Sources */,
 				CB199C622CEE7AD3006D2476 /* EventShortModel.swift in Sources */,
 				796256562CEBCC240019F6E4 /* ChangeModeButtonsView.swift in Sources */,

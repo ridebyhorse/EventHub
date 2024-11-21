@@ -9,8 +9,9 @@
 import SwiftUI
 struct SignUp: View {
     // MARK: - Property Wrappers
-    @State var userText: String = ""
     @ObservedObject var Model:  AuthenticationModel
+    @State var navigate2: Bool = false
+//    @EnvironmentObject var navigationManager: NavigationManager
     //MARK: - Properties
     var signUpText: String = "Sign Up"
     var sfPro: String = "SF Pro"
@@ -29,18 +30,25 @@ struct SignUp: View {
     var haveAccount: String = "Already have an account?"
     var signInText: String  = "Signin"
     var backButton: String = "arrow.left"
+   
     // MARK: - Body
     var body: some View {
         VStack{
             VStack{
                 HStack{
-                    Image(systemName: backButton)
-                        .resizable()
-                        .frame(width:22,height: 22)
-                        .padding(.trailing,102)
-                    Text(signUpText)
-                        .font(.custom(sfPro, size: 24))
-                        .foregroundColor(.mainBlack)
+                    Button(action:{
+                       // Navigate back
+                    }) {
+                        Image(systemName: backButton)
+                            .resizable()
+                            .frame(width:22,height: 22)
+                            .padding(.trailing,102)
+                            .foregroundColor(.mainBlack)
+                    }
+                        Text(signUpText)
+                            .font(.custom(sfPro, size: 24))
+                            .foregroundColor(.mainBlack)
+                    
                 }
                 .padding(.top,31)
                 .padding(.trailing,147)
@@ -50,7 +58,7 @@ struct SignUp: View {
             VStack(spacing: 19){
                 CustomTextField(
                     placeholder: userPrompt,
-                    text: $userText,
+                    text: $Model.myUser,
                     isSecure: false,
                     imageName: profileLogo,
                     keyboardType: .emailAddress
@@ -84,17 +92,17 @@ struct SignUp: View {
                 )
             }
             Spacer()
-            
             VStack{
                 DefaultSignInButton(buttonText: buttonText, arrowRight: arrowRight) {
                     Task {
-                let success = await Model.SignUp()
+                let success = await try  Model.SignUp()
                     if success {
-                    // navigation to next page
+            Model.saveUsernameToUserDefaults(username: Model.myUser)
+//                navigate to ContentView
                     } else {
-                      // alert
+                        Model.showAlert = true
                         }
-                    }
+                   }
                 }
                 .padding(.top, 30)
                 .padding(.horizontal, 28)
@@ -114,7 +122,9 @@ struct SignUp: View {
                 Text(haveAccount)
                     .foregroundColor(.mainBlack)
                     .font(.custom(EventHubFont.body3.name, size: 14))
-                Button(action: {}) {
+                Button(action: {
+//                    navigate to sign In
+                }) {
                     Text(signInText)
                         .foregroundColor(.primaryBlue)
                         .font(.custom(EventHubFont.body3.name, size: 14))
@@ -122,6 +132,14 @@ struct SignUp: View {
             }
             .padding(.top, 82)
             .padding(.bottom, 20)
+            .navigationBarBackButtonHidden(true)
+            .alert(isPresented: $Model.showAlert) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text(Model.errorMessage),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
         
     }
