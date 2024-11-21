@@ -11,7 +11,6 @@ struct DefaultSignInButton: View {
     var buttonText: String
     var arrowRight: String
     var action: () -> Void
-    
     var body: some View {
         Button(action: action) {
             HStack {
@@ -43,13 +42,14 @@ struct GoogleLoginButton: View {
     @ObservedObject var Model: AuthenticationModel
     var mainIcon: String
     var buttonText: String
-
+//    @EnvironmentObject var navigationManager: NavigationManager
     var body: some View {
         Button(action: {
             Task {
                 let success = await Model.signInWithGoogle()
                 if success {
-                    print("Successfully signed in with Google")
+//                    navigationManager.currentDestination = .contentView
+                    print("success")
                 } else {
                     print("Failed to sign in with Google")
                 }

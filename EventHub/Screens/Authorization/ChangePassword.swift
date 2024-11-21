@@ -10,6 +10,13 @@ import SwiftUI
 struct ChangePassword: View {
     @State var passText: String = ""
     @State var confirmPass: String = ""
+    @State private var newPassword: String = ""
+    @State private var confirmPassword: String = ""
+    @State private var showErrorAlert: Bool = false
+    @State private var showSuccessAlert: Bool = false
+       
+//    @EnvironmentObject var navigationManager: NavigationManager
+    @ObservedObject var Model: AuthenticationModel
     //MARK: - Properties
     let sfPro: String = "SF Pro"
     let backButton: String = "arrow.left"
@@ -24,7 +31,7 @@ struct ChangePassword: View {
                 //MARK: - Title
                 HStack{
                     Button(action:{
-                        
+                       // navigate Back
                     })
                     {
                         Image(systemName: backButton)
@@ -47,14 +54,15 @@ struct ChangePassword: View {
                 
                 //MARK: - TextFields
                 VStack(spacing: 37){
-                    CustomTextField(placeholder:placeholder , text: $passText, isSecure: true, imageName: envelope)
+                    CustomTextField(placeholder:placeholder , text: $Model.passwordText, isSecure: true, imageName: envelope)
                     
                         .padding(.top,71)
                     
-                    CustomTextField(placeholder:placeholder , text: $confirmPass,isSecure: true, imageName: envelope)
+                    CustomTextField(placeholder:placeholder , text: $Model.confirmPass,isSecure: true, imageName: envelope)
                         
                     
-                    DefaultSignInButton(buttonText: buttonText, arrowRight: arrowRight, action: {})
+        DefaultSignInButton(buttonText: buttonText, arrowRight: arrowRight){
+                    }
                         
                 }
                 
@@ -69,5 +77,5 @@ struct ChangePassword: View {
 
 
 #Preview {
-    ChangePassword()
+    ChangePassword(Model: AuthenticationModel())
 }
