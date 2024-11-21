@@ -8,54 +8,47 @@
 import Foundation
 
 struct EventModel: Decodable {
-    let id: UUID
-    let slug: String
+    let id: Int
+    let publicationDate: Date
+    let dates: [ShortDateRangeModel]
     let title: String
+    let shortTitle: String
+    let slug: String
+    let place: ShortPlaceModel?
+    let description: String
+    let bodyText: String
+    let location: ShortLocationModel
+    let categories: [String]
+    let tagline: String
+    let price: String
+    let isFree: Bool
+    let images: [ImageModel]
     let favoritesCount: Int
     let commentsCount: Int
-    let description: String
-    let itemUrl: URL
-    let ctype: String
-    let place: PlaceModel
-    let daterange: DateRangeModel
-    let firstImage: ImageModel
-    let ageRestriction: Int?
+    let siteUrl: URL
+    let tags: [String]
     
     private enum CodingKeys: String, CodingKey {
-        case id, slug, title, description, ctype, place, daterange
+        case id, dates, title, slug, place, description, location, categories, tagline, price, images, tags
+        case publicationDate = "publication_date"
+        case shortTitle = "short_title"
+        case bodyText = "body_text"
+        case isFree = "is_free"
         case favoritesCount = "favorites_count"
         case commentsCount = "comments_count"
-        case itemUrl = "item_url"
-        case firstImage = "first_image"
-        case ageRestriction = "age_restriction"
+        case siteUrl = "site_url"
     }
 }
 
-struct DateRangeModel: Decodable {
-    let startDate: Date?
-    let startTime: Date?
-    let start: Date?
-    let endDate: Date?
-    let endTime: Date?
-    let end: Date?
-    let isContinuous: Bool
-    let isEndless: Bool
-    let isStartless: Bool
-    let usePlaceSchedule: Bool
-    
-    private enum CodingKeys: String, CodingKey {
-        case start, end
-        case startDate = "start_date"
-        case startTime = "start_time"
-        case endDate = "end_date"
-        case endTime = "end_time"
-        case isContinuous = "is_continuous"
-        case isEndless = "is_endless"
-        case isStartless = "is_startless"
-        case usePlaceSchedule = "use_place_schedule"
-    }
+struct ShortDateRangeModel: Decodable {
+    let start: Date
+    let end: Date
 }
 
-struct ImageModel: Decodable {
-    let image: URL?
+struct ShortPlaceModel: Decodable {
+    let id: Int
+}
+
+struct ShortLocationModel: Decodable {
+    let slug: Location
 }

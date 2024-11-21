@@ -11,5 +11,5 @@ struct SearchEventsModel: Decodable {
     let count: Int
     let next: URL?
     let previous: URL?
-    let results: [EventModel]
+    let results: [SearchEventModel]
 }

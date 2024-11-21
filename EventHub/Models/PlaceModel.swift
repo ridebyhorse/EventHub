@@ -8,7 +8,7 @@
 import Foundation
 
 struct PlaceModel: Decodable {
-    let id: UUID
+    let id: Int
     let title: String
     let slug: String
     let address: String

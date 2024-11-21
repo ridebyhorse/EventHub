@@ -95,7 +95,7 @@ struct SignUp: View {
             VStack{
                 DefaultSignInButton(buttonText: buttonText, arrowRight: arrowRight) {
                     Task {
-                let success = await try  Model.SignUp()
+                let success = try await Model.SignUp()
                     if success {
             Model.saveUsernameToUserDefaults(username: Model.myUser)
 //                navigate to ContentView
