@@ -20,7 +20,7 @@ struct ContentView: View {
                 // Display content based on the selected tab
                 switch viewRouter.currentTab {
                 case .explore:
-                    Text("Explore View")
+                    ExploreView()
                 case .events:
                     EventsScreenView(viewModel: EventsScreenViewModel(events: MockEvent.mockEvents()))
                 case .add:
@@ -64,6 +64,7 @@ struct ContentView: View {
                     .shadow(color: Color(red: 0.61, green: 0.7, blue: 0.84).opacity(0.13), radius: 4, x: 0, y: -3))
             }
             .edgesIgnoringSafeArea(.bottom)
+            .edgesIgnoringSafeArea(.top)
         }
         .environmentObject(viewRouter)
     }
