@@ -36,7 +36,6 @@ struct CategoryView: View {
             RoundedRectangle(cornerRadius: 20)
                 .fill(backgroundColor.color)
                 .frame(width: 106, height: 40)
-                .shadow(color: Color(red: 0.18, green: 0.18, blue: 0.31).opacity(0.12), radius: 10, x: 0, y: 6)
             
             // Контент (иконка + текст)
             HStack(spacing: 8) {
@@ -64,7 +63,7 @@ struct CategoriesScrollView: View {
         (icon: "sport", name: "Sport", color: CategoryColor.red),
         (icon: "music", name: "Music", color: CategoryColor.blue),
         (icon: "food", name: "Food", color: CategoryColor.green),
-        (icon: "travel", name: "Art", color: CategoryColor.yellow)
+        (icon: "art", name: "Art", color: CategoryColor.yellow)
     ]
     
     var body: some View {
@@ -80,5 +79,6 @@ struct CategoriesScrollView: View {
             }
             .padding(.horizontal, 16) // Отступы по краям
         }
+        .shadow(color: Color(red: 0.18, green: 0.18, blue: 0.31).opacity(0.12), radius: 10, x: 0, y: 6)
     }
 }

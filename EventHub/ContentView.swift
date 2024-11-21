@@ -64,6 +64,7 @@ struct ContentView: View {
                     .shadow(color: Color(red: 0.61, green: 0.7, blue: 0.84).opacity(0.13), radius: 4, x: 0, y: -3))
             }
             .edgesIgnoringSafeArea(.bottom)
+            .edgesIgnoringSafeArea(.top)
         }
         .environmentObject(viewRouter)
     }

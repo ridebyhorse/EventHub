@@ -22,6 +22,7 @@ struct ExploreView: View {
                         // MARK: - Categories
                         CategoriesScrollView()
                             .padding(.top, -30)
+//                            .padding(.bottom, 10)
                         // MARK: - Upcoming events
                         ScrollView(.vertical, showsIndicators: false ){
                         HStack{
