@@ -18,8 +18,9 @@ struct DefaultSignInButton: View {
                 Spacer()
                 Text(buttonText)
                     .foregroundColor(.white)
-                    .font(.custom(EventHubFont.body1.name, size: EventHubFont.body1.size))
+                    .font(.custom(EventHubFont.body1.name, size: 16))
                     .kerning(1)
+                    .fixedSize(horizontal: false, vertical: true)
                     .padding(.trailing, 50)
                 ZStack {
                     Circle()
@@ -38,14 +39,22 @@ struct DefaultSignInButton: View {
         }
     }
 }
-
 struct GoogleLoginButton: View {
+    @ObservedObject var Model: AuthenticationModel
     var mainIcon: String
     var buttonText: String
-    var action: () -> Void
-    
+
     var body: some View {
-        Button(action: action) {
+        Button(action: {
+            Task {
+                let success = await Model.signInWithGoogle()
+                if success {
+                    print("Successfully signed in with Google")
+                } else {
+                    print("Failed to sign in with Google")
+                }
+            }
+        }) {
             HStack(spacing: 20) {
                 Image(mainIcon)
                     .resizable()
@@ -53,7 +62,7 @@ struct GoogleLoginButton: View {
                     .padding(.leading, 38)
                 Text(buttonText)
                     .foregroundColor(.black)
-                    .font(.custom(EventHubFont.body1.name, size: 16))
+                    .font(.custom("SF Pro", size: 16))
                 Spacer()
             }
             .frame(width: 273, height: 56)

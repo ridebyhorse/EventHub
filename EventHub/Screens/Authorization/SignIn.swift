@@ -7,12 +7,14 @@
 
 
 import SwiftUI
+import FirebaseAuth
+import GoogleSignIn
+import GoogleSignInSwift
 
 struct SignIn: View {
     // MARK: - Property Wrappers
-    @State var emailText: String = ""
-    @State var passwordText: String = ""
     @State var isSaved: Bool = false
+    @ObservedObject var Model:  AuthenticationModel
     //MARK: - Properties
     var titleText: String = "EventHub"
     var titleImage: String = "titleLogo"
@@ -31,6 +33,7 @@ struct SignIn: View {
     var noAccount: String = "Don’t have an account?"
     var signUp: String = "Sign Up"
     var sfPro: String = "SF Pro"
+    var togglePrompt: String = ""
 
     var body: some View {
         NavigationView {
@@ -59,7 +62,7 @@ struct SignIn: View {
                     
                     CustomTextField(
                         placeholder: placeholder,
-                        text: $emailText,
+                        text: $Model.emailText,
                         isSecure: false,
                         imageName: envelope,
                         keyboardType: .emailAddress
@@ -67,7 +70,7 @@ struct SignIn: View {
 
                     CustomTextField(
                         placeholder: placeholder2,
-                        text: $passwordText,
+                        text: $Model.passwordText,
                         isSecure: true,
                         imageName: lock
                     )
@@ -76,7 +79,7 @@ struct SignIn: View {
 
                 //MARK: - Toggle
                 HStack {
-                    Toggle("", isOn: $isSaved)
+                    Toggle(togglePrompt, isOn: $isSaved)
                         .tint(.primaryBlue)
                         .frame(width: 32.3, height: 19)
                         .scaleEffect(0.7)
@@ -101,23 +104,29 @@ struct SignIn: View {
                 .foregroundColor(.mainBlack)
 
                 //MARK: - Sign In
-                DefaultSignInButton(buttonText: buttonText, arrowRight: arrowRight) {
-                   // action
-                }
+        DefaultSignInButton(buttonText: buttonText, arrowRight: arrowRight) {
+                    Task {
+                // Call the async function inside Task
+                let success = await Model.SignIn()
+                    if success {
+                    // navigation to next page
+                    } else {
+                      //
+                        }
+                    }
+            }
                 .padding(.top, 30)
                 .padding(.horizontal, 28)
 
                 Text(choice)
-                    .foregroundColor(.midGray)
+                .foregroundColor(.someGray)
                     .font(.custom(sfPro, size: EventHubFont.body3.size))
                     .padding(.vertical, 20)
 
                 //MARK: - Login with Google
-                GoogleLoginButton(mainIcon: mainIcon, buttonText: logGoogle) {
-                    // action
-                }
-                .padding(.horizontal, 50)
+                GoogleLoginButton(Model: Model, mainIcon: mainIcon, buttonText: logGoogle)
 
+                .padding(.horizontal, 50)
                 //MARK: - Bottom
                 HStack {
                     Text(noAccount)
@@ -140,5 +149,5 @@ struct SignIn: View {
 }
 
 #Preview {
-    SignIn()
+    SignIn(Model:AuthenticationModel())
 }
