@@ -22,7 +22,7 @@ struct ContentView: View {
                 case .explore:
                    ExploreView()
                 case .events:
-                    Text("Events View")
+                    EventsScreenView(viewModel: EventsScreenViewModel(events: MockEvent.mockEvents()))
                 case .add:
                     Text("Favorites")
                 case .map:
