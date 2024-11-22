@@ -78,6 +78,16 @@
 		CBB7F1082CED1AC70065366F /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB7F1062CED1AC70065366F /* Persistence.swift */; };
 		CBB7F1092CED1AC70065366F /* EventHub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBB7F1052CED1AC70065366F /* EventHub.xcdatamodeld */; };
 		CBB7F10C2CED1B250065366F /* Font + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB7F10A2CED1B250065366F /* Font + Ext.swift */; };
+		EB65CAFC2CF0BFA4006B5AEC /* EventDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65CAFB2CF0BFA4006B5AEC /* EventDetailsScreen.swift */; };
+		EB65CB002CF0BFE3006B5AEC /* SharedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65CAFF2CF0BFE3006B5AEC /* SharedView.swift */; };
+		EB65CB022CF0C018006B5AEC /* ActionButtonCancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65CB012CF0C018006B5AEC /* ActionButtonCancel.swift */; };
+		EB65CB042CF0C059006B5AEC /* ActionButtonsShareModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65CB032CF0C059006B5AEC /* ActionButtonsShareModel.swift */; };
+		EB65CB062CF0C783006B5AEC /* ActionButtonHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65CB052CF0C783006B5AEC /* ActionButtonHeader.swift */; };
+		EB65CB082CF0C7B4006B5AEC /* DefaultLoadImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65CB072CF0C7B4006B5AEC /* DefaultLoadImageView.swift */; };
+		EB65CB0A2CF0C88C006B5AEC /* OrganizationNameItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65CB092CF0C88C006B5AEC /* OrganizationNameItem.swift */; };
+		EB65CB0C2CF0CAFE006B5AEC /* InfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65CB0B2CF0CAFE006B5AEC /* InfoItem.swift */; };
+		EB65CB0E2CF0CC51006B5AEC /* ImageEventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65CB0D2CF0CC51006B5AEC /* ImageEventDetail.swift */; };
+		EB65CB102CF0E3D5006B5AEC /* PreLoadImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65CB0F2CF0E3D5006B5AEC /* PreLoadImageView.swift */; };
 		EB8D01E62CECBD7F000AB98A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01E52CECBD7F000AB98A /* SplashScreen.swift */; };
 		EB8D01E82CECBFE8000AB98A /* EllipseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01E72CECBFE8000AB98A /* EllipseView.swift */; };
 		EB8D01EB2CECC719000AB98A /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01EA2CECC719000AB98A /* OnboardingScreen.swift */; };
@@ -138,6 +148,16 @@
 		CBB7F1062CED1AC70065366F /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		CBB7F1072CED1AC70065366F /* EventHub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventHub.xcdatamodel; sourceTree = "<group>"; };
 		CBB7F10A2CED1B250065366F /* Font + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font + Ext.swift"; sourceTree = "<group>"; };
+		EB65CAFB2CF0BFA4006B5AEC /* EventDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsScreen.swift; sourceTree = "<group>"; };
+		EB65CAFF2CF0BFE3006B5AEC /* SharedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedView.swift; sourceTree = "<group>"; };
+		EB65CB012CF0C018006B5AEC /* ActionButtonCancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonCancel.swift; sourceTree = "<group>"; };
+		EB65CB032CF0C059006B5AEC /* ActionButtonsShareModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonsShareModel.swift; sourceTree = "<group>"; };
+		EB65CB052CF0C783006B5AEC /* ActionButtonHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonHeader.swift; sourceTree = "<group>"; };
+		EB65CB072CF0C7B4006B5AEC /* DefaultLoadImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLoadImageView.swift; sourceTree = "<group>"; };
+		EB65CB092CF0C88C006B5AEC /* OrganizationNameItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationNameItem.swift; sourceTree = "<group>"; };
+		EB65CB0B2CF0CAFE006B5AEC /* InfoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoItem.swift; sourceTree = "<group>"; };
+		EB65CB0D2CF0CC51006B5AEC /* ImageEventDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEventDetail.swift; sourceTree = "<group>"; };
+		EB65CB0F2CF0E3D5006B5AEC /* PreLoadImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLoadImageView.swift; sourceTree = "<group>"; };
 		EB8D01E52CECBD7F000AB98A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		EB8D01E72CECBFE8000AB98A /* EllipseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipseView.swift; sourceTree = "<group>"; };
 		EB8D01EA2CECC719000AB98A /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
@@ -205,6 +225,7 @@
 		796256502CEBC5820019F6E4 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				EB65CAFA2CF0BC64006B5AEC /* EventDetailsScreen */,
 				CB406E182CEFA451007C8F49 /* Explore */,
 				AD9259942CEBDFB000F74E65 /* Authorization */,
 				EB8D01F72CECDB48000AB98A /* BackgroundEllipse */,
@@ -403,6 +424,39 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		EB65CAFA2CF0BC64006B5AEC /* EventDetailsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EB65CAFB2CF0BFA4006B5AEC /* EventDetailsScreen.swift */,
+				EB65CAFD2CF0BFAA006B5AEC /* Views */,
+				EB65CAFE2CF0BFC3006B5AEC /* ShareEventView */,
+			);
+			path = EventDetailsScreen;
+			sourceTree = "<group>";
+		};
+		EB65CAFD2CF0BFAA006B5AEC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EB65CB0D2CF0CC51006B5AEC /* ImageEventDetail.swift */,
+				EB65CB052CF0C783006B5AEC /* ActionButtonHeader.swift */,
+				EB65CB0B2CF0CAFE006B5AEC /* InfoItem.swift */,
+				EB65CB092CF0C88C006B5AEC /* OrganizationNameItem.swift */,
+				EB65CB072CF0C7B4006B5AEC /* DefaultLoadImageView.swift */,
+				EB65CB0F2CF0E3D5006B5AEC /* PreLoadImageView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EB65CAFE2CF0BFC3006B5AEC /* ShareEventView */ = {
+			isa = PBXGroup;
+			children = (
+				EB65CAFF2CF0BFE3006B5AEC /* SharedView.swift */,
+				EB65CB012CF0C018006B5AEC /* ActionButtonCancel.swift */,
+				EB65CB032CF0C059006B5AEC /* ActionButtonsShareModel.swift */,
+			);
+			path = ShareEventView;
+			sourceTree = "<group>";
+		};
 		EB8D01E32CECBD41000AB98A /* SplashScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -539,6 +593,7 @@
 				AD92599A2CEC74A900F74E65 /* SignUp.swift in Sources */,
 				CB199C5E2CEE6542006D2476 /* PlaceModel.swift in Sources */,
 				AD9259982CEC2A9500F74E65 /* CustomTextField.swift in Sources */,
+				EB65CB0C2CF0CAFE006B5AEC /* InfoItem.swift in Sources */,
 				AD508EFF2CED680800CA735C /* ResetPassword.swift in Sources */,
 				AD508F3C2CED6E4400CA735C /* AuthenticationModel.swift in Sources */,
 				AD92599C2CEC75CC00F74E65 /* DefaultButtons.swift in Sources */,
@@ -548,6 +603,7 @@
 				CB406E1F2CEFA48F007C8F49 /* ExploreView.swift in Sources */,
 				CB406E202CEFA48F007C8F49 /* CardView.swift in Sources */,
 				CB406E212CEFA48F007C8F49 /* HeaderView.swift in Sources */,
+				EB65CAFC2CF0BFA4006B5AEC /* EventDetailsScreen.swift in Sources */,
 				EB8D01E62CECBD7F000AB98A /* SplashScreen.swift in Sources */,
 				EB8D01E82CECBFE8000AB98A /* EllipseView.swift in Sources */,
 				EB8D01EB2CECC719000AB98A /* OnboardingScreen.swift in Sources */,
@@ -557,11 +613,15 @@
 				CBB7F1092CED1AC70065366F /* EventHub.xcdatamodeld in Sources */,
 				ADA04A842CEEA8460001F7E4 /* MainNavigation.swift in Sources */,
 				793CBF512CED0F1C00E1B230 /* EventsScreenViewModel.swift in Sources */,
+				EB65CB022CF0C018006B5AEC /* ActionButtonCancel.swift in Sources */,
 				793CBF532CED11A500E1B230 /* EmptyEventsView.swift in Sources */,
 				93083D2E2CEB996E00A0C392 /* TabBarIcon.swift in Sources */,
 				EB8D01EE2CECC915000AB98A /* ImagePageView.swift in Sources */,
 				CB199C582CEE467A006D2476 /* LocationModel.swift in Sources */,
+				EB65CB0E2CF0CC51006B5AEC /* ImageEventDetail.swift in Sources */,
+				EB65CB082CF0C7B4006B5AEC /* DefaultLoadImageView.swift in Sources */,
 				CB199C532CEE431C006D2476 /* NetworkService.swift in Sources */,
+				EB65CB042CF0C059006B5AEC /* ActionButtonsShareModel.swift in Sources */,
 				EB8D01F02CECC941000AB98A /* TextPageView.swift in Sources */,
 				CBB7F10C2CED1B250065366F /* Font + Ext.swift in Sources */,
 				CB743ECC2CEB93AC00E22966 /* Font.swift in Sources */,
@@ -569,12 +629,16 @@
 				93083D272CEB984600A0C392 /* CircleButton.swift in Sources */,
 				CB199C562CEE44D2006D2476 /* EventCategoryModel.swift in Sources */,
 				CB199C642CEE88D7006D2476 /* Location.swift in Sources */,
+				EB65CB002CF0BFE3006B5AEC /* SharedView.swift in Sources */,
 				CB5A4D422CEFD2A6005AD2A9 /* EventsModel.swift in Sources */,
 				EB8D01F62CECDB42000AB98A /* BackgroundEllipseView.swift in Sources */,
 				796256532CEBC5A20019F6E4 /* EventsScreenView.swift in Sources */,
 				AD508F012CED682700CA735C /* ChangePassword.swift in Sources */,
 				ADA04A822CEEA7B70001F7E4 /* NavigationManager.swift in Sources */,
+				EB65CB062CF0C783006B5AEC /* ActionButtonHeader.swift in Sources */,
 				EB8D01F42CECC976000AB98A /* ActionButtonPageView.swift in Sources */,
+				EB65CB102CF0E3D5006B5AEC /* PreLoadImageView.swift in Sources */,
+				EB65CB0A2CF0C88C006B5AEC /* OrganizationNameItem.swift in Sources */,
 				CB199C622CEE7AD3006D2476 /* EventModel.swift in Sources */,
 				796256562CEBCC240019F6E4 /* ChangeModeButtonsView.swift in Sources */,
 				AD9259962CEBE00800F74E65 /* SignIn.swift in Sources */,
