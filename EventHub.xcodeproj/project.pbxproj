@@ -205,6 +205,7 @@
 		796256502CEBC5820019F6E4 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				EB65CAFA2CF0BC64006B5AEC /* EventDetailsScreen */,
 				CB406E182CEFA451007C8F49 /* Explore */,
 				AD9259942CEBDFB000F74E65 /* Authorization */,
 				EB8D01F72CECDB48000AB98A /* BackgroundEllipse */,
@@ -401,6 +402,13 @@
 				793CBF5A2CED1CE100E1B230 /* Date + Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EB65CAFA2CF0BC64006B5AEC /* EventDetailsScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EventDetailsScreen;
 			sourceTree = "<group>";
 		};
 		EB8D01E32CECBD41000AB98A /* SplashScreen */ = {
