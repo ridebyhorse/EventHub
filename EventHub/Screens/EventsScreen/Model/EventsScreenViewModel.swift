@@ -12,6 +12,7 @@ enum ModeEvents {
     case pastEvents
 }
 
+@MainActor
 final class EventsScreenViewModel: ObservableObject {
     private let networkService = NetworkService.shared
     
@@ -33,6 +34,15 @@ final class EventsScreenViewModel: ObservableObject {
             events = eventsModel.results
         } catch {
             print("Ошибка при загрузке прошедших событий: \(error.localizedDescription)")
+        }
+    }
+    
+    func fetchEvents(for location: Location) async {
+        switch selectedMode {
+        case .upcoming:
+            await fetchUpcomingEvents(for: location)
+        case .pastEvents:
+            await fetchPastEvents(for: location)
         }
     }
 }
