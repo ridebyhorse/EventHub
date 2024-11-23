@@ -45,15 +45,18 @@ struct EventView: View {
                     .foregroundStyle(.mainBlue)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text(event.title)
+                Text(event.title.capitalized)
                     .font(.custom(EventHubFont.body2))
+                    .lineLimit(2)
+                    .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .fixedSize(horizontal: false, vertical: true)
                 
                 HStack(spacing: 4) {
                     Image(systemName: "mappin.circle.fill")
     
-//                    Text(event.location.slug)
-//                        .font(.custom(EventHubFont.subtitle2))
+                    Text(event.location.slug.formattedLocation)
+                        .font(.custom(EventHubFont.subtitle2))
                 }
                 .padding(.top, 1)
                 .frame(maxWidth: .infinity, alignment: .leading)
