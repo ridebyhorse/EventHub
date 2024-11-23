@@ -15,19 +15,24 @@ enum ModeEvents {
 final class EventsScreenViewModel: ObservableObject {
     private let networkService = NetworkService.shared
     
-    private var upcomingEvents: [EventModel] = []
-    
     @Published var selectedMode: ModeEvents = .upcoming
+    @Published var events: [EventModel] = []
     
-    func fetchUpcomingEvents() async {
+    func fetchUpcomingEvents(for location: Location) async {
         do {
-            let eventsModel = try await networkService.getEvents(
-                type: .upcoming,
-                location: .newYork
-            )
-            upcomingEvents = eventsModel.results
+            let eventsModel = try await networkService.getEvents(type: .upcoming, location: location)
+            events = eventsModel.results
         } catch {
             print("Ошибка при загрузке предстоящих событий: \(error.localizedDescription)")
+        }
+    }
+
+    func fetchPastEvents(for location: Location) async {
+        do {
+            let eventsModel = try await networkService.getEvents(type: .past, location: location)
+            events = eventsModel.results
+        } catch {
+            print("Ошибка при загрузке прошедших событий: \(error.localizedDescription)")
         }
     }
 }
