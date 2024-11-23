@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 
 struct HeaderView: View {
-//мок для выбора локации
-    let locations = ["New York, USA", "San Francisco, USA", "Los Angeles, USA", "London, UK"]
-    @State private var selectedLocation: String = "New York, USA"
+    
+    let locations: [Location] = Location.allCases
+    @Binding var selectedLocation: Location
     @State private var isFilterViewPresented = false
     @State private var searchText: String = ""
     
@@ -19,7 +19,6 @@ struct HeaderView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 33)
                 .fill(Color("MainBlue"))
-                .frame(height: 200)
             
             VStack(alignment: .leading, spacing: 20) {
 // MARK: - Location
@@ -29,18 +28,18 @@ struct HeaderView: View {
                             Button(action: {
                                 selectedLocation = location
                             }) {
-                                Text(location)
+                                Text(location.rawValue)
                             }
                         }
                     } label: {
                         VStack(alignment: .leading, spacing: 4) {
                             Text("Current Location")
-                                .font(.system(size: 12))
+                                .font(.custom(EventHubFont.subtitle3))
                                 .foregroundColor(.white)
                             
                             HStack(spacing: 4) {
-                                Text(selectedLocation)
-                                    .font(.system(size: 16, weight: .bold))
+                                Text(selectedLocation.rawValue.capitalized)
+                                    .font(.custom(EventHubFont.body1))
                                     .foregroundColor(.white)
                                 
                                 Image(systemName: "chevron.down")
@@ -76,17 +75,17 @@ struct HeaderView: View {
                                     .foregroundColor(.white.opacity(0.6))
                                     .font(.system(size: 20))
                             }
-
+                            
                             TextField("", text: $searchText)
                                 .foregroundColor(.white)
                                 .font(.system(size: 20))
                                 .disableAutocorrection(true)
                         }
                     }
-               
-
+                    
+                    
                     Spacer()
-// MARK: - Filter
+                    // MARK: - Filter
                     Button(action: {
                         isFilterViewPresented = true
                     }) {
@@ -95,16 +94,16 @@ struct HeaderView: View {
                                 .resizable()
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(.white)
-
+                            
                             Text("Filters")
                                 .font(.system(size: 12, weight: .medium))
                                 .foregroundColor(.white)
                         }
-                     
+                        
                         .frame(width: 75, height: 32)
                         .background(
                             RoundedRectangle(cornerRadius: 50)
-                               
+                            
                                 .fill(.white.opacity(0.1))
                         )
                     }
@@ -122,7 +121,7 @@ struct HeaderView: View {
 // MARK: - временное вью для фильтра
 struct FiltersView: View {
     @Environment(\.dismiss) var dismiss
-
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -139,6 +138,6 @@ struct FiltersView: View {
     }
 }
 
-#Preview {
-    HeaderView()
-}
+//#Preview {
+//    HeaderView(selectedLocation: )
+//}

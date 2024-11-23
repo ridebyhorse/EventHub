@@ -22,6 +22,7 @@
 		93083D2A2CEB994500A0C392 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D292CEB994500A0C392 /* ViewRouter.swift */; };
 		93083D2C2CEB995A00A0C392 /* TabBarDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D2B2CEB995A00A0C392 /* TabBarDimensions.swift */; };
 		93083D2E2CEB996E00A0C392 /* TabBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D2D2CEB996E00A0C392 /* TabBarIcon.swift */; };
+		93083D442CF11A7600A0C392 /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D432CF11A7600A0C392 /* ExploreViewModel.swift */; };
 		AD508EFF2CED680800CA735C /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD508EFE2CED67FB00CA735C /* ResetPassword.swift */; };
 		AD508F012CED682700CA735C /* ChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD508F002CED681D00CA735C /* ChangePassword.swift */; };
 		AD508F032CED687D00CA735C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD508F022CED687D00CA735C /* GoogleService-Info.plist */; };
@@ -117,6 +118,7 @@
 		93083D292CEB994500A0C392 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		93083D2B2CEB995A00A0C392 /* TabBarDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDimensions.swift; sourceTree = "<group>"; };
 		93083D2D2CEB996E00A0C392 /* TabBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIcon.swift; sourceTree = "<group>"; };
+		93083D432CF11A7600A0C392 /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
 		AD508EFE2CED67FB00CA735C /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
 		AD508F002CED681D00CA735C /* ChangePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassword.swift; sourceTree = "<group>"; };
 		AD508F022CED687D00CA735C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				CB406E192CEFA45A007C8F49 /* View */,
+				93083D432CF11A7600A0C392 /* ExploreViewModel.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				EB8D01F22CECC95F000AB98A /* IndicatorPageView.swift in Sources */,
 				CB199C5C2CEE648B006D2476 /* SearchEventModel.swift in Sources */,
 				93083D0F2CEB924D00A0C392 /* EventHubApp.swift in Sources */,
+				93083D442CF11A7600A0C392 /* ExploreViewModel.swift in Sources */,
 				EB8D01FA2CECDD06000AB98A /* OnboardingPageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
