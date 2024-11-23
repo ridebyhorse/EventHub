@@ -19,7 +19,7 @@ struct EventsScreenView: View {
                 ChangeModeButtonsView(choosedMode: $viewModel.selectedMode)
                     .onChange(of: viewModel.selectedMode) { _ in
                         withAnimation {
-                            viewModel.filterEvents()
+                            
                         }
                     }
                 

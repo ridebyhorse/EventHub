@@ -229,7 +229,6 @@
 				CB406E182CEFA451007C8F49 /* Explore */,
 				AD9259942CEBDFB000F74E65 /* Authorization */,
 				EB8D01F72CECDB48000AB98A /* BackgroundEllipse */,
-				793CBF4F2CED0F0800E1B230 /* Model */,
 				796256512CEBC58C0019F6E4 /* EventsScreen */,
 				EB8D01E42CECBD49000AB98A /* Onboarding */,
 				EB8D01E32CECBD41000AB98A /* SplashScreen */,
@@ -241,6 +240,7 @@
 		796256512CEBC58C0019F6E4 /* EventsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				793CBF4F2CED0F0800E1B230 /* Model */,
 				796256542CEBCC070019F6E4 /* Views */,
 				796256522CEBC5A20019F6E4 /* EventsScreenView.swift */,
 			);
