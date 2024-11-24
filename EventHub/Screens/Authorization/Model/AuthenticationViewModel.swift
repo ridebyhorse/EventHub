@@ -52,7 +52,7 @@ enum AuthError: LocalizedError {
 }
 
 @MainActor
-class AuthenticationModel: ObservableObject {
+class AuthenticationViewModel: ObservableObject {
     //MARK: - Common Properties
     @Published var errorMessage: String = ""
     @Published var myUser: String = ""
@@ -62,8 +62,6 @@ class AuthenticationModel: ObservableObject {
     @Published var user: User?
     @Published var authenticationState: AuthenticationState = .unauthenticated
     @Published var displayName: String = ""
-    @Published var isSuccess: Bool = false
-    @Published var successMessage: String = ""
     @Published var showAlert: Bool = false
     var emailError: String = "Email or password cannot be empty"
     var passwordError: String = "Passwords do not match"
@@ -73,6 +71,11 @@ class AuthenticationModel: ObservableObject {
     var unknownError: String =  "unknown"
     var withEmail: String = "signed in with email"
     var userPrompt: String = "User"
+    var errorMessages = [
+          "emptyFields": "Email or password cannot be empty.",
+          "passwordMismatch": "Passwords do not match.",
+          "unknown": "An unknown error occurred."
+      ]
     
     init(){
         registerAuthStateHandler()

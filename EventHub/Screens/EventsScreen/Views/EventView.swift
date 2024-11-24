@@ -21,11 +21,10 @@ struct EventView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             
             VStack {
-                Text(event.date.formattedForEvent())
-                    .font(.custom(EventHubFont.subtitle2))
-                    .foregroundStyle(.mainBlue)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
+                    Text(event.date.formattedForEvent())
+                        .font(.custom(EventHubFont.subtitle2))
+                        .foregroundStyle(.mainBlue)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 Text(event.title)
                     .font(.custom(EventHubFont.body2))
                     .frame(maxWidth: .infinity, alignment: .leading)

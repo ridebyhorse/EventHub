@@ -7,29 +7,16 @@
 
 
 import SwiftUI
-struct SignUp: View {
+struct SignUpView: View {
     // MARK: - Property Wrappers
-    @ObservedObject var Model:  AuthenticationModel
+    @ObservedObject var Model:  AuthenticationViewModel
     @State var navigate2: Bool = false
 //    @EnvironmentObject var navigationManager: NavigationManager
     //MARK: - Properties
-    var signUpText: String = "Sign Up"
-    var sfPro: String = "SF Pro"
-    var userPrompt: String = "Full name"
-    var envelope: String = "envelope"
-    var placeholder: String = "abc@example.com"
-    var placeholder2: String = "Your password"
-    var placeholder3: String = "Confirm password"
     var lock: String = "lock"
-    var buttonText: String = "Sign Up"
+    var buttonText: String = "SIGN UP"
     var profileLogo: String = "authProfile"
-    var arrowRight: String = "arrow.right"
-    var choice: String = "OR"
-    var mainIcon = "google"
-    var logGoogle: String = "Login with Google"
-    var haveAccount: String = "Already have an account?"
     var signInText: String  = "Signin"
-    var backButton: String = "arrow.left"
    
     // MARK: - Body
     var body: some View {
@@ -39,14 +26,14 @@ struct SignUp: View {
                     Button(action:{
                        // Navigate back
                     }) {
-                        Image(systemName: backButton)
+                        Image(systemName: AppTexts.Common.backButton)
                             .resizable()
                             .frame(width:22,height: 22)
                             .padding(.trailing,102)
                             .foregroundColor(.mainBlack)
                     }
-                        Text(signUpText)
-                            .font(.custom(sfPro, size: 24))
+                    Text(AppTexts.Authentication.signUpText)
+                            .font(.custom(AppTexts.Authentication.sfPro, size: 24))
                             .foregroundColor(.mainBlack)
                     
                 }
@@ -57,7 +44,7 @@ struct SignUp: View {
             
             VStack(spacing: 19){
                 CustomTextField(
-                    placeholder: userPrompt,
+                    placeholder: AppTexts.Authentication.userPrompt,
                     text: $Model.myUser,
                     isSecure: false,
                     imageName: profileLogo,
@@ -66,17 +53,17 @@ struct SignUp: View {
                 
                 
                 CustomTextField(
-                    placeholder: placeholder,
+                    placeholder: AppTexts.Authentication.placeholderEmail,
                     text: $Model.emailText,
                     isSecure: false,
-                    imageName: envelope,
+                    imageName: AppTexts.Authentication.envelope,
                     keyboardType: .emailAddress
                 )
                 
                 
                 
                 CustomTextField(
-                    placeholder: placeholder2,
+                    placeholder: AppTexts.Authentication.placeholderPassword,
                     text: $Model.passwordText,
                     isSecure: true,
                     imageName: lock
@@ -85,7 +72,7 @@ struct SignUp: View {
                 
                 
                 CustomTextField(
-                    placeholder: placeholder3,
+                    placeholder: AppTexts.Authentication.confirmPassword,
                     text: $Model.confirmPass,
                     isSecure: true,
                     imageName: lock
@@ -93,9 +80,9 @@ struct SignUp: View {
             }
             Spacer()
             VStack{
-                DefaultSignInButton(buttonText: buttonText, arrowRight: arrowRight) {
+                DefaultSignInButton(buttonText: buttonText, arrowRight: AppTexts.Authentication.arrowRight) {
                     Task {
-                let success = try await Model.SignUp()
+                let success =  try await Model.SignUp()
                     if success {
             Model.saveUsernameToUserDefaults(username: Model.myUser)
 //                navigate to ContentView
@@ -107,19 +94,19 @@ struct SignUp: View {
                 .padding(.top, 30)
                 .padding(.horizontal, 28)
 
-                Text(choice)
+                Text(AppTexts.Authentication.choice)
                     .foregroundColor(.someGray)
-                    .font(.custom(sfPro, size: EventHubFont.body3.size))
+                    .font(.custom(AppTexts.Authentication.sfPro, size: EventHubFont.body3.size))
                     .padding(.vertical, 20)
                 
                 //MARK: - Login with Google
-                GoogleLoginButton(Model: Model,mainIcon: mainIcon, buttonText: logGoogle)
+                GoogleLoginButton(Model: Model,mainIcon: AppTexts.Authentication.mainIcon, buttonText: AppTexts.Authentication.logGoogle)
                 
                 .padding(.horizontal, 50)
             }
             
             HStack {
-                Text(haveAccount)
+                Text(AppTexts.Authentication.haveAccount)
                     .foregroundColor(.mainBlack)
                     .font(.custom(EventHubFont.body3.name, size: 14))
                 Button(action: {
@@ -147,5 +134,5 @@ struct SignUp: View {
 
 
 #Preview {
-    SignUp(Model: AuthenticationModel())
+    SignUpView(Model: AuthenticationViewModel())
 }

@@ -5,49 +5,30 @@
 //  Created by Ylyas Abdywahytow on 11/18/24.
 //
 
-
 import SwiftUI
 import FirebaseAuth
 import GoogleSignIn
 import GoogleSignInSwift
 
-struct SignIn: View {
+struct SignInView: View {
     // MARK: - Property Wrappers
     @State var isSaved: Bool = false
     @State var navigate: Bool = false
-    @ObservedObject var Model:  AuthenticationModel
+    @ObservedObject var Model:  AuthenticationViewModel
 //    @EnvironmentObject var navigationManager: NavigationManager
     //MARK: - Properties
-    var titleText: String = "EventHub"
-    var titleImage: String = "titleLogo"
-    var signText: String = "Sign in"
-    var placeholder: String = "abc@example.com"
-    var envelope: String = "envelope"
-    var placeholder2: String = "Your password"
-    var lock: String = "lock"
-    var toggleText: String = "Remember Me"
-    var forgotPass: String = "Forgot Password?"
-    var buttonText: String = "SIGN IN"
-    var arrowRight: String = "arrow.right"
-    var choice: String = "OR"
-    var mainIcon = "google"
-    var logGoogle: String = "Login with Google"
-    var noAccount: String = "Don’t have an account?"
-    var signUp: String = "Sign Up"
-    var sfPro: String = "SF Pro"
     var togglePrompt: String = ""
     var body: some View {
         NavigationView {
-            
             VStack {
                 //MARK: - Title
                 VStack(spacing: 8) {
-                    Image(titleImage)
+                    Image(AppTexts.Authentication.titleImage)
                         .resizable()
                         .frame(width: 56, height: 58)
-                    Text(titleText)
+                    Text(AppTexts.Authentication.EventHub)
                         .foregroundColor(.black)
-                        .font(.custom(sfPro, size: EventHubFont.h2.size))
+                        .font(.custom(AppTexts.Authentication.sfPro, size: EventHubFont.h2.size))
                 }
                 .padding(.top, 75)
                 .padding(.trailing, 178.5)
@@ -55,26 +36,26 @@ struct SignIn: View {
 
                 //MARK: - TextFields
                 VStack(spacing: 19) {
-                    Text(signText)
+                    Text(AppTexts.Authentication.signText)
                         .multilineTextAlignment(.leading)
                         .foregroundColor(.black)
-                        .font(.custom(sfPro, size: 24))
+                        .font(.custom(AppTexts.Authentication.sfPro, size: 24))
                         .padding(.top, 10)
                         .padding(.trailing, 234)
                     
                     CustomTextField(
-                        placeholder: placeholder,
+                        placeholder: AppTexts.Authentication.placeholderEmail,
                         text: $Model.emailText,
                         isSecure: false,
-                        imageName: envelope,
+                        imageName: AppTexts.Authentication.envelope,
                         keyboardType: .emailAddress
                     )
 
                     CustomTextField(
-                        placeholder: placeholder2,
+                        placeholder: AppTexts.Authentication.placeholderPassword,
                         text: $Model.passwordText,
                         isSecure: true,
-                        imageName: lock
+                        imageName: AppTexts.Authentication.lock
                     )
                 }
                 .padding(.horizontal, 28)
@@ -87,7 +68,7 @@ struct SignIn: View {
                         .scaleEffect(0.7)
                         .padding(.leading, 28)
 
-                    Text(toggleText)
+                    Text(AppTexts.Common.toggleText)
                         .padding(.leading, 20)
 
                     Spacer()
@@ -95,7 +76,7 @@ struct SignIn: View {
                     Button(action: {
 //                       navigate to reset password
                     }) {
-                        Text(forgotPass)
+                        Text(AppTexts.Authentication.forgotPass)
                             .foregroundColor(.mainBlack)
                             .font(.custom(EventHubFont.body3.name, size: EventHubFont.body3.size))
                     }
@@ -108,7 +89,7 @@ struct SignIn: View {
                 .foregroundColor(.mainBlack)
 
                 //MARK: - Sign In
-        DefaultSignInButton(buttonText: buttonText, arrowRight: arrowRight) {
+                DefaultSignInButton(buttonText: AppTexts.Authentication.signButton, arrowRight: AppTexts.Authentication.arrowRight) {
                     Task {
                 // Call the async function inside Task
                         let success = try await Model.SignIn()
@@ -122,24 +103,24 @@ struct SignIn: View {
                 .padding(.top, 30)
                 .padding(.horizontal, 28)
 
-                Text(choice)
+                Text(AppTexts.Authentication.choice)
                 .foregroundColor(.someGray)
-                    .font(.custom(sfPro, size: EventHubFont.body3.size))
+                    .font(.custom(AppTexts.Authentication.sfPro, size: EventHubFont.body3.size))
                     .padding(.vertical, 20)
 
                 //MARK: - Login with Google
-                GoogleLoginButton(Model: Model, mainIcon: mainIcon, buttonText: logGoogle)
+                GoogleLoginButton(Model: Model, mainIcon: AppTexts.Authentication.mainIcon, buttonText: AppTexts.Authentication.logGoogle)
 
                 .padding(.horizontal, 50)
                 //MARK: - Bottom
                 HStack {
-                    Text(noAccount)
+                    Text(AppTexts.Common.noAccount)
                         .foregroundColor(.mainBlack)
                         .font(.custom(EventHubFont.body3.name, size: 14))
                     Button(action: {
 // navigate to sign up
                     }) {
-                        Text(signUp)
+                        Text(AppTexts.Authentication.signUpText)
                             .foregroundColor(.primaryBlue)
                             .font(.custom(EventHubFont.body3.name, size: 14))
                     }
@@ -164,6 +145,6 @@ struct SignIn: View {
 }
 
 #Preview {
-    SignIn(Model:AuthenticationModel())
+    SignInView(Model:AuthenticationViewModel())
     
 }
