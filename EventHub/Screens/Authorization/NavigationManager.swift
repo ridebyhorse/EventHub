@@ -3,10 +3,9 @@
 //  EventHub
 //
 //  Created by Ylyas Abdywahytow on 11/20/24.
-//
+
 
 //import SwiftUI
-//
 //
 //enum NavigationDestination {
 //    case signIn
@@ -14,6 +13,7 @@
 //    case contentView
 //    case resetPassword
 //    case changePassword
+//    case main
 //}
 //
 //@MainActor
