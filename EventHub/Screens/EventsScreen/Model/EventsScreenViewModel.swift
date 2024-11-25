@@ -18,22 +18,31 @@ final class EventsScreenViewModel: ObservableObject {
     
     @Published var selectedMode: ModeEvents = .upcoming
     @Published var events: [EventModel] = []
+    @Published var isLoading: Bool = false // Отслеживание загрузки
     
     func fetchUpcomingEvents(for location: Location) async {
+        isLoading = true // Начало загрузки
+        defer { isLoading = false } // Окончание загрузки
+        
         do {
             let eventsModel = try await networkService.getEvents(type: .upcoming, location: location)
             events = eventsModel.results
         } catch {
             print("Ошибка при загрузке предстоящих событий: \(error.localizedDescription)")
+            events = [] // Очистка массива в случае ошибки
         }
     }
 
     func fetchPastEvents(for location: Location) async {
+        isLoading = true
+        defer { isLoading = false }
+        
         do {
             let eventsModel = try await networkService.getEvents(type: .past, location: location)
             events = eventsModel.results
         } catch {
             print("Ошибка при загрузке прошедших событий: \(error.localizedDescription)")
+            events = []
         }
     }
     

@@ -24,14 +24,22 @@ struct EventsScreenView: View {
                             }
                         }
                     
-                    if !viewModel.events.isEmpty {
-                        ScrollView {
-                            ForEach(viewModel.events, id: \.self) { event in
-                                EventView(event: event)
-                            }
-                        }
+                    if viewModel.isLoading {
+                        Spacer()
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .scaleEffect(2)
+                        Spacer()
                     } else {
-                        EmptyEventsView(selectedMode: viewModel.selectedMode)
+                        if !viewModel.events.isEmpty {
+                            ScrollView {
+                                ForEach(viewModel.events, id: \.self) { event in
+                                    EventView(event: event)
+                                }
+                            }
+                        } else {
+                            EmptyEventsView(selectedMode: viewModel.selectedMode)
+                        }
                     }
                 }
                 
