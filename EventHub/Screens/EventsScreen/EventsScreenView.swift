@@ -41,7 +41,7 @@ struct EventsScreenView: View {
             }
         }
         .task {
-            await viewModel.fetchEvents(for: .msk) // Загрузить события для Москвы
+            await viewModel.fetchEvents(for: .newYork)
         }
     }
 }
