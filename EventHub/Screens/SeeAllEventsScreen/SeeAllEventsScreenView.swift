@@ -10,10 +10,27 @@ import SwiftUI
 struct SeeAllEventsScreenView: View {
     @State var events: [EventModel]
     
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         ScrollView {
             ForEach(events, id: \.self) { event in
                 EventView(event: event)
+            }
+        }
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    HStack {
+                        Image(systemName: "arrow.left")
+                        Text("Events")
+                    }
+                    .foregroundStyle(.black)
+                    .font(.custom(EventHubFont.h4))
+                }
             }
         }
     }

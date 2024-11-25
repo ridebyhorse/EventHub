@@ -11,37 +11,44 @@ struct EventsScreenView: View {
     @ObservedObject var viewModel = EventsScreenViewModel()
     
     var body: some View {
-        ZStack {
-            VStack {
-                Text("Events")
-                    .font(.title)
-                
-                ChangeModeButtonsView(choosedMode: $viewModel.selectedMode)
-                    .onChange(of: viewModel.selectedMode) { _ in
-                        Task {
-                            await viewModel.fetchEvents(for: .newYork)
+        NavigationView {
+            ZStack {
+                VStack {
+                    Text("Events")
+                        .font(.title)
+                    
+                    ChangeModeButtonsView(choosedMode: $viewModel.selectedMode)
+                        .onChange(of: viewModel.selectedMode) { _ in
+                            Task {
+                                await viewModel.fetchEvents(for: .newYork)
+                            }
                         }
-                    }
-                
-                if !viewModel.events.isEmpty {
-                    ScrollView {
-                        ForEach(viewModel.events, id: \.self) { event in
-                            EventView(event: event)
+                    
+                    if !viewModel.events.isEmpty {
+                        ScrollView {
+                            ForEach(viewModel.events, id: \.self) { event in
+                                EventView(event: event)
+                            }
                         }
+                    } else {
+                        EmptyEventsView(selectedMode: viewModel.selectedMode)
                     }
-                } else {
-                    EmptyEventsView(selectedMode: viewModel.selectedMode)
+                }
+                
+                VStack {
+                    Spacer()
+                    
+                    NavigationLink {
+                        SeeAllEventsScreenView(events: viewModel.events)
+                    } label: {
+                        ExploreEventsButtonView()
+                    }
+                    
                 }
             }
-            
-            VStack {
-                Spacer()
-                
-                ExploreEventsButtonView()
+            .task {
+                await viewModel.fetchEvents(for: .newYork)
             }
-        }
-        .task {
-            await viewModel.fetchEvents(for: .newYork)
         }
     }
 }
