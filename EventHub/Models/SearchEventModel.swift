@@ -56,6 +56,6 @@ struct DateRangeModel: Decodable {
     }
 }
 
-struct ImageModel: Decodable {
+struct ImageModel: Decodable, Hashable {
     let image: URL?
 }
