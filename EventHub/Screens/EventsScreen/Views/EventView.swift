@@ -49,7 +49,7 @@ struct EventView: View {
                     .fixedSize(horizontal: false, vertical: true)
                 
                 HStack(spacing: 4) {
-                    Image(systemName: "mappin.circle.fill")
+                    Image(.mapPin)
     
                     Text(event.location.slug.formattedLocation)
                         .font(.custom(EventHubFont.subtitle2))

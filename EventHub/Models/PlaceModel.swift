@@ -9,16 +9,16 @@ import Foundation
 
 struct PlaceModel: Decodable {
     let id: Int
-    let title: String
-    let slug: String
-    let address: String
-    let phone: String
-    let isStub: Bool
+    let title: String?
+    let slug: String?
+    let address: String?
+    let phone: String?
+    let isStub: Bool?
     let siteUrl: URL?
-    let coords: CoordinatesModel
-    let subway: String
-    let isClosed: Bool
-    let location: String
+    let coords: CoordinatesModel?
+    let subway: String?
+    let isClosed: Bool?
+    let location: String?
     
     private enum CodingKeys: String, CodingKey {
         case id, title, slug, address, phone, coords, subway, location

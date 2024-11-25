@@ -31,8 +31,8 @@ struct SeeAllEventsScreenView: View {
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    // go to search
+                NavigationLink {
+                    SearchView(viewModel: SearchViewModel(location: .newYork))
                 } label: {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(.black)
