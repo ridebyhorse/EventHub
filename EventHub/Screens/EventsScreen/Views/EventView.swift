@@ -42,6 +42,7 @@ struct EventView: View {
                 
                 Text(event.title.capitalized)
                     .font(.custom(EventHubFont.body2))
+                    .foregroundStyle(.black)
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity, alignment: .leading)

@@ -25,16 +25,7 @@ struct EventsScreenView: View {
                     ScrollEventsView(viewModel: viewModel)
                 }
                 
-                VStack {
-                    Spacer()
-                    
-                    NavigationLink {
-                        SeeAllEventsScreenView(events: viewModel.upcomingEvents)
-                    } label: {
-                        ExploreEventsButtonView()
-                    }
-                    
-                }
+                ExploreEventsButtonView(viewModel: viewModel)
             }
             .task {
                 await viewModel.loadAllEvents(for: .newYork)

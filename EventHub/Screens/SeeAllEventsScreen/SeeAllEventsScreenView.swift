@@ -8,16 +8,13 @@
 import SwiftUI
 
 struct SeeAllEventsScreenView: View {
-    @State var events: [EventModel]
+    @ObservedObject var viewModel: EventsScreenViewModel
     
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        ScrollView {
-            ForEach(events, id: \.self) { event in
-                EventView(event: event)
-            }
-        }
+        ScrollEventsView(viewModel: viewModel)
+        
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -46,6 +43,3 @@ struct SeeAllEventsScreenView: View {
     }
 }
 
-#Preview {
-    SeeAllEventsScreenView(events: [])
-}
