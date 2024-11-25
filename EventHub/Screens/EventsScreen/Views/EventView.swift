@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EventView: View {
     let event: MockEvent
-    
+    @EnvironmentObject var navigationManager: NavigationManager
     var body: some View {
         HStack {
             Image(.mockEvent)

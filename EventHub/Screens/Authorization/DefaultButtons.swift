@@ -42,13 +42,13 @@ struct GoogleLoginButton: View {
     @ObservedObject var Model: AuthenticationViewModel
     var mainIcon: String
     var buttonText: String
-//    @EnvironmentObject var navigationManager: NavigationManager
+    @EnvironmentObject var navigationManager: NavigationManager
     var body: some View {
         Button(action: {
             Task {
                 let success = await Model.signInWithGoogle()
                 if success {
-//                    navigationManager.currentDestination = .contentView
+                    navigationManager.currentDestination = .main
                     print("success")
                 } else {
                     print("Failed to sign in with Google")

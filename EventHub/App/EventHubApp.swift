@@ -12,6 +12,7 @@ import CoreData
 struct EventHubApp: App {
     @StateObject private var dataController = FavoritesDataController()
     let persistenceController = PersistenceController.shared
+
     init(){
         FirebaseApp.configure()
     }
