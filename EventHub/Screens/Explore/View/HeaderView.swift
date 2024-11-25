@@ -28,25 +28,25 @@ struct HeaderView: View {
                             Button(action: {
                                 selectedLocation = location
                             }) {
-                                Text(location.rawValue)
+                                Text(location.displayName)
                             }
                         }
                     } label: {
                         VStack(alignment: .leading, spacing: 4) {
-                            Text("Current Location")
-                                .font(.custom(EventHubFont.subtitle3))
-                                .foregroundColor(.white)
-                            
                             HStack(spacing: 4) {
-                                Text(selectedLocation.rawValue.capitalized)
-                                    .font(.custom(EventHubFont.body1))
+                                Text("Current Location")
+                                    .font(.custom(EventHubFont.subtitle3))
                                     .foregroundColor(.white)
-                                
                                 Image(systemName: "chevron.down")
                                     .resizable()
                                     .frame(width: 10, height: 6)
                                     .foregroundColor(.white)
                             }
+                            
+                            Text(selectedLocation.displayName)
+                                .font(.custom(EventHubFont.body1))
+                                .foregroundColor(.white)
+                            
                         }
                     }
                     
@@ -89,7 +89,7 @@ struct HeaderView: View {
                     Button(action: {
                         isFilterViewPresented = true
                     }) {
-                        HStack(spacing: 8) {
+                        HStack(spacing: 6) {
                             Image("filter-circle")
                                 .resizable()
                                 .frame(width: 20, height: 20)
@@ -100,7 +100,7 @@ struct HeaderView: View {
                                 .foregroundColor(.white)
                         }
                         
-                        .frame(width: 75, height: 32)
+                        .frame(width: 76, height: 32)
                         .background(
                             RoundedRectangle(cornerRadius: 50)
                             

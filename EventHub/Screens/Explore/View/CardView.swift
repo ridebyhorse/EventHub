@@ -22,7 +22,6 @@ struct CardView: View {
             RoundedRectangle(cornerRadius: 18)
                 .fill(Color.white)
                 .frame(width: 237, height: 255)
-//                .shadow(color: Color(red: 0.31, green: 0.33, blue: 0.53).opacity(0.06), radius: 15, x: 0, y: 8)
             
             VStack(spacing: 10) {
                 // MARK: - Image
@@ -40,12 +39,12 @@ struct CardView: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(Color.white.opacity(0.7))
                                 .frame(width: 45, height: 45)
-                            Text(eventDate)
-                                .font(.system(size: 16, weight: .light))
-                                .foregroundColor(.red)
-                                .lineLimit(2) // Ограничиваем двумя строками
-                                .multilineTextAlignment(.center)
-                                .frame(width: 45, height: 45)
+                                Text(eventDate)
+                                    .font(.system(size: 16, weight: .light))
+                                    .foregroundColor(.red)
+                                    .lineLimit(2) // Ограничиваем двумя строками
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: 38, height: 40)
                         }
                         .padding(.top, 8)
                         
@@ -104,16 +103,15 @@ struct CardView: View {
                         .frame(width: 16, height: 16)
                         .foregroundColor(Color("LightGrey"))
                     Text(location)
-                        .font(.system(size: 13))
-                        .foregroundColor(Color("LightGrey"))
+                        .font(.custom(EventHubFont.subtitle2))                        .foregroundColor(Color("LightGrey"))
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 16)
             }
-//            .frame(width: 237, height: 255)
+            //            .frame(width: 237, height: 255)
         }
         .frame(width: 237, height: 255)
-        .padding(12)
+        //        .padding(.vertical, 12)
         
         
     }
@@ -122,7 +120,7 @@ struct CardView: View {
 #Preview {
     CardView(
         eventTitle: "International Band Music Festival",
-        eventDate: "10 JUNE",
+        eventDate: "6 Jun",
         attendees: ["person1", "person2", "person3", "person4"],
         goingCount: 20,
         location: "36 Guild Street London, UK",
