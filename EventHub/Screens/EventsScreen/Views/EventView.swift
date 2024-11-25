@@ -11,7 +11,7 @@ struct EventView: View {
     let event: EventModel
     
     var body: some View {
-        HStack {
+        HStack(spacing: 16) {
             if let firstImageUrl = event.images.first?.image {
                 AsyncImage(url: firstImageUrl) { image in
                     image

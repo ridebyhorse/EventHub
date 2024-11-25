@@ -32,6 +32,16 @@ struct SeeAllEventsScreenView: View {
                     .font(.custom(EventHubFont.h4))
                 }
             }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    // go to search
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.black)
+                        .font(.custom(EventHubFont.h4))
+                }
+            }
         }
     }
 }
