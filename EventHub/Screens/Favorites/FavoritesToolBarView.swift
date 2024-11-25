@@ -6,16 +6,17 @@
 //
 import SwiftUI
 
-struct FavoritesHeaderView: View{
+struct FavoritesToolBarView: View{
+    var toolTitle: String = "Favorites"
     var body: some View {
         HStack {
-            Text("Favorites")
+            Text(toolTitle)
                 .font(.custom(EventHubFont.body2.name, size: 24))
                 .foregroundColor(.mainBlack)
             Button(action:{
             })
             {
-                Image("search")
+                Image(Buttons.search)
                     .resizable()
                     .frame(width: 24, height: 24)
                     .padding(.leading, 85)
@@ -27,5 +28,5 @@ struct FavoritesHeaderView: View{
     }
 }
 #Preview(){
-    FavoritesHeaderView()
+    FavoritesToolBarView()
 }

@@ -1,16 +1,22 @@
+//
+//  FavoriteEmptyView.swift
+//  EventHub
+//
+//  Created by Ylyas Abdywahytow on 11/23/24.
+
 import SwiftUI
 import CoreData
 
 
 struct FavoriteEmptyView: View {
+    // MARK: -Properties
+    var emptyIcon: String  = "emptyFavorite"
+    var iconNo = "xmark"
+    var header: String = "NO FAVORITES"
     
     var body: some View {
         VStack {
-            // MARK: - Header
-
-            // MARK: - Main Part
-            
-            Text("NO FAVORITES")
+            Text(header)
                 .font(.custom(EventHubFont.h1.name, size: 24))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.darkBlack)
@@ -18,11 +24,11 @@ struct FavoriteEmptyView: View {
                 .padding(.top, 102)
             
             ZStack {
-                Image("emptyFavorite")
+                Image(emptyIcon)
                     .resizable()
                     .scaledToFit()
                 
-                Image(systemName: "xmark")
+                Image(systemName:iconNo)
                     .resizable()
                     .scaledToFit()
                     .foregroundColor(.mainRed)

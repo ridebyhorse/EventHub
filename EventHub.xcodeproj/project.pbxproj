@@ -65,7 +65,7 @@
 		AD92599C2CEC75CC00F74E65 /* DefaultButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD92599B2CEC75C600F74E65 /* DefaultButtons.swift */; };
 		ADA04A822CEEA7B70001F7E4 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA04A812CEEA7AC0001F7E4 /* NavigationManager.swift */; };
 		ADA04A842CEEA8460001F7E4 /* MainNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA04A832CEEA8340001F7E4 /* MainNavigation.swift */; };
-		ADF15D5C2CF16E7A00B9D988 /* FavoritesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF15D5B2CF16E7200B9D988 /* FavoritesHeaderView.swift */; };
+		ADF15D5C2CF16E7A00B9D988 /* FavoritesToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF15D5B2CF16E7200B9D988 /* FavoritesToolBarView.swift */; };
 		CB199C532CEE431C006D2476 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB199C522CEE4314006D2476 /* NetworkService.swift */; };
 		CB199C562CEE44D2006D2476 /* EventCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB199C552CEE44CD006D2476 /* EventCategoryModel.swift */; };
 		CB199C582CEE467A006D2476 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB199C572CEE4674006D2476 /* LocationModel.swift */; };
@@ -132,7 +132,7 @@
 		AD92599B2CEC75C600F74E65 /* DefaultButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButtons.swift; sourceTree = "<group>"; };
 		ADA04A812CEEA7AC0001F7E4 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		ADA04A832CEEA8340001F7E4 /* MainNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigation.swift; sourceTree = "<group>"; };
-		ADF15D5B2CF16E7200B9D988 /* FavoritesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesHeaderView.swift; sourceTree = "<group>"; };
+		ADF15D5B2CF16E7200B9D988 /* FavoritesToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesToolBarView.swift; sourceTree = "<group>"; };
 		CB199C522CEE4314006D2476 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		CB199C552CEE44CD006D2476 /* EventCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCategoryModel.swift; sourceTree = "<group>"; };
 		CB199C572CEE4674006D2476 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
@@ -308,6 +308,22 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		AD4D778B2CF3ED130049493B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AD8FF28F2CF225F800FE8322 /* FavoritesViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AD4D778C2CF3ED270049493B /* FavoritesCoreData */ = {
+			isa = PBXGroup;
+			children = (
+				AD5841AE2CF04B4C008929FA /* FavoritesDataController.swift */,
+			);
+			path = FavoritesCoreData;
+			sourceTree = "<group>";
+		};
 		AD508F3A2CED6E0400CA735C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,11 +335,11 @@
 		AD5841A42CEFF07E008929FA /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
-				AD5841AE2CF04B4C008929FA /* FavoritesDataController.swift */,
+				AD4D778B2CF3ED130049493B /* Model */,
+				AD4D778C2CF3ED270049493B /* FavoritesCoreData */,
 				AD8FF28D2CF21CF900FE8322 /* FavoritesView.swift */,
-				AD8FF28F2CF225F800FE8322 /* FavoritesViewModel.swift */,
 				AD5841A72CF00378008929FA /* FavoriteEmptyView.swift */,
-				ADF15D5B2CF16E7200B9D988 /* FavoritesHeaderView.swift */,
+				ADF15D5B2CF16E7200B9D988 /* FavoritesToolBarView.swift */,
 				AD8FF2912CF26D2000FE8322 /* AddFavorite.swift */,
 				AD5841AB2CF049DA008929FA /* Favorites.xcdatamodeld */,
 			);
@@ -599,7 +615,7 @@
 				CB406E202CEFA48F007C8F49 /* CardView.swift in Sources */,
 				CB406E212CEFA48F007C8F49 /* HeaderView.swift in Sources */,
 				EB8D01E62CECBD7F000AB98A /* SplashScreen.swift in Sources */,
-				ADF15D5C2CF16E7A00B9D988 /* FavoritesHeaderView.swift in Sources */,
+				ADF15D5C2CF16E7A00B9D988 /* FavoritesToolBarView.swift in Sources */,
 				EB8D01E82CECBFE8000AB98A /* EllipseView.swift in Sources */,
 				EB8D01EB2CECC719000AB98A /* OnboardingScreen.swift in Sources */,
 				93083D112CEB924D00A0C392 /* ContentView.swift in Sources */,

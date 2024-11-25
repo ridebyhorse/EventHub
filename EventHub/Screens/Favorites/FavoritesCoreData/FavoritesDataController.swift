@@ -4,6 +4,8 @@
 //
 //  Created by Ylyas Abdywahytow on 11/22/24.
 //
+
+
 import SwiftUI
 import CoreData
 
@@ -23,11 +25,12 @@ class FavoritesDataController: ObservableObject {
     }
     
     
-    func saveEvent(title: String, date: String, location: String) {
+    func saveEvent(title: String, date: String, location: String, city: String) {
         let event = Event(context: context)
         event.title = title
         event.date = date
         event.location = location
+        event.city = city
         
         do {
             try context.save()
@@ -57,4 +60,9 @@ class FavoritesDataController: ObservableObject {
             print("Failed to delete event: \(error)")
         }
     }
+}
+
+enum Buttons {
+    static let addFavorite: String = "favorite"
+    static let search: String = "favoritesSearch"
 }

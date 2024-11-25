@@ -1,4 +1,8 @@
-
+//
+//  FavoritesView.swift
+//  EventHub
+//
+//  Created by Ylyas Abdywahytow on 11/23/24.
 
 import SwiftUI
 import CoreData
@@ -15,11 +19,11 @@ struct FavoritesView: View {
         NavigationView {
                 VStack(spacing: 16) {
                     if viewModel.favorites.isEmpty {
-                        FavoritesHeaderView()
+                        FavoritesToolBarView()
                         FavoriteEmptyView()
                     } else {
+                        FavoritesToolBarView()
                         ScrollView {
-                        FavoritesHeaderView()
                         ForEach(viewModel.favorites, id: \.self) { event in
                             HStack {
                                
@@ -39,14 +43,13 @@ struct FavoritesView: View {
                                 .foregroundColor(.mainBlue)
                                         Spacer()
 
-                                        // Favorite Button
+                                     
                                         Button(action: {
                                             viewModel.deleteFavorite(event: event)
                                         }) {
-                                            Image("favorite")
+                                            Image(Buttons.addFavorite)
                                                 .resizable()
-                                                .frame(width: 24, height: 24)
-                                                .foregroundColor(.red)
+                                                .frame(width: 16, height: 16)
                                         }
                                     }
 
@@ -55,8 +58,12 @@ struct FavoritesView: View {
                                         .frame(maxWidth: .infinity, alignment: .leading)
 
                                     HStack(spacing: 4) {
-                                        Image(systemName: "mappin.circle.fill")
+                                        Image("location")
                                         Text(event.location ?? "Unknown Location")
+                                            .font(.custom(EventHubFont.subtitle2))
+                                            .foregroundColor(.gray)
+                                        
+                                        Text(event.city ?? "Unknown City")
                                             .font(.custom(EventHubFont.subtitle2))
                                             .foregroundColor(.gray)
                                     }
@@ -93,6 +100,6 @@ struct FavoritesView: View {
         return container.viewContext
     }()
 
-    return FavoritesView()
+    FavoritesView()
         .environmentObject(FavoritesDataController())
 }

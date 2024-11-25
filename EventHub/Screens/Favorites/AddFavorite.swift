@@ -3,7 +3,7 @@
 //  EventHub
 //
 //  Created by Ylyas Abdywahytow on 11/23/24.
-//
+
 
 import SwiftUI
 import CoreData
@@ -20,12 +20,13 @@ struct AddFavoriteView: View {
         VStack {
             Button(action: {
                 viewModel.saveFavorite(
-                    title: "New Event",
-                    date: "2024-11-23",
-                    location: "New Location"
+                    title: "Space Data",
+                    date: "2024-11-24",
+                    location: "53 Bush St",
+                    city: "San Francisco"
                 )
             }) {
-                Image("favorite")
+                Image(Buttons.addFavorite)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width:30,height: 30)

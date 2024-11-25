@@ -16,8 +16,8 @@ class FavoritesViewModel: ObservableObject {
         fetchFavorites()
     }
 
-    func saveFavorite(title: String, date: String, location: String) {
-        dataController.saveEvent(title: title, date: date, location: location)
+    func saveFavorite(title: String, date: String, location: String, city: String) {
+        dataController.saveEvent(title: title, date: date, location: location, city: city)
         fetchFavorites()
     }
 
