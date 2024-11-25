@@ -8,8 +8,8 @@
 import Foundation
 
 struct SearchEventsModel: Decodable {
-    let count: Int
+    let count: Int?
     let next: URL?
     let previous: URL?
-    let results: [SearchEventModel]
+    let results: [SearchEventModel]?
 }

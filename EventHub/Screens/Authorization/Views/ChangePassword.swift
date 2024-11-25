@@ -57,8 +57,6 @@ struct ChangePassword: View {
                     }
                         
                 }
-                
-                
             }
             
             Spacer()
