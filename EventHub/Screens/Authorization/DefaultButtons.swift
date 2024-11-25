@@ -17,7 +17,7 @@ struct DefaultSignInButton: View {
                 Spacer()
                 Text(buttonText)
                     .foregroundColor(.white)
-                    .font(.custom(EventHubFont.body1.name, size: 16))
+                    .font(.custom(EventHubFont.body1.name, size: 16).weight(.medium))
                     .kerning(1)
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(.trailing, 50)
@@ -39,16 +39,16 @@ struct DefaultSignInButton: View {
     }
 }
 struct GoogleLoginButton: View {
-    @ObservedObject var Model: AuthenticationModel
+    @ObservedObject var Model: AuthenticationViewModel
     var mainIcon: String
     var buttonText: String
-//    @EnvironmentObject var navigationManager: NavigationManager
+    @EnvironmentObject var navigationManager: NavigationManager
     var body: some View {
         Button(action: {
             Task {
                 let success = await Model.signInWithGoogle()
                 if success {
-//                    navigationManager.currentDestination = .contentView
+                    navigationManager.currentDestination = .main
                     print("success")
                 } else {
                     print("Failed to sign in with Google")

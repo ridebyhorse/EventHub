@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var viewRouter = ViewRouter()
-    
+    @EnvironmentObject var navigationManager: NavigationManager
     var body: some View {
         GeometryReader { geometry in
             let dimensions = TabBarDimensions(geometry: geometry)
