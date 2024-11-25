@@ -13,42 +13,42 @@ struct ExploreView: View {
     @State private var selectedLocation: Location = .newYork
     
     var body: some View {
-        //        NavigationView {
-        ZStack(alignment: .top) {
-            VStack(alignment: .leading, spacing: 10){
-                // MARK: - Header
-                HeaderView(selectedLocation: $selectedLocation)
-                    .onChange(of: selectedLocation) { newLocation in
-                        viewModel.fetchData(location: newLocation)
+        NavigationView {
+            ZStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: 10){
+                    // MARK: - Header
+                    HeaderView(selectedLocation: $selectedLocation)
+                        .onChange(of: selectedLocation) { newLocation in
+                            viewModel.fetchData(location: newLocation)
+                        }
+                        .frame(height: 200, alignment: .top)
+                        .ignoresSafeArea()
+                    // MARK: - Categories
+                    CategoriesScrollView()
+                        .padding(.top, -30)
+                    // MARK: - Upcoming events
+                    ScrollView(.vertical, showsIndicators: false ){
+                        SectionView(
+                            title: "Upcoming Events",
+                            events: viewModel.upcomingEvents
+                        )
+                        
+                        // MARK: - Nearby Events
+                        SectionView(
+                            title: "Nearby You",
+                            events: viewModel.nearbyEvents
+                        )
                     }
-                    .frame(height: 200, alignment: .top)
-                    .ignoresSafeArea()
-                // MARK: - Categories
-                CategoriesScrollView()
-                    .padding(.top, -30)
-                // MARK: - Upcoming events
-                ScrollView(.vertical, showsIndicators: false ){
-                    SectionView(
-                        title: "Upcoming Events",
-                        events: viewModel.upcomingEvents
-                    )
-                    
-                    // MARK: - Nearby Events
-                    SectionView(
-                        title: "Nearby You",
-                        events: viewModel.nearbyEvents
-                    )
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding(.top, 10)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .padding(.top, 10)
+            }
+            .onAppear {
+                viewModel.fetchData(location: selectedLocation)
             }
         }
-        .onAppear {
-            viewModel.fetchData(location: selectedLocation)
-        }
-        //            .navigationBarHidden(true)
-        //            .navigationBarTitleDisplayMode(.inline)
-        //                    }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarHidden(true)
         .ignoresSafeArea()
     }
 }
@@ -77,17 +77,18 @@ struct SectionView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
                     ForEach(events, id: \.id) { event in
-                        CardView(
-                            eventTitle: event.title,
-                            eventDate: formatDate(event.dates.first?.start),
-                            attendees: [], // Mock attendees
-                            goingCount: event.favoritesCount,
-                            location: event.location.slug.displayName,
-                            eventImage: event.images.first?.image?.absoluteString ?? ""
-                        )
+                        NavigationLink(destination: EventDetailsScreen()) {
+                            CardView(
+                                eventTitle: event.title,
+                                eventDate: formatDate(event.dates.first?.start),
+                                attendees: ["https://example.com/avatar1.jpg", "https://example.com/avatar2.jpg", "https://example.com/avatar3.jpg"],
+                                goingCount: event.favoritesCount,
+                                location: event.location.slug.displayName,
+                                eventImage: event.images.first?.image?.absoluteString ?? ""
+                            )
+                        }
                     }
                 }
-                //                    .padding(.horizontal, 16)
             }
         }
         .shadow(color: Color(red: 0.31, green: 0.33, blue: 0.53).opacity(0.06), radius: 15, x: 0, y: 8)

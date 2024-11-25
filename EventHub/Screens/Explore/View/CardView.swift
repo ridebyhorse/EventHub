@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CardView: View {
     
@@ -26,23 +27,38 @@ struct CardView: View {
             VStack(spacing: 10) {
                 // MARK: - Image
                 ZStack(alignment: .top) {
-                    Image("img")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 219, height: 131)
-                        .cornerRadius(10)
-                        .clipped()
+                    if let url = URL(string: eventImage) {
+                        KFImage(url)
+                            .placeholder {
+                                ProgressView()
+                                    .frame(width: 219, height: 131)
+                            }
+                            .retry(maxCount: 3, interval: .seconds(2)) // Повторные попытки загрузки
+                            .cacheOriginalImage()
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 219, height: 131)
+                            .cornerRadius(10)
+                            .clipped()
+                    } else {
+                        Image("img")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 219, height: 131)
+                            .cornerRadius(10)
+                            .clipped()
+                    }
                     
                     HStack {
                         // MARK: - Date
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.white.opacity(0.7))
+                                .fill(Color.white.opacity(0.8))
                                 .frame(width: 45, height: 45)
                                 Text(eventDate)
                                     .font(.system(size: 16, weight: .light))
                                     .foregroundColor(.red)
-                                    .lineLimit(2) // Ограничиваем двумя строками
+                                    .lineLimit(2)
                                     .multilineTextAlignment(.center)
                                     .frame(width: 38, height: 40)
                         }
@@ -53,8 +69,9 @@ struct CardView: View {
                         // MARK: - Mark
                         ZStack {
                             RoundedRectangle(cornerRadius: 7)
-                                .fill(Color.white.opacity(0.7))
+                                .fill(Color.white.opacity(0.8))
                                 .frame(width: 30, height: 30)
+                            
                             Image(systemName: "bookmark.fill")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -78,12 +95,26 @@ struct CardView: View {
                 // MARK: - Persons going
                 HStack(spacing: -8) {
                     ForEach(attendees.prefix(3), id: \.self) { attendee in
-                        Image("img")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 24, height: 24)
-                            .cornerRadius(12)
-                            .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.white, lineWidth: 1))
+                        if let url = URL(string: attendee){
+                            KFImage(url)
+                                .placeholder {
+                                    Circle()
+                                        .fill(Color.gray.opacity(0.3))
+                                        .frame(width: 24, height: 24)
+                                }
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 24, height: 24)
+                                .cornerRadius(12)
+                                .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.white, lineWidth: 1))
+                        } else {
+                            Image("img")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 24, height: 24)
+                                .cornerRadius(12)
+                                .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.white, lineWidth: 1))
+                        }
                     }
                     
                     if goingCount > 3 {
@@ -103,7 +134,8 @@ struct CardView: View {
                         .frame(width: 16, height: 16)
                         .foregroundColor(Color("LightGrey"))
                     Text(location)
-                        .font(.custom(EventHubFont.subtitle2))                        .foregroundColor(Color("LightGrey"))
+                        .font(.custom(EventHubFont.subtitle2))
+                        .foregroundColor(Color("LightGrey"))
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 16)

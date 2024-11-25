@@ -32,7 +32,6 @@ struct CategoryView: View {
     
     var body: some View {
         ZStack {
-
             RoundedRectangle(cornerRadius: 20)
                 .fill(backgroundColor.color)
                 .frame(width: 106, height: 40)

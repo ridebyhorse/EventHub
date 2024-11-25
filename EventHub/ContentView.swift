@@ -65,8 +65,10 @@ struct ContentView: View {
             }
             .edgesIgnoringSafeArea(.bottom)
             .edgesIgnoringSafeArea(.top)
+         
         }
         .environmentObject(viewRouter)
+        
     }
 }
 
