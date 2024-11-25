@@ -10,6 +10,9 @@ import SwiftUI
 struct EventView: View {
     let event: EventModel
     
+    private let width = UIScreen.main.bounds.width * 0.2
+    private let height = UIScreen.main.bounds.height * 0.1
+    
     var body: some View {
         HStack(spacing: 16) {
             if let firstImageUrl = event.images.first?.image {
@@ -17,26 +20,18 @@ struct EventView: View {
                     image
                         .resizable()
                         .scaledToFill()
-                        .frame(
-                            width: UIScreen.main.bounds.width * 0.2,
-                            height: UIScreen.main.bounds.height * 0.1
-                        )
+                        .frame(width: width,height: height)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 } placeholder: {
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(
-                            width: UIScreen.main.bounds.width * 0.2,
-                            height: UIScreen.main.bounds.height * 0.1
-                        )
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(1.5)
+                        .frame(width: width,height: height)
                 }
             } else {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.gray.opacity(0.3))
-                    .frame(
-                        width: UIScreen.main.bounds.width * 0.2,
-                        height: UIScreen.main.bounds.height * 0.1
-                    )
+                    .frame(width: width,height: height)
             }
             
             VStack {
@@ -62,7 +57,7 @@ struct EventView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundStyle(.gray)
             }
-            .frame(height: UIScreen.main.bounds.height * 0.1)
+            .frame(height: height)
         }
         .padding(10)
         .background(.white)

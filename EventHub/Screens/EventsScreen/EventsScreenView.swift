@@ -19,35 +19,17 @@ struct EventsScreenView: View {
                     
                     ChangeModeButtonsView(choosedMode: $viewModel.selectedMode)
                         .onChange(of: viewModel.selectedMode) { _ in
-                            Task {
-                                await viewModel.fetchEvents(for: .newYork)
-                            }
+                            viewModel.updateDisplayedEvents()
                         }
                     
-                    if viewModel.isLoading {
-                        Spacer()
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle())
-                            .scaleEffect(2)
-                        Spacer()
-                    } else {
-                        if !viewModel.events.isEmpty {
-                            ScrollView {
-                                ForEach(viewModel.events, id: \.self) { event in
-                                    EventView(event: event)
-                                }
-                            }
-                        } else {
-                            EmptyEventsView(selectedMode: viewModel.selectedMode)
-                        }
-                    }
+                    ScrollEventsView(viewModel: viewModel)
                 }
                 
                 VStack {
                     Spacer()
                     
                     NavigationLink {
-                        SeeAllEventsScreenView(events: viewModel.events)
+                        SeeAllEventsScreenView(events: viewModel.upcomingEvents)
                     } label: {
                         ExploreEventsButtonView()
                     }
@@ -55,7 +37,7 @@ struct EventsScreenView: View {
                 }
             }
             .task {
-                await viewModel.fetchEvents(for: .newYork)
+                await viewModel.loadAllEvents(for: .newYork)
             }
         }
     }

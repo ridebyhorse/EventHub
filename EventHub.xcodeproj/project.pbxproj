@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		790A62C12CF4E0780011609E /* SeeAllEventsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790A62C02CF4E0780011609E /* SeeAllEventsScreenView.swift */; };
+		790A62C32CF4F8280011609E /* ScrollEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790A62C22CF4F8280011609E /* ScrollEventsView.swift */; };
 		793CBF4C2CED03FE00E1B230 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793CBF4B2CED03FE00E1B230 /* EventView.swift */; };
 		793CBF512CED0F1C00E1B230 /* EventsScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793CBF502CED0F1C00E1B230 /* EventsScreenViewModel.swift */; };
 		793CBF532CED11A500E1B230 /* EmptyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793CBF522CED11A500E1B230 /* EmptyEventsView.swift */; };
@@ -102,6 +103,7 @@
 
 /* Begin PBXFileReference section */
 		790A62C02CF4E0780011609E /* SeeAllEventsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllEventsScreenView.swift; sourceTree = "<group>"; };
+		790A62C22CF4F8280011609E /* ScrollEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollEventsView.swift; sourceTree = "<group>"; };
 		793CBF4B2CED03FE00E1B230 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		793CBF4D2CED067000E1B230 /* Date + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Ext.swift"; sourceTree = "<group>"; };
 		793CBF502CED0F1C00E1B230 /* EventsScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsScreenViewModel.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				796256572CEBCEDC0019F6E4 /* ExploreEventsButtonView.swift */,
 				793CBF4B2CED03FE00E1B230 /* EventView.swift */,
 				793CBF522CED11A500E1B230 /* EmptyEventsView.swift */,
+				790A62C22CF4F8280011609E /* ScrollEventsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				AD508EFF2CED680800CA735C /* ResetPassword.swift in Sources */,
 				AD508F3C2CED6E4400CA735C /* AuthenticationModel.swift in Sources */,
 				AD92599C2CEC75CC00F74E65 /* DefaultButtons.swift in Sources */,
+				790A62C32CF4F8280011609E /* ScrollEventsView.swift in Sources */,
 				93083D2A2CEB994500A0C392 /* ViewRouter.swift in Sources */,
 				CB199C5A2CEE63FC006D2476 /* SearchEventsModel.swift in Sources */,
 				CB406E1E2CEFA48F007C8F49 /* CategoryView.swift in Sources */,

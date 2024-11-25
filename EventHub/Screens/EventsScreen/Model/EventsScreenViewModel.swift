@@ -17,41 +17,47 @@ final class EventsScreenViewModel: ObservableObject {
     private let networkService = NetworkService.shared
     
     @Published var selectedMode: ModeEvents = .upcoming
+    @Published var upcomingEvents: [EventModel] = []
+    @Published var pastEvents: [EventModel] = []
+    @Published var isLoading: Bool = false
     @Published var events: [EventModel] = []
-    @Published var isLoading: Bool = false // Отслеживание загрузки
+    
+    func loadAllEvents(for location: Location) async {
+        isLoading = true
+        defer { isLoading = false }
+        
+        await fetchUpcomingEvents(for: location)
+        await fetchPastEvents(for: location)
+        
+        updateDisplayedEvents()
+    }
     
     func fetchUpcomingEvents(for location: Location) async {
-        isLoading = true // Начало загрузки
-        defer { isLoading = false } // Окончание загрузки
-        
         do {
             let eventsModel = try await networkService.getEvents(type: .upcoming, location: location)
-            events = eventsModel.results
+            upcomingEvents = eventsModel.results
         } catch {
             print("Ошибка при загрузке предстоящих событий: \(error.localizedDescription)")
-            events = [] // Очистка массива в случае ошибки
+            upcomingEvents = []
         }
     }
 
     func fetchPastEvents(for location: Location) async {
-        isLoading = true
-        defer { isLoading = false }
-        
         do {
             let eventsModel = try await networkService.getEvents(type: .past, location: location)
-            events = eventsModel.results
+            pastEvents = eventsModel.results
         } catch {
             print("Ошибка при загрузке прошедших событий: \(error.localizedDescription)")
-            events = []
+            pastEvents = []
         }
     }
     
-    func fetchEvents(for location: Location) async {
+    func updateDisplayedEvents() {
         switch selectedMode {
         case .upcoming:
-            await fetchUpcomingEvents(for: location)
+            events = upcomingEvents
         case .pastEvents:
-            await fetchPastEvents(for: location)
+            events = pastEvents
         }
     }
 }
