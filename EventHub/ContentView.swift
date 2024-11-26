@@ -28,7 +28,7 @@ struct ContentView: View {
                 case .map:
                     Text("Map View")
                 case .profile:
-                    Text("Profile View")
+                    ProfileView()
                 }
                 
                 Spacer()
