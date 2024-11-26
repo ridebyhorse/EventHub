@@ -28,7 +28,8 @@ struct ContentView: View {
                 case .map:
                     Text("Map View")
                 case .profile:
-                    ProfileView()
+                    ProfileView(viewModel: AuthenticationViewModel(favoritesDataController: FavoritesDataController()))
+
                 }
                 
                 Spacer()

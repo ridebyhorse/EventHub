@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ProfileView: View {
+    @ObservedObject var viewModel: AuthenticationViewModel
     @State private var isEditing: Bool = false
     @State private var name: String = "Name"
     @State private var aboutMe: String = "Some words about you.."
     @State private var profileImage: UIImage? = nil
+    @State private var showImagePicker: Bool = false
     
     var body: some View {
 
@@ -31,7 +34,7 @@ struct ProfileView: View {
                     .padding(.top, 30)
                     .onTapGesture {
                         if isEditing {
-                            selectImage()
+                            showImagePicker = true
                         }
                     }
             } else {
@@ -43,7 +46,7 @@ struct ProfileView: View {
                     .padding(.top, 30)
                     .onTapGesture {
                         if isEditing {
-                            selectImage()
+                            showImagePicker = true
                         }
                     }
             }
@@ -69,6 +72,7 @@ struct ProfileView: View {
             Button {
                 isEditing.toggle()
                 if !isEditing {
+                    viewModel.saveUsernameToUserDefaults(username: name)
                     saveProfile()
                 }
             } label: {
@@ -115,7 +119,9 @@ struct ProfileView: View {
             Spacer()
             
             // Sign Out Button
-            Button(action: signOut) {
+            Button{
+                viewModel.signOut()
+            } label: {
                 HStack {
                     Image(systemName: "arrow.backward.square")
                         .font(.system(size: 20))
@@ -129,6 +135,12 @@ struct ProfileView: View {
         }
         .padding()
         .padding(.top, 50)
+        .onAppear {
+            name = viewModel.getUsernameFromUserDefaults() ?? "Name"
+        }
+        .sheet(isPresented: $showImagePicker) {
+            ImagePicker(image: $profileImage)
+        }
         
     }
     
@@ -149,9 +161,9 @@ struct ProfileView: View {
     }
 }
 
-#Preview {
-    ProfileView()
-}
+//#Preview {
+//    ProfileView()
+//}
 
 
 
