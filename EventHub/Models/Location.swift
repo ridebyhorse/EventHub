@@ -37,7 +37,9 @@ enum Location: String, Codable,  CaseIterable{
         case .krasnoyarsk: return "Красноярск"
         case .kev: return "Киев"
         case .newYork: return "New-York"
-
+        }
+    }
+    
     var formattedLocation: String {
         switch self {
         case .spb:
