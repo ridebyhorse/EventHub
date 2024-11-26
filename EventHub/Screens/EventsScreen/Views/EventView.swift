@@ -8,39 +8,57 @@
 import SwiftUI
 
 struct EventView: View {
-    let event: MockEvent
+    let event: EventModel
+    
+    private let width = UIScreen.main.bounds.width * 0.2
+    private let height = UIScreen.main.bounds.height * 0.1
     
     var body: some View {
-        HStack {
-            Image(.mockEvent)
-                .resizable()
-                .frame(
-                    width: UIScreen.main.bounds.width * 0.2,
-                    height: UIScreen.main.bounds.height * 0.1
-                )
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+        HStack(spacing: 16) {
+            if let firstImageUrl = event.images.first?.image {
+                AsyncImage(url: firstImageUrl) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: width,height: height)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                } placeholder: {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(1.5)
+                        .frame(width: width,height: height)
+                }
+            } else {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.gray.opacity(0.3))
+                    .frame(width: width,height: height)
+            }
             
             VStack {
-                Text(event.date.formattedForEvent())
+                Text(event.dates.first?.start.formattedForEvent() ?? "nil")
                     .font(.custom(EventHubFont.subtitle2))
                     .foregroundStyle(.mainBlue)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text(event.title)
+                Text(event.title.capitalized)
                     .font(.custom(EventHubFont.body2))
+                    .foregroundStyle(.black)
+                    .lineLimit(2)
+                    .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .fixedSize(horizontal: false, vertical: true)
                 
                 HStack(spacing: 4) {
-                    Image(systemName: "mappin.circle.fill")
+                    Image(.mapPin)
     
-                    Text(event.formattedLocation())
+                    Text(event.location.slug.formattedLocation)
                         .font(.custom(EventHubFont.subtitle2))
                 }
                 .padding(.top, 1)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundStyle(.gray)
             }
-            .frame(height: UIScreen.main.bounds.height * 0.1)
+            .frame(height: height)
         }
         .padding(10)
         .background(.white)
@@ -49,82 +67,4 @@ struct EventView: View {
         .padding(.horizontal, 32)
         .padding(.top, 12)
     }
-}
-
-struct MockEvent: Hashable {
-    let image: String
-    let title: String
-    let date: Date
-    let locationName: String
-    let city: String
-    let state: String
-    let isUpcoming: Bool
-    
-    func formattedLocation() -> String {
-        "\(locationName) • \(city), \(state)"
-    }
-    
-    static func mockEvents() -> [Self] {
-        return [
-            MockEvent(
-                image: "MockEventImage",
-                title: "Jo Malone London’s Mother’s Day Presents",
-                date: .now,
-                locationName: "Radius Gallery",
-                city: "Santa Cruz",
-                state: "CA",
-                isUpcoming: true
-            ),
-            MockEvent(
-                image: "MockEventImage",
-                title: "Santa Cruz Art Festival",
-                date: Calendar.current.date(byAdding: .day, value: 2, to: .now)!,
-                locationName: "Downtown Santa Cruz",
-                city: "Santa Cruz",
-                state: "CA",
-                isUpcoming: true
-            ),
-            MockEvent(
-                image: "MockEventImage",
-                title: "Bay Area Food Truck Fest",
-                date: Calendar.current.date(byAdding: .day, value: -5, to: .now)!,
-                locationName: "Alameda County Fairgrounds",
-                city: "Pleasanton",
-                state: "CA",
-                isUpcoming: false
-            ),
-            MockEvent(
-                image: "MockEventImage",
-                title: "Oakland Jazz Night",
-                date: Calendar.current.date(byAdding: .hour, value: -12, to: .now)!,
-                locationName: "The Sound Room",
-                city: "Oakland",
-                state: "CA",
-                isUpcoming: false
-            ),
-            MockEvent(
-                image: "MockEventImage",
-                title: "Silicon Valley Tech Meetup",
-                date: Calendar.current.date(byAdding: .day, value: 7, to: .now)!,
-                locationName: "San Jose Convention Center",
-                city: "San Jose",
-                state: "CA",
-                isUpcoming: true
-            )
-        ]
-    }
-}
-
-#Preview {
-    EventView(
-        event: MockEvent(
-            image: "MockEventImage",
-            title: "Jo Malone London’s Mother’s Day Presents ",
-            date: .now,
-            locationName: "Radius Gallery",
-            city: "Santa Cruz, CA",
-            state: "CA",
-            isUpcoming: true
-        )
-    )
 }

@@ -16,15 +16,7 @@ struct ChangePassword: View {
     @State private var showSuccessAlert: Bool = false
        
 //    @EnvironmentObject var navigationManager: NavigationManager
-    @ObservedObject var Model: AuthenticationModel
-    //MARK: - Properties
-    let sfPro: String = "SF Pro"
-    let backButton: String = "arrow.left"
-    let mainTitle: String = "Reset Password"
-    let placeholder: String = "Your password"
-    let envelope: String = "lock"
-    let buttonText: String = "CHANGE\nPASSWORD"
-    let arrowRight: String = "arrow.right"
+    @ObservedObject var Model: AuthenticationViewModel
     var body: some View {
         VStack{
             VStack{
@@ -34,7 +26,7 @@ struct ChangePassword: View {
                        // navigate Back
                     })
                     {
-                        Image(systemName: backButton)
+                        Image(systemName: AppTexts.Common.backButton)
                             .resizable()
                             .frame(width:22, height:22)
                             .foregroundColor(.mainBlack)
@@ -43,9 +35,9 @@ struct ChangePassword: View {
                     }
                     
                     
-                    Text(mainTitle)
+                    Text(AppTexts.ChangePassword.mainTitle)
                         .frame(width: 181, height: 29)
-                        .font(.custom(sfPro, size: 24).weight(.medium))
+                        .font(.custom(AppTexts.Authentication.sfPro, size: 24).weight(.medium))
                         .foregroundColor(.mainBlack)
                         .padding(.trailing,97)
                 }
@@ -54,19 +46,17 @@ struct ChangePassword: View {
                 
                 //MARK: - TextFields
                 VStack(spacing: 37){
-                    CustomTextField(placeholder:placeholder , text: $Model.passwordText, isSecure: true, imageName: envelope)
+                    CustomTextField(placeholder:AppTexts.ChangePassword.placeholderPassword , text: $Model.passwordText, isSecure: true, imageName: AppTexts.Authentication.lock)
                     
                         .padding(.top,71)
                     
-                    CustomTextField(placeholder:placeholder , text: $Model.confirmPass,isSecure: true, imageName: envelope)
+                    CustomTextField(placeholder:AppTexts.Authentication.confirmPassword , text: $Model.confirmPass,isSecure: true, imageName: AppTexts.Authentication.lock)
                         
                     
-        DefaultSignInButton(buttonText: buttonText, arrowRight: arrowRight){
+                    DefaultSignInButton(buttonText: AppTexts.ChangePassword.buttonText, arrowRight: AppTexts.ChangePassword.arrowRight){
                     }
                         
                 }
-                
-                
             }
             
             Spacer()
@@ -77,5 +67,5 @@ struct ChangePassword: View {
 
 
 #Preview {
-    ChangePassword(Model: AuthenticationModel())
+    ChangePassword(Model: AuthenticationViewModel())
 }

@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-enum ModeEvents {
-    case upcoming
-    case pastEvents
-}
-
 struct ChangeModeButtonsView: View {
     @Binding var choosedMode: ModeEvents
     

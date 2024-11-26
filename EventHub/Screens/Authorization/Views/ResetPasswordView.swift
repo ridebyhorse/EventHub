@@ -8,19 +8,10 @@
 
 import SwiftUI
 
-struct ResetPassword: View {
+struct ResetPasswordView: View {
     @State var emailText: String = ""
 //    @EnvironmentObject var navigationManager: NavigationManager
-    @ObservedObject var Model: AuthenticationModel
-    var sfPro: String = "SF Pro"
-    var backButton: String = "arrow.left"
-    var mainTitle: String = "Reset Password"
-    var bodyText: String = "Please enter your email address to\nrequest a password reset"
-    var placeholder: String = "abc@example.com"
-    var envelope: String = "envelope"
-    var buttonText: String = "SEND"
-    var arrowRight: String = "arrow.right"
-    
+    @ObservedObject var Model: AuthenticationViewModel
     var body: some View {
         VStack{
             VStack{
@@ -29,7 +20,7 @@ struct ResetPassword: View {
 //                       naviagate back
                     })
                     {
-                        Image(systemName: backButton)
+                        Image(systemName: AppTexts.Common.backButton)
                             .resizable()
                             .frame(width:22, height:22)
                             .aspectRatio(contentMode: .fit)
@@ -37,9 +28,9 @@ struct ResetPassword: View {
                             .padding(.trailing,51)
                         
                     }
-                    Text(mainTitle)
+                    Text(AppTexts.ResetPassword.mainTitle)
                         .frame(width: 181, height: 29)
-                        .font(.custom(sfPro, size: 24))
+                        .font(.custom(AppTexts.Authentication.sfPro, size: 24))
                         .foregroundColor(.mainBlack)
                         .padding(.trailing,97)
                 }
@@ -48,16 +39,16 @@ struct ResetPassword: View {
                 
                 
                 VStack(alignment: .leading, spacing: 20) {
-                    Text(bodyText)
-                        .font(.custom(sfPro, size: 15))
+                    Text(AppTexts.ResetPassword.bodyText)
+                        .font(.custom(AppTexts.Authentication.sfPro, size: 15))
                         .foregroundColor(.mainBlack)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .lineSpacing(4)
                     
-                    CustomTextField(placeholder: placeholder, text: $Model.emailText, imageName: envelope)
+                    CustomTextField(placeholder: AppTexts.ResetPassword.placeholderEmail, text: $Model.emailText, imageName: AppTexts.ResetPassword.envelope)
                         .padding(.top, 10)
                     
-                    DefaultSignInButton(buttonText: buttonText, arrowRight: arrowRight){
+                    DefaultSignInButton(buttonText: AppTexts.ResetPassword.buttonText, arrowRight: AppTexts.ResetPassword.arrowRight){
                         Task{
                             let sucess = await
                             Model.resetPassword(email: Model.emailText)
@@ -91,5 +82,5 @@ struct ResetPassword: View {
 
     
 #Preview {
-    ResetPassword(Model: AuthenticationModel())
+    ResetPasswordView(Model: AuthenticationViewModel())
 }

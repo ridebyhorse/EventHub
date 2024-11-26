@@ -7,17 +7,22 @@
 
 import SwiftUI
 import Firebase
+import CoreData
 @main
 struct EventHubApp: App {
+    @StateObject private var dataController = FavoritesDataController()
     let persistenceController = PersistenceController.shared
+
     init(){
         FirebaseApp.configure()
     }
+
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }

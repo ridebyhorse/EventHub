@@ -52,7 +52,7 @@ enum AuthError: LocalizedError {
 }
 
 @MainActor
-class AuthenticationModel: ObservableObject {
+class AuthenticationViewModel: ObservableObject {
     //MARK: - Common Properties
     @Published var errorMessage: String = ""
     @Published var myUser: String = ""
@@ -62,9 +62,9 @@ class AuthenticationModel: ObservableObject {
     @Published var user: User?
     @Published var authenticationState: AuthenticationState = .unauthenticated
     @Published var displayName: String = ""
-    @Published var isSuccess: Bool = false
-    @Published var successMessage: String = ""
     @Published var showAlert: Bool = false
+    @Published var currentUserEmail: String = ""
+    @Published var favoritesDataController: FavoritesDataController
     var emailError: String = "Email or password cannot be empty"
     var passwordError: String = "Passwords do not match"
     var noId: String = "No client ID found in Firebase configuration"
@@ -73,20 +73,43 @@ class AuthenticationModel: ObservableObject {
     var unknownError: String =  "unknown"
     var withEmail: String = "signed in with email"
     var userPrompt: String = "User"
+    var errorMessages = [
+          "emptyFields": "Email or password cannot be empty.",
+          "passwordMismatch": "Passwords do not match.",
+          "unknown": "An unknown error occurred."
+      ]
     
-    init(){
-        registerAuthStateHandler()
-    }
-    
+    init(favoritesDataController: FavoritesDataController) {
+          self.favoritesDataController = favoritesDataController
+          registerAuthStateHandler()
+      }
     // MARK: - Handle Whether User Logged or not
     private var authStateHandler: AuthStateDidChangeListenerHandle?
-    func registerAuthStateHandler() {
-        if authStateHandler == nil {
-            authStateHandler = Auth.auth().addStateDidChangeListener { auth, user in
-                self.user = user
-                self.authenticationState = user == nil ? .unauthenticated : .authenticated
-                self.displayName = user?.email ?? ""
+    private func registerAuthStateHandler() {
+            if authStateHandler == nil {
+                authStateHandler = Auth.auth().addStateDidChangeListener { auth, user in
+                    self.user = user
+                    self.authenticationState = user == nil ? .unauthenticated : .authenticated
+                    self.currentUserEmail = user?.email ?? ""
+                    self.favoritesDataController.currentUserEmail = self.currentUserEmail
+                }
             }
+        }
+    
+    
+    func toggleRememberMe(remember: Bool) {
+        guard let email = Auth.auth().currentUser?.email else { return }
+        if remember {
+            UserDefaults.standard.set(email, forKey: "rememberedEmail")
+        } else {
+            UserDefaults.standard.removeObject(forKey: "rememberedEmail")
+        }
+    }
+
+    func autoSignIn() async {
+        if let email = UserDefaults.standard.string(forKey: "rememberedEmail") {
+            self.emailText = email
+            try? await SignIn()
         }
     }
     
