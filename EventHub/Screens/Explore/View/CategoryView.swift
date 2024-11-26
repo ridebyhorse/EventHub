@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-enum CategoryColor: String {
+enum CategoryColor: String, CaseIterable {
     case red, orange, green, blue
     
     var color: Color {
@@ -34,45 +34,47 @@ struct CategoryView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
                 .fill(backgroundColor.color)
-                .frame(width: 106, height: 40)
+                .frame(width: 120, height: 40)
 
-            HStack(alignment: .center, spacing: 8) {
-                Image(categoryIcon)
+            HStack(spacing: 6) {
+                Image(systemName: categoryIcon)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 17, height: 17)
+                    .foregroundColor(.white)
                 
                 Text(categoryName)
                     .font(.custom(EventHubFont.body2))
                     .foregroundColor(.white)
-                    .frame(maxWidth: 48, alignment: .leading)
+                    .frame(maxWidth: 80)
+               
             }
+            .padding(4)
         }
     }
 }
 
 #Preview {
-    CategoryView(categoryIcon: "sport", categoryName: "Sport", backgroundColor: .blue)
+    CategoryView(categoryIcon: "sparkles", categoryName: "art", backgroundColor: .blue)
 }
 
 struct CategoriesScrollView: View {
-    // Пример данных категорий
-    let categories = [
-        (icon: "sport", name: "Sport", color: CategoryColor.red),
-        (icon: "music", name: "Music", color: CategoryColor.orange),
-        (icon: "food", name: "Food", color: CategoryColor.green),
-        (icon: "palette", name: "Art", color: CategoryColor.blue)
-    ]
-    
+    @ObservedObject var viewModel: ExploreViewModel
+  
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 16) {
-                ForEach(categories, id: \.name) { category in
-                    CategoryView(
-                        categoryIcon: category.icon,
-                        categoryName: category.name,
-                        backgroundColor: category.color
-                    )
+                
+                ForEach(Array(viewModel.categories.enumerated()), id: \.element.id) { index, category in
+                    Button(action: {
+                        viewModel.selectCategory(category)
+                    }) {
+                        CategoryView(
+                            categoryIcon: category.systemIcon,
+                            categoryName: category.name,
+                            backgroundColor: category.assignedColor(index: index)
+                        )
+                    }
                 }
             }
             .padding(.horizontal, 16)

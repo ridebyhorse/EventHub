@@ -23,32 +23,37 @@ struct ExploreView: View {
                         }
                         .frame(height: 200, alignment: .top)
                         .ignoresSafeArea()
+                    
                     // MARK: - Categories
-                    CategoriesScrollView()
+                    CategoriesScrollView(viewModel: viewModel)
                         .padding(.top, -30)
+                    
                     // MARK: - Upcoming events
                     ScrollView(.vertical, showsIndicators: false ){
                         SectionView(
                             title: "Upcoming Events",
-                            events: viewModel.upcomingEvents
+                            events: viewModel.selectedCategory == nil ? viewModel.upcomingEvents : viewModel.filteredUpcomingEvents,
+                            noEventsMessage: viewModel.selectedCategory == nil ? "" : "Sorry, there are no Upcoming Events available in \(viewModel.selectedCategory?.name ?? "") category."
                         )
                         
                         // MARK: - Nearby Events
                         SectionView(
                             title: "Nearby You",
-                            events: viewModel.nearbyEvents
+                            events: viewModel.selectedCategory == nil ? viewModel.nearbyEvents : viewModel.filteredNearbyEvents,
+                            noEventsMessage: viewModel.selectedCategory == nil ? "" : "Sorry, there are no Nearby Events available in \(viewModel.selectedCategory?.name ?? "") category."
                         )
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .padding(.top, 10)
                 }
             }
+            .ignoresSafeArea(edges: .top)
             .onAppear {
                 viewModel.fetchData(location: selectedLocation)
             }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarHidden(true)
         }
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarHidden(true)
         .ignoresSafeArea()
     }
 }
@@ -57,6 +62,7 @@ struct ExploreView: View {
 struct SectionView: View {
     let title: String
     let events: [EventModel]
+    let noEventsMessage: String
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -74,18 +80,26 @@ struct SectionView: View {
             }
             .padding(.horizontal, 16)
             
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 16) {
-                    ForEach(events, id: \.id) { event in
-                        NavigationLink(destination: EventDetailsScreen()) {
-                            CardView(
-                                eventTitle: event.title,
-                                eventDate: formatDate(event.dates.first?.start),
-                                attendees: ["https://example.com/avatar1.jpg", "https://example.com/avatar2.jpg", "https://example.com/avatar3.jpg"],
-                                goingCount: event.favoritesCount,
-                                location: event.location.slug.displayName,
-                                eventImage: event.images.first?.image?.absoluteString ?? ""
-                            )
+            if events.isEmpty {
+                Text(noEventsMessage)
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 20)
+            } else {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 16) {
+                        ForEach(events, id: \.id) { event in
+                            NavigationLink(destination: EventDetailsScreen()) {
+                                CardView(
+                                    eventTitle: event.title,
+                                    eventDate: formatDate(event.dates.first?.start),
+                                    attendees: ["https://example.com/avatar1.jpg", "https://example.com/avatar2.jpg", "https://example.com/avatar3.jpg"],
+                                    goingCount: event.favoritesCount,
+                                    location: event.location.slug.displayName,
+                                    eventImage: event.images.first?.image?.absoluteString ?? ""
+                                )
+                            }
                         }
                     }
                 }
@@ -94,10 +108,10 @@ struct SectionView: View {
         .shadow(color: Color(red: 0.31, green: 0.33, blue: 0.53).opacity(0.06), radius: 15, x: 0, y: 8)
     }
     
+    // MARK: - Date Formatter
     private func formatDate(_ date: Date?) -> String {
         guard let date = date else { return "N/A" }
         
-        // Определяем словарь сокращений месяцев
         let monthAbbreviations: [String: String] = [
             "January": "Jan",
             "February": "Feb",
@@ -113,18 +127,19 @@ struct SectionView: View {
             "December": "Dec"
         ]
         
-        // Форматируем дату
         let formatter = DateFormatter()
-        formatter.dateFormat = "d MMMM" // Пример: 1 January
+        formatter.dateFormat = "d MMMM"
         let formattedDate = formatter.string(from: date)
         
-        // Заменяем месяц на сокращенный
         for (full, abbreviated) in monthAbbreviations {
             if formattedDate.contains(full) {
                 return formattedDate.replacingOccurrences(of: full, with: abbreviated)
             }
         }
         
-        return formattedDate // Если сокращения не нашлись
+        return formattedDate
     }
+}
+#Preview {
+    ExploreView()
 }
