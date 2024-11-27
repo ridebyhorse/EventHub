@@ -24,6 +24,7 @@
 		93083D2A2CEB994500A0C392 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D292CEB994500A0C392 /* ViewRouter.swift */; };
 		93083D2C2CEB995A00A0C392 /* TabBarDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D2B2CEB995A00A0C392 /* TabBarDimensions.swift */; };
 		93083D2E2CEB996E00A0C392 /* TabBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D2D2CEB996E00A0C392 /* TabBarIcon.swift */; };
+		93083D442CF11A7600A0C392 /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93083D432CF11A7600A0C392 /* ExploreViewModel.swift */; };
 		AD508F032CED687D00CA735C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD508F022CED687D00CA735C /* GoogleService-Info.plist */; };
 		AD508F062CED698100CA735C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AD508F052CED698100CA735C /* FirebaseAnalytics */; };
 		AD508F082CED698100CA735C /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = AD508F072CED698100CA735C /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -76,6 +77,9 @@
 		CB199C5E2CEE6542006D2476 /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB199C5D2CEE653E006D2476 /* PlaceModel.swift */; };
 		CB199C622CEE7AD3006D2476 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB199C612CEE7ACE006D2476 /* EventModel.swift */; };
 		CB199C642CEE88D7006D2476 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB199C632CEE88D4006D2476 /* Location.swift */; };
+		CB3556AB2CF64D6500178BC1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9379370E2CF46B1B008F3412 /* Kingfisher */; };
+		CB3556AE2CF64ED900178BC1 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3556AD2CF64ED100178BC1 /* NotificationService.swift */; };
+		CB3556B02CF6503200178BC1 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3556AF2CF6500D00178BC1 /* NotificationsView.swift */; };
 		CB406E1E2CEFA48F007C8F49 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB406E1B2CEFA48F007C8F49 /* CategoryView.swift */; };
 		CB406E1F2CEFA48F007C8F49 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB406E1C2CEFA48F007C8F49 /* ExploreView.swift */; };
 		CB406E202CEFA48F007C8F49 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB406E1A2CEFA48F007C8F49 /* CardView.swift */; };
@@ -133,6 +137,7 @@
 		93083D292CEB994500A0C392 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		93083D2B2CEB995A00A0C392 /* TabBarDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDimensions.swift; sourceTree = "<group>"; };
 		93083D2D2CEB996E00A0C392 /* TabBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIcon.swift; sourceTree = "<group>"; };
+		93083D432CF11A7600A0C392 /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
 		AD508F022CED687D00CA735C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AD613BCE2CF441E2003E6A37 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		AD613BD02CF44227003E6A37 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -159,6 +164,8 @@
 		CB199C5D2CEE653E006D2476 /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		CB199C612CEE7ACE006D2476 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		CB199C632CEE88D4006D2476 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		CB3556AD2CF64ED100178BC1 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		CB3556AF2CF6500D00178BC1 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		CB406E1A2CEFA48F007C8F49 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		CB406E1B2CEFA48F007C8F49 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		CB406E1C2CEFA48F007C8F49 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
@@ -201,6 +208,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB3556AB2CF64D6500178BC1 /* Kingfisher in Frameworks */,
 				AD508F1E2CED698100CA735C /* FirebaseFirestoreCombine-Community in Frameworks */,
 				AD508F342CED698100CA735C /* FirebaseVertexAI in Frameworks */,
 				AD508F202CED698100CA735C /* FirebaseFunctions in Frameworks */,
@@ -261,6 +269,7 @@
 		796256502CEBC5820019F6E4 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				CB3556AC2CF64EC500178BC1 /* Notifications */,
 				AD613BE42CF44300003E6A37 /* Favorites  */,
 				790A62BF2CF4E0500011609E /* SeeAllEventsScreen */,
 				EB65CAFA2CF0BC64006B5AEC /* EventDetailsScreen */,
@@ -320,9 +329,9 @@
 		93083D0D2CEB924D00A0C392 /* EventHub */ = {
 			isa = PBXGroup;
 			children = (
+				CB743EC12CEB932400E22966 /* App */,
 				CB199C542CEE44C8006D2476 /* Models */,
 				CB199C512CEE4308006D2476 /* Services */,
-				CB743EC12CEB932400E22966 /* App */,
 				796256502CEBC5820019F6E4 /* Screens */,
 				CB743ECA2CEB938200E22966 /* Info.plist */,
 				AD508F022CED687D00CA735C /* GoogleService-Info.plist */,
@@ -435,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				CB199C522CEE4314006D2476 /* NetworkService.swift */,
+				CB3556AD2CF64ED100178BC1 /* NotificationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -454,10 +464,19 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		CB3556AC2CF64EC500178BC1 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				CB3556AF2CF6500D00178BC1 /* NotificationsView.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		CB406E182CEFA451007C8F49 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
 				CB406E192CEFA45A007C8F49 /* View */,
+				93083D432CF11A7600A0C392 /* ExploreViewModel.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -640,6 +659,9 @@
 			dependencies = (
 			);
 			name = EventHub;
+			packageProductDependencies = (
+				9379370E2CF46B1B008F3412 /* Kingfisher */,
+			);
 			productName = EventHub;
 			productReference = 93083D0B2CEB924D00A0C392 /* EventHub.app */;
 			productType = "com.apple.product-type.application";
@@ -707,6 +729,7 @@
 				AD613BD52CF4426A003E6A37 /* ResetPasswordView.swift in Sources */,
 				CB199C5E2CEE6542006D2476 /* PlaceModel.swift in Sources */,
 				AD9259982CEC2A9500F74E65 /* CustomTextField.swift in Sources */,
+				CB3556AE2CF64ED900178BC1 /* NotificationService.swift in Sources */,
 				EB65CB0C2CF0CAFE006B5AEC /* InfoItem.swift in Sources */,
 				AD674D8D2CF79EF7000E14A6 /* SearchToolBarView.swift in Sources */,
 				AD92599C2CEC75CC00F74E65 /* DefaultButtons.swift in Sources */,
@@ -750,6 +773,7 @@
 				CB71B32A2CF27ADD00716F2F /* SearchView.swift in Sources */,
 				CB199C642CEE88D7006D2476 /* Location.swift in Sources */,
 				EB65CB002CF0BFE3006B5AEC /* SharedView.swift in Sources */,
+				CB3556B02CF6503200178BC1 /* NotificationsView.swift in Sources */,
 				CB5A4D422CEFD2A6005AD2A9 /* EventsModel.swift in Sources */,
 				AD613BE62CF44300003E6A37 /* FavoritesViewModel.swift in Sources */,
 				AD613BE72CF44300003E6A37 /* FavoritesToolBarView.swift in Sources */,
@@ -773,6 +797,7 @@
 				CB199C5C2CEE648B006D2476 /* SearchEventModel.swift in Sources */,
 				790A62C12CF4E0780011609E /* SeeAllEventsScreenView.swift in Sources */,
 				93083D0F2CEB924D00A0C392 /* EventHubApp.swift in Sources */,
+				93083D442CF11A7600A0C392 /* ExploreViewModel.swift in Sources */,
 				EB8D01FA2CECDD06000AB98A /* OnboardingPageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -997,6 +1022,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9379370D2CF46B1B008F3412 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.1;
+			};
+		};
 		AD508F042CED698100CA735C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1024,6 +1057,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9379370E2CF46B1B008F3412 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9379370D2CF46B1B008F3412 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		AD508F052CED698100CA735C /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AD508F042CED698100CA735C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
