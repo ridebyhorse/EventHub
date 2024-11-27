@@ -24,7 +24,7 @@ struct ContentView: View {
                 case .events:
                     EventsScreenView()
                 case .add:
-                    Text("Favorites")
+                    FavoritesView()
                 case .map:
                     Text("Map View")
                 case .profile:

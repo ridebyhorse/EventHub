@@ -17,35 +17,31 @@ struct FavoritesView: View {
 
     var body: some View {
         NavigationView {
-                VStack(spacing: 16) {
-                    if viewModel.favorites.isEmpty {
-                        FavoritesToolBarView(viewModel: viewModel)
-                        FavoriteEmptyView()
-                    } else {
-                        FavoritesToolBarView(viewModel: viewModel)
-                        ScrollView {
-                        ForEach(viewModel.favorites, id: \.self) { event in
+            VStack(spacing: 16) {
+                if viewModel.favorites.isEmpty {
+                    FavoritesToolBarView(viewModel: viewModel)
+                    FavoriteEmptyView()
+                } else {
+                    FavoritesToolBarView(viewModel: viewModel)
+                    ScrollView {
+                        ForEach($viewModel.favorites, id: \.self) { $event in
                             HStack {
-                               
                                 Image("mockNew")
                                     .resizable()
-                                    .frame(
-                                        width: UIScreen.main.bounds.width * 0.2,
-                                        height: UIScreen.main.bounds.height * 0.1
-                                    )
+                                    .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.height * 0.1)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
 
-                                
                                 VStack(alignment: .leading, spacing: 8) {
                                     HStack {
-                                        Text(event.date ?? "Unknown Date")
+                                        Text(event.publicationDate.formattedForEvent() ?? "Unknown Date")
                                             .font(.custom(EventHubFont.subtitle2))
-                                .foregroundColor(.mainBlue)
+                                            .foregroundColor(.mainBlue)
                                         Spacer()
 
-                                     
-                                        Button(action: {
-                                            viewModel.deleteFavorite(event: event)
+        Button(action: {
+            Task{
+                await  viewModel.deleteFavorite(event: event)
+            }
                                         }) {
                                             Image(Buttons.addFavorite)
                                                 .resizable()
@@ -59,11 +55,7 @@ struct FavoritesView: View {
 
                                     HStack(spacing: 4) {
                                         Image("location")
-                                        Text(event.location ?? "Unknown Location")
-                                            .font(.custom(EventHubFont.subtitle2))
-                                            .foregroundColor(.gray)
-                                        
-                                        Text(event.city ?? "Unknown City")
+                        Text(event.location.slug.formattedLocation ?? "Unknown Location")
                                             .font(.custom(EventHubFont.subtitle2))
                                             .foregroundColor(.gray)
                                     }
@@ -81,25 +73,46 @@ struct FavoritesView: View {
                         }
                     }
                 }
-               
             }
-                .padding(.top, 12)
+            .padding(.top, 12)
         }
     }
 }
 
 #Preview {
-    let previewContext = {
-        let container = NSPersistentContainer(name: "Favorites")
-        container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
-        container.loadPersistentStores { _, error in
-            if let error = error {
-                fatalError("Failed to load in-memory store: \(error)")
+    let mockFavoritesDataController = FavoritesDataController()
+    let mockFavoritesViewModel = FavoritesViewModel(dataController: mockFavoritesDataController)
+
+    // Create a sample event for testing
+    let mockEvent = EventModel(
+        id: 1,
+        publicationDate: Date(),
+        dates: [],
+        title: "Sample Event",
+        shortTitle: "Sample",
+        slug: "sample-event",
+        place: nil,
+        description: "A sample event for testing.",
+        bodyText: "Details about the sample event.",
+        location: ShortLocationModel(slug: .krasnoyarsk), // Adjust this to match your model
+        categories: ["Music", "Festival"],
+        tagline: "Join the fun!",
+        price: "Free",
+        isFree: true,
+        images: [],
+        favoritesCount: 10,
+        commentsCount: 5,
+        siteUrl: URL(string: "https://www.example.com")!,
+        tags: ["test", "event"]
+    )
+
+    mockFavoritesViewModel.favorites = [mockEvent]
+
+    return FavoritesView()
+        .environmentObject(mockFavoritesViewModel)
+        .onAppear {
+            Task {
+                await mockFavoritesViewModel.setup()
             }
         }
-        return container.viewContext
-    }()
-
-    FavoritesView()
-        .environmentObject(FavoritesDataController())
 }
