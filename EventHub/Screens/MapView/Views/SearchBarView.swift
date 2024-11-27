@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchBarView: View {
-    @State private var searchText: String = ""
+    @Binding var searchText: String
     
     var body: some View {
         Rectangle()
@@ -43,5 +43,5 @@ struct SearchBarView: View {
 
 
 #Preview {
-    SearchBarView()
+    SearchBarView(searchText: .constant(" "))
 }

@@ -12,22 +12,41 @@ import CoreLocation
 struct MapViewScreen: View {
     
     @StateObject private var locationManager = LocationManager()
+//    @State private var annotations: [CustomMapAnnotation] = []
+    @State private var mapRegion: MKCoordinateRegion
     
-    @State private var mapRegion: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 55.61662499999999, longitude: 37.68393099999999), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+    init(location: Location = .msk) {
+        _mapRegion = State(initialValue: MKCoordinateRegion(
+            center: location.coordinates,
+            span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        ))
+    }
     
-    @Binding var text: String
     
     var body: some View {
         
         ZStack {
-            Map(coordinateRegion: $mapRegion)
+                        Map(coordinateRegion: $mapRegion)
+//            Map(coordinateRegion: $mapRegion, annotationItems: annotations) { annotation in
+//                MapAnnotation(coordinate: annotation.coordinate) {
+//                    VStack {
+//                        Image(systemName: annotation.imageName)
+//                            .resizable()
+//                            .frame(width: 40, height: 40)
+//                            .background(.red)
+//                            .clipShape(Circle())
+//                            .shadow(radius: 5)
+//                    }
+//                }
+//            }
+//            .edgesIgnoringSafeArea(.all)
             
             VStack {
                 HStack {
-                    /// SearchBar
-                    SearchBarView()
-                        .previewLayout(.sizeThatFits)
-                    
+                    //                    /// SearchBar
+                    //                    SearchBarView(searchText: $text)
+                    //                        .previewLayout(.sizeThatFits)
+                    //                    
                     /// ButtonLocation
                     Button(action: {
                         locationManager.requestLocation()
@@ -58,18 +77,18 @@ struct MapViewScreen: View {
                 
                 Spacer()
                 
-                EventView(
-                    event: MockEvent(
-                        image: "MockEventImage",
-                        title: "Jo Malone London’s Mother’s Day Presents ",
-                        date: .now,
-                        locationName: "Radius Gallery",
-                        city: "Santa Cruz, CA",
-                        state: "CA",
-                        isUpcoming: true
-                    )
-                )
-                .padding(.bottom, 128)
+                //                EventView(
+                //                    event: MockEvent(
+                //                        image: "MockEventImage",
+                //                        title: "Jo Malone London’s Mother’s Day Presents ",
+                //                        date: .now,
+                //                        locationName: "Radius Gallery",
+                //                        city: "Santa Cruz, CA",
+                //                        state: "CA",
+                //                        isUpcoming: true
+                //                    )
+                //                )
+                //                .padding(.bottom, 128)
             }
             //            .padding(.top, 45)
             
@@ -81,9 +100,10 @@ struct MapViewScreen: View {
                 mapRegion.center = location
             }
         }
+    
     }
 }
 
 #Preview {
-    MapViewScreen(text: .constant("asdasd"))
+    MapViewScreen()
 }

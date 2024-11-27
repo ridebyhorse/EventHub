@@ -105,6 +105,7 @@
 		EB8D01F42CECC976000AB98A /* ActionButtonPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01F32CECC976000AB98A /* ActionButtonPageView.swift */; };
 		EB8D01F62CECDB42000AB98A /* BackgroundEllipseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01F52CECDB42000AB98A /* BackgroundEllipseView.swift */; };
 		EB8D01FA2CECDD06000AB98A /* OnboardingPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01F92CECDD06000AB98A /* OnboardingPageModel.swift */; };
+		EBB2D41D2CF60C6A001E4786 /* CustomMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB2D41C2CF60C6A001E4786 /* CustomMapAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -182,6 +183,7 @@
 		EB8D01F32CECC976000AB98A /* ActionButtonPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonPageView.swift; sourceTree = "<group>"; };
 		EB8D01F52CECDB42000AB98A /* BackgroundEllipseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundEllipseView.swift; sourceTree = "<group>"; };
 		EB8D01F92CECDD06000AB98A /* OnboardingPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageModel.swift; sourceTree = "<group>"; };
+		EBB2D41C2CF60C6A001E4786 /* CustomMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMapAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -500,6 +502,7 @@
 				EB7E4DCE2CF4CE1F003E3B94 /* MapViewScreen.swift */,
 				EB7E4DD02CF4CE29003E3B94 /* Views */,
 				EB7E4DD12CF4CE34003E3B94 /* ViewModel */,
+				EBB2D41B2CF60C4D001E4786 /* Model */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -578,6 +581,14 @@
 			isa = PBXGroup;
 			children = (
 				EB8D01F92CECDD06000AB98A /* OnboardingPageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EBB2D41B2CF60C4D001E4786 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EBB2D41C2CF60C6A001E4786 /* CustomMapAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -685,6 +696,7 @@
 				CBB7F1082CED1AC70065366F /* Persistence.swift in Sources */,
 				EB7E4DCF2CF4CE1F003E3B94 /* MapViewScreen.swift in Sources */,
 				CBB7F1092CED1AC70065366F /* EventHub.xcdatamodeld in Sources */,
+				EBB2D41D2CF60C6A001E4786 /* CustomMapAnnotation.swift in Sources */,
 				ADA04A842CEEA8460001F7E4 /* MainNavigation.swift in Sources */,
 				793CBF512CED0F1C00E1B230 /* EventsScreenViewModel.swift in Sources */,
 				EB65CB022CF0C018006B5AEC /* ActionButtonCancel.swift in Sources */,
