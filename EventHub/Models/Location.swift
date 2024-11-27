@@ -5,7 +5,7 @@
 //  Created by Мария Нестерова on 21.11.2024.
 //
 
-enum Location: String, Codable {
+enum Location: String, Codable, CaseIterable {
     case spb                    // Санкт-Петербург
     case msk                    // Москва
     case nsk                    // Новосибирск

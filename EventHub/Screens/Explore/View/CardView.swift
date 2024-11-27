@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct CardView: View {
-    
+//    @EnvironmentObject var favoritesDataController: FavoritesDataController
+//    @StateObject private var viewModel: FavoritesViewModel
+//
+//    init() {
+//        _viewModel = StateObject(wrappedValue: FavoritesViewModel())
+//    }
     var eventTitle: String
     var eventDate: String
     var attendees: [String]
     var goingCount: Int
     var location: String
     var eventImage: String
-    
     var body: some View {
         ZStack {
             
@@ -27,6 +31,7 @@ struct CardView: View {
             VStack(spacing: 10) {
                 // MARK: - Image
                 ZStack(alignment: .top) {
+//                    viewModel.saveFavorite(title: <#T##String#>, date: <#T##String#>, location: <#T##String#>, city: <#T##String#>)
                     Image("img")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -52,15 +57,23 @@ struct CardView: View {
                         Spacer()
                         
                         // MARK: - Mark
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 7)
-                                .fill(Color.white.opacity(0.7))
-                                .frame(width: 30, height: 30)
-                            Image(systemName: "bookmark.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 15, height: 15)
-                                .foregroundColor(.red)
+                            ZStack {
+                                
+                                
+                                RoundedRectangle(cornerRadius: 7)
+                                    .fill(Color.white.opacity(0.7))
+                                    .frame(width: 30, height: 30)
+                                Button(action:{
+                                    
+                                })
+                                {
+                                Image(systemName: "bookmark.fill")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 15, height: 15)
+                                    .foregroundColor(.red)
+                                
+                            }
                         }
                         .padding(.top, -8)
                     }
@@ -127,6 +140,7 @@ struct CardView: View {
         location: "36 Guild Street London, UK",
         eventImage: "event_image"
     )
+    
 }
 
 

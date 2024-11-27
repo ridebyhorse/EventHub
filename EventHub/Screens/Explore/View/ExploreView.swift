@@ -9,9 +9,15 @@
 import SwiftUI
 
 struct ExploreView: View {
-    
+//    @EnvironmentObject var favoritesDataController: FavoritesDataController
+//    @StateObject private var viewModel: FavoritesViewModel
+//
+//    init() {
+//        _viewModel = StateObject(wrappedValue: FavoritesViewModel())
+//    }
     var body: some View {
-//        NavigationView {
+        @EnvironmentObject var navigationManager: NavigationManager
+        
             ZStack(alignment: .top) {
                 
                     VStack(alignment: .leading, spacing: 10){
@@ -89,4 +95,7 @@ struct ExploreView: View {
 //        }
         .ignoresSafeArea()
     }
+}
+#Preview {
+    ExploreView()
 }

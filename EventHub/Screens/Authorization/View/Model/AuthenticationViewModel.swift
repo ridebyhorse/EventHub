@@ -10,7 +10,6 @@ import FirebaseAuth
 import GoogleSignIn
 import GoogleSignInSwift
 import FirebaseCore
-import UIKit
 
 //MARK: - Enum for Auth
 enum AuthenticationState {

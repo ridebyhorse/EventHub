@@ -110,7 +110,7 @@ struct SignUpView: View {
                     .foregroundColor(.mainBlack)
                     .font(.custom(EventHubFont.body3.name, size: 14))
                 Button(action: {
-//                    navigate to sign In
+                    navigationManager.currentDestination = .signIn
                 }) {
                     Text(signInText)
                         .foregroundColor(.primaryBlue)
