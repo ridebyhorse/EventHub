@@ -20,9 +20,10 @@ struct EventHubApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environment(\.managedObjectContext, dataController.container.viewContext)
+            MainNavigation.init(Model: AuthenticationViewModel(favoritesDataController: FavoritesDataController()))
+//            ContentView()
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }
