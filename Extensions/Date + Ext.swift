@@ -34,4 +34,11 @@ extension Date {
         
         return "\(datePart.capitalized)- \(dayOfWeekPart.prefix(3).capitalized) -\(timePart)"
     }
+    
+    func formattedForEventDate() -> String {
+          let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
+          return formatter.string(from: self)
+      }
 }

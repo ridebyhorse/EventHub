@@ -16,7 +16,7 @@ struct EventDetailsScreen: View {
     @State private var showSharedView: Bool = false
     @State private var scrollOffset: CGFloat = 0
     
-    let mockImageHTTPS = "https://kudago.com/media/images/agent/19/d1/19d170f390f102f2bfea80e543be281f.jpg"
+    let event: EventModel
     
     // MARK: - Body
     var body: some View {
@@ -36,7 +36,7 @@ struct EventDetailsScreen: View {
                     /// Image and ButtonShare
                     ZStack(alignment: .bottomTrailing) {
                         
-                        ImageEventDetail(imageURL: mockImageHTTPS)
+                        ImageEventDetail(imageURL: event.images.first?.image)
                         
                         ActionButtonHeader(
                             icon: "shared",
@@ -55,39 +55,52 @@ struct EventDetailsScreen: View {
                     /// MainContent - Tittle, Date, Location, Organizer, Description
                     VStack(alignment: .leading) {
                         /// Title
-                        Text("International Band Music Concert")
+                        Text(event.title.capitalizingFirstLetter())
                             .font(.custom(EventHubFont.h2))
                             .foregroundColor(.mainBlack)
                             .frame(width: 313, alignment: .topLeading)
                             .padding(.top, 70)
                         
                         /// Info Date and Time
-                        InfoItem(image: "Date", title: "14 December, 2021", subTitle: "Tuesday, 4:00PM - 9:00PM")
+                        InfoItem(image: "Date",
+                                 title: event.dates.first?.start.formattedForEventDate() ?? "nil",
+                                 subTitle: event.dates.first?.start.formattedForEvent() ?? "nil")
                         
                         /// Info Location
-                        InfoItem(image: "Location", title: "Gala Convention Center", subTitle: "36 Guild Street London, UK")
+                        InfoItem(image: "Location", title: "Gala Convention Center", subTitle: event.location.slug.formattedLocation)
                             .padding(.top, 16)
                         
                         /// Info Name Organizer
-                        OrganizationNameItem(imageURL: mockImageHTTPS, name: "Ashfak Sayem", position: "Organizer")
+                        OrganizationNameItem(imageURL: event.images.first?.image, name: event.tagline, position: "Organizer")
                             .padding(.top, 16)
                         
                         /// About Event
-                        Text("About Event")
-                            .font(.custom(EventHubFont.title1))
-                            .foregroundColor(.typographyDarkGrey)
-                            .padding(.top, 16)
-                            .padding(.trailing, 20)
+                        let cleanedDescription = removeHTMLTags(from: event.description)
+                        if cleanedDescription.isEmpty {
+                            Text("Ошибка при загрузке текста")
+                        } else {
+                            Text(cleanedDescription)
+                                .font(.custom(EventHubFont.title1))
+                                .foregroundColor(.typographyDarkGrey)
+                                .opacity(0.9)
+                                .lineSpacing(4)
+                                .padding(.top, 16)
+                                .padding(.trailing, 20)
+                        }
                         
                         /// Description
-                        Text("Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. Read More...Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. Read More...Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will betrucks will be available for purchase. Read More...Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. Read More...Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will beand have a great time. Food from local food trucks will be available for purchase. Read More...Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will betrucks will be available for purchase. Read More...Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. Read More...Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food f")
-                            .font(.custom(EventHubFont.body1))
-                            .foregroundColor(.typographyDarkGrey)
-                            .opacity(0.9)
-                            .lineSpacing(4)
-                            .padding(.top, 6)
-                            .padding(.trailing, 20)
-                        
+                        let cleanedText = removeHTMLTags(from: event.bodyText)
+                        if cleanedText.isEmpty {
+                            Text("Ошибка при загрузке текста")
+                        } else {
+                            Text(cleanedText)
+                                .font(.custom(EventHubFont.body1))
+                                .foregroundColor(.typographyDarkGrey)
+                                .opacity(0.9)
+                                .lineSpacing(4)
+                                .padding(.top, 6)
+                                .padding(.trailing, 20)
+                        }
                     }
                     .padding(.leading, 20)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -110,7 +123,7 @@ struct EventDetailsScreen: View {
                     .padding(.bottom, 28)
                     
                     /// Title
-                    Text("Event Details")
+                    Text(event.shortTitle)
                         .font(.custom(EventHubFont.h4))
                         .foregroundColor(.white)
                         .padding(.leading, 8)
@@ -142,8 +155,10 @@ struct EventDetailsScreen: View {
             SharedView(isShowing: $showSharedView, isShowingButton: $isButtonShow)
         }
     }
-}
-
-#Preview {
-    EventDetailsScreen()
+    // MARK: - Methods
+    private func removeHTMLTags(from htmlString: String) -> String {
+        let regex = try! NSRegularExpression(pattern: "<.*?>", options: [])
+        let range = NSRange(location: 0, length: htmlString.utf16.count)
+        return regex.stringByReplacingMatches(in: htmlString, options: [], range: range, withTemplate: "")
+    }
 }

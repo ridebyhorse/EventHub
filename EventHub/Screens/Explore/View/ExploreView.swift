@@ -90,9 +90,9 @@ struct SectionView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 16) {
                         ForEach(events, id: \.id) { event in
-                            NavigationLink(destination: EventDetailsScreen()) {
+                            NavigationLink(destination: EventDetailsScreen(event: event)) {
                                 CardView(
-                                    eventTitle: event.title,
+                                    eventTitle: event.title.capitalizingFirstLetter(),
                                     eventDate: formatDate(event.dates.first?.start),
                                     attendees: ["https://example.com/avatar1.jpg", "https://example.com/avatar2.jpg", "https://example.com/avatar3.jpg"],
                                     goingCount: event.favoritesCount,

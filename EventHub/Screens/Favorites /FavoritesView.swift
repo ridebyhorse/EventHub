@@ -88,18 +88,18 @@ struct FavoritesView: View {
     }
 }
 
-#Preview {
-    let previewContext = {
-        let container = NSPersistentContainer(name: "Favorites")
-        container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
-        container.loadPersistentStores { _, error in
-            if let error = error {
-                fatalError("Failed to load in-memory store: \(error)")
-            }
-        }
-        return container.viewContext
-    }()
-
-    FavoritesView()
-        .environmentObject(FavoritesDataController())
-}
+//#Preview {
+//    let previewContext = {
+//        let container = NSPersistentContainer(name: "Favorites")
+//        container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
+//        container.loadPersistentStores { _, error in
+//            if let error = error {
+//                fatalError("Failed to load in-memory store: \(error)")
+//            }
+//        }
+//        return container.viewContext
+//    }()
+//
+//    FavoritesView()
+//        .environmentObject(FavoritesDataController())
+//}
