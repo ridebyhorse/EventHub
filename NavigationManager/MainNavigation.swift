@@ -16,32 +16,30 @@ struct MainNavigation: View {
             Group {
                 switch navigationManager.currentDestination {
                 case .signIn:
-                    SignInView(Model: Model)
-                        .environmentObject(navigationManager)
+                    SignInView(viewModel: Model)
+                        
                 case .signUp:
                     SignUpView(Model: Model)
-                        .environmentObject(navigationManager)
-                case .contentView:
-                    ContentView()
-                        .environmentObject(navigationManager)
+                        
                 case .resetPassword:
                     ResetPasswordView(Model: Model)
-                        .environmentObject(navigationManager)
+                    
                 case .main:
                     ContentView()
-                        .environmentObject(navigationManager)
-//                case .events:
-//                    EventView(event: MockEvent())
-//                        .environmentObject(navigationManager)
-//                case .eventDetail:
-//                    EventDetailsScreen(eventID: "1")
-//                        .environmentObject(navigationManager)
-//                case .search:
-//                    SearchView()
-//                        .environmentObject(navigationManager)
+                       
+                case .explore:
+                    ExploreView()
+                
+                case .favorites:
+                    FavoritesView()
+                    
+                case .search:
+                    SearchView(viewModel: SearchViewModel(location: .msk))
                 }
             }
+           
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .environmentObject(navigationManager)
     }
 }

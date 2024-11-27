@@ -14,7 +14,7 @@ struct SignInView: View {
     // MARK: - Property Wrappers
     @State var isSaved: Bool = false
     @State var navigate: Bool = false
-    @ObservedObject var Model:  AuthenticationViewModel
+    @ObservedObject var viewModel:  AuthenticationViewModel
     @EnvironmentObject var navigationManager: NavigationManager
     //MARK: - Properties
     var togglePrompt: String = ""
@@ -45,7 +45,7 @@ struct SignInView: View {
                     
                     CustomTextField(
                         placeholder: AppTexts.Authentication.placeholderEmail,
-                        text: $Model.emailText,
+                        text: $viewModel.emailText,
                         isSecure: false,
                         imageName: AppTexts.Authentication.envelope,
                         keyboardType: .emailAddress
@@ -53,7 +53,7 @@ struct SignInView: View {
 
                     CustomTextField(
                         placeholder: AppTexts.Authentication.placeholderPassword,
-                        text: $Model.passwordText,
+                        text: $viewModel.passwordText,
                         isSecure: true,
                         imageName: AppTexts.Authentication.lock
                     )
@@ -63,18 +63,21 @@ struct SignInView: View {
                 //MARK: - Toggle
                 HStack {
                     Toggle(togglePrompt, isOn: $isSaved)
-                        .tint(.primaryBlue)
-                        .frame(width: 32.3, height: 19)
-                        .scaleEffect(0.7)
-                        .padding(.leading, 28)
-
+                   
+                    .padding(.leading, 28)
+                    .tint(.primaryBlue)
+                    .frame(width: 32.3, height: 19)
+                    .scaleEffect(0.7)
+                    .frame(width: 32.3, height: 19)
+                  
+                    
                     Text(AppTexts.Common.toggleText)
                         .padding(.leading, 20)
 
                     Spacer()
 
                     Button(action: {
-//                       navigate to reset password
+                        navigationManager.currentDestination = .resetPassword
                     }) {
                         Text(AppTexts.Authentication.forgotPass)
                             .foregroundColor(.mainBlack)
@@ -91,12 +94,11 @@ struct SignInView: View {
                 //MARK: - Sign In
                 DefaultSignInButton(buttonText: AppTexts.Authentication.signButton, arrowRight: AppTexts.Authentication.arrowRight) {
                     Task {
-                // Call the async function inside Task
-                        let success = try await Model.SignIn()
+                        let success = try await viewModel.SignIn()
                     if success {
-//                       navigate to contentview
+                        navigationManager.currentDestination = .main
                     } else {
-                        Model.showAlert = true
+                        viewModel.showAlert = true
                         }
                     }
             }
@@ -109,7 +111,7 @@ struct SignInView: View {
                     .padding(.vertical, 20)
 
                 //MARK: - Login with Google
-                GoogleLoginButton(Model: Model, mainIcon: AppTexts.Authentication.mainIcon, buttonText: AppTexts.Authentication.logGoogle)
+                GoogleLoginButton(Model: viewModel, mainIcon: AppTexts.Authentication.mainIcon, buttonText: AppTexts.Authentication.logGoogle)
 
                 .padding(.horizontal, 50)
                 //MARK: - Bottom
@@ -118,7 +120,7 @@ struct SignInView: View {
                         .foregroundColor(.mainBlack)
                         .font(.custom(EventHubFont.body3.name, size: 14))
                     Button(action: {
-// navigate to sign up
+                        navigationManager.currentDestination = .signUp
                     }) {
                         Text(AppTexts.Authentication.signUpText)
                             .foregroundColor(.primaryBlue)
@@ -133,18 +135,25 @@ struct SignInView: View {
             .background(Color(.systemBackground))
             .ignoresSafeArea()
             .navigationBarBackButtonHidden(true)
-            .alert(isPresented: $Model.showAlert) {
+            .alert(isPresented: $viewModel.showAlert) {
                 Alert(
                     title: Text("Error"),
-                    message: Text(Model.errorMessage),
+                    message: Text(viewModel.errorMessage),
                     dismissButton: .default(Text("OK"))
                 )
             }
         }
+        .onAppear {
+                    Task {
+                        await viewModel.autoSignIn()
+                        isSaved = UserDefaults.standard.string(forKey: "rememberedEmail") != nil
+                        print("sucess")
+                    }
+                }
     }
 }
 
 #Preview {
-    SignInView(Model:AuthenticationViewModel(favoritesDataController: FavoritesDataController()))
+    SignInView(viewModel:AuthenticationViewModel(favoritesDataController: FavoritesDataController()))
     
 }
