@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct EventModel: Decodable {
+struct EventModel: Decodable, Hashable {
     let id: Int
     let publicationDate: Date
     let dates: [ShortDateRangeModel]
@@ -40,15 +40,15 @@ struct EventModel: Decodable {
     }
 }
 
-struct ShortDateRangeModel: Decodable {
+struct ShortDateRangeModel: Decodable, Hashable {
     let start: Date
     let end: Date
 }
 
-struct ShortPlaceModel: Decodable {
+struct ShortPlaceModel: Decodable, Hashable {
     let id: Int
 }
 
-struct ShortLocationModel: Decodable {
+struct ShortLocationModel: Decodable, Hashable {
     let slug: Location
 }

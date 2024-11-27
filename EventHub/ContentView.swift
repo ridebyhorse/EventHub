@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var viewRouter = ViewRouter()
-    
+    @EnvironmentObject var navigationManager: NavigationManager
     var body: some View {
         GeometryReader { geometry in
             let dimensions = TabBarDimensions(geometry: geometry)
@@ -22,7 +22,7 @@ struct ContentView: View {
                 case .explore:
                     ExploreView()
                 case .events:
-                    EventsScreenView(viewModel: EventsScreenViewModel(events: MockEvent.mockEvents()))
+                    EventsScreenView()
                 case .add:
                     Text("Favorites")
                 case .map:
@@ -65,8 +65,10 @@ struct ContentView: View {
             }
             .edgesIgnoringSafeArea(.bottom)
             .edgesIgnoringSafeArea(.top)
+         
         }
         .environmentObject(viewRouter)
+        
     }
 }
 

@@ -8,18 +8,18 @@
 import SwiftUI
 
 
-enum CategoryColor: String {
-    case red, blue, green, yellow
+enum CategoryColor: String, CaseIterable {
+    case red, orange, green, blue
     
     var color: Color {
         switch self {
         case .red:
             return Color("MainRed")
-        case .blue:
+        case .orange:
             return Color("MainOrange")
         case .green:
             return Color("MainGreen")
-        case .yellow:
+        case .blue:
             return Color("MainLightBlue")
         }
     }
@@ -32,52 +32,52 @@ struct CategoryView: View {
     
     var body: some View {
         ZStack {
-            // Закруглённый фон с цветом и тенью
             RoundedRectangle(cornerRadius: 20)
                 .fill(backgroundColor.color)
-                .frame(width: 106, height: 40)
-            
-            // Контент (иконка + текст)
-            HStack(spacing: 8) {
-                Image(categoryIcon)
+                .frame(width: 120, height: 40)
+
+            HStack(spacing: 6) {
+                Image(systemName: categoryIcon)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 17, height: 17) // Размер иконки
+                    .frame(width: 17, height: 17)
+                    .foregroundColor(.white)
                 
                 Text(categoryName)
-                    .font(.system(size: 14, weight: .medium))
-                    .foregroundColor(.white) // Цвет текста
-                    .frame(maxWidth: 48, alignment: .leading)
+                    .font(.custom(EventHubFont.body2))
+                    .foregroundColor(.white)
+                    .frame(maxWidth: 80)
+               
             }
+            .padding(4)
         }
     }
 }
 
 #Preview {
-    CategoryView(categoryIcon: "sport", categoryName: "Sport", backgroundColor: .yellow)
+    CategoryView(categoryIcon: "sparkles", categoryName: "art", backgroundColor: .blue)
 }
 
 struct CategoriesScrollView: View {
-    // Пример данных категорий
-    let categories = [
-        (icon: "sport", name: "Sport", color: CategoryColor.red),
-        (icon: "music", name: "Music", color: CategoryColor.blue),
-        (icon: "food", name: "Food", color: CategoryColor.green),
-        (icon: "art", name: "Art", color: CategoryColor.yellow)
-    ]
-    
+    @ObservedObject var viewModel: ExploreViewModel
+  
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 16) { // Пространство между категориями
-                ForEach(categories, id: \.name) { category in
-                    CategoryView(
-                        categoryIcon: category.icon,
-                        categoryName: category.name,
-                        backgroundColor: category.color
-                    )
+            HStack(spacing: 16) {
+                
+                ForEach(Array(viewModel.categories.enumerated()), id: \.element.id) { index, category in
+                    Button(action: {
+                        viewModel.selectCategory(category)
+                    }) {
+                        CategoryView(
+                            categoryIcon: category.systemIcon,
+                            categoryName: category.name,
+                            backgroundColor: category.assignedColor(index: index)
+                        )
+                    }
                 }
             }
-            .padding(.horizontal, 16) // Отступы по краям
+            .padding(.horizontal, 16)
         }
         .shadow(color: Color(red: 0.18, green: 0.18, blue: 0.31).opacity(0.12), radius: 10, x: 0, y: 6)
     }

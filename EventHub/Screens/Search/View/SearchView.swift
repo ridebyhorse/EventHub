@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
     @ObservedObject var viewModel: SearchViewModel
-    
+    @EnvironmentObject var navigationManager: NavigationManager
     var body: some View {
         VStack {
             SearchInputView(searchText: $viewModel.searchText)
@@ -27,6 +27,7 @@ struct SearchView: View {
             }
         }
         .navigationTitle("Search")
+        .navigationBarBackButtonHidden()
     }
 }
 
