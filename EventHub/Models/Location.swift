@@ -7,7 +7,7 @@
 
 import CoreLocation
 
-enum Location: String, Codable,  CaseIterable {
+enum Location: String, Codable, CaseIterable, Identifiable {
     case spb                    // Санкт-Петербург
     case msk                    // Москва
     case nsk                    // Новосибирск
@@ -107,4 +107,8 @@ enum Location: String, Codable,  CaseIterable {
             return CLLocationCoordinate2D(latitude: 40.7128, longitude: -74.0060) // Нью-Йорк
         }
     }
+    
+    var id: String {
+          return self.rawValue
+      }
 }
