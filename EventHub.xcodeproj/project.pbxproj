@@ -96,9 +96,9 @@
 		CBB7F1092CED1AC70065366F /* EventHub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBB7F1052CED1AC70065366F /* EventHub.xcdatamodeld */; };
 		CBB7F10C2CED1B250065366F /* Font + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB7F10A2CED1B250065366F /* Font + Ext.swift */; };
 		EB43A74C2CF8949000A33763 /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB43A74B2CF8949000A33763 /* ExampleView.swift */; };
-		EB6111962CF87EA3003F77BF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6111902CF87EA3003F77BF /* LocationManager.swift */; };
+		EB43A74E2CF8AFD100A33763 /* LocationManagerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB43A74D2CF8AFD100A33763 /* LocationManagerVM.swift */; };
+		EB43A7502CF8B00500A33763 /* MapViewScreenn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB43A74F2CF8B00500A33763 /* MapViewScreenn.swift */; };
 		EB6111972CF87EA3003F77BF /* CustomMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6111922CF87EA3003F77BF /* CustomMapAnnotation.swift */; };
-		EB6111982CF87EA3003F77BF /* MapViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6111932CF87EA3003F77BF /* MapViewScreen.swift */; };
 		EB6111992CF87EA3003F77BF /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6111952CF87EA3003F77BF /* SearchBarView.swift */; };
 		EB61119C2CF87EC2003F77BF /* WebViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB61119B2CF87EC2003F77BF /* WebViewScreen.swift */; };
 		EB65CAFC2CF0BFA4006B5AEC /* EventDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65CAFB2CF0BFA4006B5AEC /* EventDetailsScreen.swift */; };
@@ -188,9 +188,9 @@
 		CBB7F1072CED1AC70065366F /* EventHub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventHub.xcdatamodel; sourceTree = "<group>"; };
 		CBB7F10A2CED1B250065366F /* Font + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font + Ext.swift"; sourceTree = "<group>"; };
 		EB43A74B2CF8949000A33763 /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
-		EB6111902CF87EA3003F77BF /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		EB43A74D2CF8AFD100A33763 /* LocationManagerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerVM.swift; sourceTree = "<group>"; };
+		EB43A74F2CF8B00500A33763 /* MapViewScreenn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewScreenn.swift; sourceTree = "<group>"; };
 		EB6111922CF87EA3003F77BF /* CustomMapAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMapAnnotation.swift; sourceTree = "<group>"; };
-		EB6111932CF87EA3003F77BF /* MapViewScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewScreen.swift; sourceTree = "<group>"; };
 		EB6111952CF87EA3003F77BF /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		EB61119B2CF87EC2003F77BF /* WebViewScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewScreen.swift; sourceTree = "<group>"; };
 		EB65CAFB2CF0BFA4006B5AEC /* EventDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsScreen.swift; sourceTree = "<group>"; };
@@ -565,7 +565,7 @@
 		EB61118E2CF87EA3003F77BF /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				EB6111932CF87EA3003F77BF /* MapViewScreen.swift */,
+				EB43A74F2CF8B00500A33763 /* MapViewScreenn.swift */,
 				EB6111942CF87EA3003F77BF /* Views */,
 				EB61118F2CF87EA3003F77BF /* ViewModel */,
 				EB6111912CF87EA3003F77BF /* Model */,
@@ -577,7 +577,7 @@
 		EB61118F2CF87EA3003F77BF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				EB6111902CF87EA3003F77BF /* LocationManager.swift */,
+				EB43A74D2CF8AFD100A33763 /* LocationManagerVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -779,7 +779,6 @@
 			files = (
 				793CBF4C2CED03FE00E1B230 /* EventView.swift in Sources */,
 				AD613BD52CF4426A003E6A37 /* ResetPasswordView.swift in Sources */,
-				EB6111962CF87EA3003F77BF /* LocationManager.swift in Sources */,
 				CB199C5E2CEE6542006D2476 /* PlaceModel.swift in Sources */,
 				AD9259982CEC2A9500F74E65 /* CustomTextField.swift in Sources */,
 				CB3556AE2CF64ED900178BC1 /* NotificationService.swift in Sources */,
@@ -788,6 +787,7 @@
 				790A62C32CF4F8280011609E /* ScrollEventsView.swift in Sources */,
 				93083D2A2CEB994500A0C392 /* ViewRouter.swift in Sources */,
 				CB199C5A2CEE63FC006D2476 /* SearchEventsModel.swift in Sources */,
+				EB43A74E2CF8AFD100A33763 /* LocationManagerVM.swift in Sources */,
 				CB406E1E2CEFA48F007C8F49 /* CategoryView.swift in Sources */,
 				CB406E1F2CEFA48F007C8F49 /* ExploreView.swift in Sources */,
 				CB406E202CEFA48F007C8F49 /* CardView.swift in Sources */,
@@ -849,11 +849,11 @@
 				EB61119C2CF87EC2003F77BF /* WebViewScreen.swift in Sources */,
 				93083D2C2CEB995A00A0C392 /* TabBarDimensions.swift in Sources */,
 				AD613BCF2CF441E2003E6A37 /* AuthenticationViewModel.swift in Sources */,
+				EB43A7502CF8B00500A33763 /* MapViewScreenn.swift in Sources */,
 				CB71B32D2CF29EB000716F2F /* SearchCardView.swift in Sources */,
 				EB8D01F22CECC95F000AB98A /* IndicatorPageView.swift in Sources */,
 				CB199C5C2CEE648B006D2476 /* SearchEventModel.swift in Sources */,
 				790A62C12CF4E0780011609E /* SeeAllEventsScreenView.swift in Sources */,
-				EB6111982CF87EA3003F77BF /* MapViewScreen.swift in Sources */,
 				93083D0F2CEB924D00A0C392 /* EventHubApp.swift in Sources */,
 				93083D442CF11A7600A0C392 /* ExploreViewModel.swift in Sources */,
 				EB8D01FA2CECDD06000AB98A /* OnboardingPageModel.swift in Sources */,
