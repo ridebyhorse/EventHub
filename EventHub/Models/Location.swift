@@ -90,7 +90,7 @@ enum Location: String, Codable, CaseIterable, Identifiable {
         case .kzn:
             return CLLocationCoordinate2D(latitude: 55.7943, longitude: 49.1057) // Казань
         case .vbg:
-            return CLLocationCoordinate2D(latitude: 59.9415, longitude: 30.3298) // Выборг
+            return CLLocationCoordinate2D(latitude: 60.4233, longitude: 28.4439) // Выборг
         case .smr:
             return CLLocationCoordinate2D(latitude: 53.1952, longitude: 50.1006) // Самара
         case .krd:

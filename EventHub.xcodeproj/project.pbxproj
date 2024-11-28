@@ -96,8 +96,9 @@
 		CBB7F1092CED1AC70065366F /* EventHub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBB7F1052CED1AC70065366F /* EventHub.xcdatamodeld */; };
 		CBB7F10C2CED1B250065366F /* Font + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB7F10A2CED1B250065366F /* Font + Ext.swift */; };
 		EB43A74C2CF8949000A33763 /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB43A74B2CF8949000A33763 /* ExampleView.swift */; };
-		EB43A74E2CF8AFD100A33763 /* LocationManagerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB43A74D2CF8AFD100A33763 /* LocationManagerVM.swift */; };
-		EB43A7502CF8B00500A33763 /* MapViewScreenn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB43A74F2CF8B00500A33763 /* MapViewScreenn.swift */; };
+		EB43A7522CF8B22800A33763 /* LocationManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB43A7512CF8B22800A33763 /* LocationManagerViewModel.swift */; };
+		EB43A7542CF8B28500A33763 /* MapViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB43A7532CF8B28500A33763 /* MapViewScreen.swift */; };
+		EB43A7562CF8D2AC00A33763 /* MapCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB43A7552CF8D2AC00A33763 /* MapCardView.swift */; };
 		EB6111972CF87EA3003F77BF /* CustomMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6111922CF87EA3003F77BF /* CustomMapAnnotation.swift */; };
 		EB6111992CF87EA3003F77BF /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6111952CF87EA3003F77BF /* SearchBarView.swift */; };
 		EB61119C2CF87EC2003F77BF /* WebViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB61119B2CF87EC2003F77BF /* WebViewScreen.swift */; };
@@ -188,8 +189,9 @@
 		CBB7F1072CED1AC70065366F /* EventHub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventHub.xcdatamodel; sourceTree = "<group>"; };
 		CBB7F10A2CED1B250065366F /* Font + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font + Ext.swift"; sourceTree = "<group>"; };
 		EB43A74B2CF8949000A33763 /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
-		EB43A74D2CF8AFD100A33763 /* LocationManagerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerVM.swift; sourceTree = "<group>"; };
-		EB43A74F2CF8B00500A33763 /* MapViewScreenn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewScreenn.swift; sourceTree = "<group>"; };
+		EB43A7512CF8B22800A33763 /* LocationManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerViewModel.swift; sourceTree = "<group>"; };
+		EB43A7532CF8B28500A33763 /* MapViewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewScreen.swift; sourceTree = "<group>"; };
+		EB43A7552CF8D2AC00A33763 /* MapCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCardView.swift; sourceTree = "<group>"; };
 		EB6111922CF87EA3003F77BF /* CustomMapAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMapAnnotation.swift; sourceTree = "<group>"; };
 		EB6111952CF87EA3003F77BF /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		EB61119B2CF87EC2003F77BF /* WebViewScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewScreen.swift; sourceTree = "<group>"; };
@@ -565,7 +567,7 @@
 		EB61118E2CF87EA3003F77BF /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				EB43A74F2CF8B00500A33763 /* MapViewScreenn.swift */,
+				EB43A7532CF8B28500A33763 /* MapViewScreen.swift */,
 				EB6111942CF87EA3003F77BF /* Views */,
 				EB61118F2CF87EA3003F77BF /* ViewModel */,
 				EB6111912CF87EA3003F77BF /* Model */,
@@ -577,7 +579,7 @@
 		EB61118F2CF87EA3003F77BF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				EB43A74D2CF8AFD100A33763 /* LocationManagerVM.swift */,
+				EB43A7512CF8B22800A33763 /* LocationManagerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -595,6 +597,7 @@
 			children = (
 				EB6111952CF87EA3003F77BF /* SearchBarView.swift */,
 				EB43A74B2CF8949000A33763 /* ExampleView.swift */,
+				EB43A7552CF8D2AC00A33763 /* MapCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -787,7 +790,6 @@
 				790A62C32CF4F8280011609E /* ScrollEventsView.swift in Sources */,
 				93083D2A2CEB994500A0C392 /* ViewRouter.swift in Sources */,
 				CB199C5A2CEE63FC006D2476 /* SearchEventsModel.swift in Sources */,
-				EB43A74E2CF8AFD100A33763 /* LocationManagerVM.swift in Sources */,
 				CB406E1E2CEFA48F007C8F49 /* CategoryView.swift in Sources */,
 				CB406E1F2CEFA48F007C8F49 /* ExploreView.swift in Sources */,
 				CB406E202CEFA48F007C8F49 /* CardView.swift in Sources */,
@@ -824,14 +826,17 @@
 				793CBF5B2CED1CE100E1B230 /* Date + Ext.swift in Sources */,
 				93083D272CEB984600A0C392 /* CircleButton.swift in Sources */,
 				CB199C562CEE44D2006D2476 /* EventCategoryModel.swift in Sources */,
+				EB43A7542CF8B28500A33763 /* MapViewScreen.swift in Sources */,
 				CB71B32A2CF27ADD00716F2F /* SearchView.swift in Sources */,
 				CB199C642CEE88D7006D2476 /* Location.swift in Sources */,
 				EB65CB002CF0BFE3006B5AEC /* SharedView.swift in Sources */,
+				EB43A7562CF8D2AC00A33763 /* MapCardView.swift in Sources */,
 				CB3556B02CF6503200178BC1 /* NotificationsView.swift in Sources */,
 				CB5A4D422CEFD2A6005AD2A9 /* EventsModel.swift in Sources */,
 				AD613BE62CF44300003E6A37 /* FavoritesViewModel.swift in Sources */,
 				AD613BE72CF44300003E6A37 /* FavoritesToolBarView.swift in Sources */,
 				EB6111972CF87EA3003F77BF /* CustomMapAnnotation.swift in Sources */,
+				EB43A7522CF8B22800A33763 /* LocationManagerViewModel.swift in Sources */,
 				AD613BE82CF44300003E6A37 /* Favorites.xcdatamodeld in Sources */,
 				AD613BE92CF44300003E6A37 /* FavoritesView.swift in Sources */,
 				AD613BEA2CF44300003E6A37 /* FavoriteEmptyView.swift in Sources */,
@@ -849,7 +854,6 @@
 				EB61119C2CF87EC2003F77BF /* WebViewScreen.swift in Sources */,
 				93083D2C2CEB995A00A0C392 /* TabBarDimensions.swift in Sources */,
 				AD613BCF2CF441E2003E6A37 /* AuthenticationViewModel.swift in Sources */,
-				EB43A7502CF8B00500A33763 /* MapViewScreenn.swift in Sources */,
 				CB71B32D2CF29EB000716F2F /* SearchCardView.swift in Sources */,
 				EB8D01F22CECC95F000AB98A /* IndicatorPageView.swift in Sources */,
 				CB199C5C2CEE648B006D2476 /* SearchEventModel.swift in Sources */,
