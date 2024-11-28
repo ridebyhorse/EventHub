@@ -11,8 +11,8 @@ import FirebaseAuth
 struct ProfileView: View {
     @ObservedObject var viewModel: AuthenticationViewModel
     @State private var isEditing: Bool = false
-    @State private var name: String = "Name"
-    @State private var aboutMe: String = "Some words about you.."
+    @State private var name: String = ""
+    @State private var aboutMe: String = ""
     @State private var profileImage: UIImage? = nil
     @State private var showImagePicker: Bool = false
     
@@ -54,14 +54,14 @@ struct ProfileView: View {
             
             // Name
             if isEditing {
-                TextField("Enter your name", text: $name)
+                TextField("Enter your name", text: $viewModel.displayName)
                     .font(.system(size: 24, weight: .medium))
                     .multilineTextAlignment(.center)
                     .foregroundColor(.black)
                     .padding(.top, 20)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
             } else {
-                Text(name)
+                Text(viewModel.displayName.isEmpty ? "Name" : viewModel.displayName)
                     .font(.system(size: 24, weight: .medium))
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
@@ -105,7 +105,7 @@ struct ProfileView: View {
                         .frame(height: 100)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.gray.opacity(0.5))
+                                .stroke(Color.gray.opacity(0.5), lineWidth: 0.5)
                         )
                 } else {
                     Text(aboutMe)
@@ -136,12 +136,17 @@ struct ProfileView: View {
         .padding()
         .padding(.top, 50)
         .onAppear {
-            name = viewModel.getUsernameFromUserDefaults() ?? "Name"
+            if let currentUser = Auth.auth().currentUser {
+                viewModel.displayName = currentUser.displayName ?? viewModel.getUsernameFromUserDefaults() ?? "Name"
+            } else {
+                viewModel.displayName = viewModel.getUsernameFromUserDefaults() ?? "Name"
+            }
+            print("Current displayName: \(viewModel.displayName)")
+
         }
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(image: $profileImage)
         }
-        
     }
     
     // MARK: - Helper Functions
