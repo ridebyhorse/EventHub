@@ -18,21 +18,31 @@ class NetworkService {
     
     private enum Constants {
         static let baseUrl = "https://kudago.com/public-api/v1.4/"
+        
         static let language = "?lang=en"
         static let eventCategories = "event-categories/"
         static let locations = "locations/"
         static let search = "search/"
         static let events = "events/"
+        static let films = "movies/"
+        static let todayEvents = "events-of-the-day/"
+        static let lists = "lists/"
+        static let places = "places/"
+        
         static let searchQueryParameter = "&q="
         static let pageParameter = "&page="
         static let pageSizeParameter = "&page_size="
         static let locationParameter = "&location="
         static let expandParameter = "&expand=place,dates"
         static let contentTypeParameter = "&ctype=events"
-        static let fieldsEventsParameter = "&fields=id,publication_date,dates,title,short_title,slug,place,description,body_text,location,categories,tagline,price,is_free,images,favorites_count,comments_count,site_url,tags"
+        
         static let upcomingParameter = "&actual_since="
         static let pastParameter = "&actual_until="
         static let categoriesParameter = "&categories="
+        
+        static let fieldsEventsParameter = "&fields=id,publication_date,dates,title,short_title,slug,place,description,body_text,location,categories,tagline,price,is_free,images,favorites_count,comments_count,site_url,tags"
+        static let fieldsFilmsParameter = "&fields=id,title,poster,description,country,director"
+        static let fieldsTodayEventsParameter = "&fields=date,object,location,title&expand=event"
     }
     
     private init() {}
@@ -118,6 +128,79 @@ class NetworkService {
         }
         
         return try await request(url: urlString, response: EventsModel.self)
+    }
+    
+    func getTodayEvents(
+        pageNumber: Int? = nil,
+        pageSize: Int? = nil
+    ) async throws -> TodayEventsModel {
+        var urlString = Constants.baseUrl + Constants.events + Constants.language + Constants.fieldsTodayEventsParameter
+        
+        if let pageNumber {
+            urlString += Constants.pageParameter + String(pageNumber)
+        }
+        
+        if let pageSize {
+            urlString += Constants.pageSizeParameter + String(pageSize)
+        }
+        
+        return try await request(url: urlString, response: TodayEventsModel.self)
+    }
+    
+    func getFilms(
+        pageNumber: Int? = nil,
+        pageSize: Int? = nil
+    ) async throws -> FilmsModel {
+        var urlString = Constants.baseUrl + Constants.films + Constants.language + Constants.fieldsFilmsParameter
+        
+        if let pageNumber {
+            urlString += Constants.pageParameter + String(pageNumber)
+        }
+        
+        if let pageSize {
+            urlString += Constants.pageSizeParameter + String(pageSize)
+        }
+        
+        return try await request(url: urlString, response: FilmsModel.self)
+    }
+    
+    func getLists(
+        pageNumber: Int? = nil,
+        pageSize: Int? = nil
+    ) async throws -> ListsModel {
+        var urlString = Constants.baseUrl + Constants.lists + Constants.language
+        
+        if let pageNumber {
+            urlString += Constants.pageParameter + String(pageNumber)
+        }
+        
+        if let pageSize {
+            urlString += Constants.pageSizeParameter + String(pageSize)
+        }
+        
+        return try await request(url: urlString, response: ListsModel.self)
+    }
+    
+    func getPlaces(
+        location: Location? = nil,
+        pageNumber: Int? = nil,
+        pageSize: Int? = nil
+    ) async throws -> PlacesModel {
+        var urlString = Constants.baseUrl + Constants.places + Constants.language
+        
+        if let location {
+            urlString += Constants.locationParameter + location.rawValue
+        }
+        
+        if let pageNumber {
+            urlString += Constants.pageParameter + String(pageNumber)
+        }
+        
+        if let pageSize {
+            urlString += Constants.pageSizeParameter + String(pageSize)
+        }
+        
+        return try await request(url: urlString, response: PlacesModel.self)
     }
     
     private func request<T: Decodable>(url: String, response: T.Type) async throws -> T {
