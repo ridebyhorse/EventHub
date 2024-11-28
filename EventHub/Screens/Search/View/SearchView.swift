@@ -9,9 +9,14 @@ import SwiftUI
 
 struct SearchView: View {
     @ObservedObject var viewModel: SearchViewModel
+   
     @EnvironmentObject var navigationManager: NavigationManager
     var body: some View {
         VStack {
+        SearchToolbarView(title: "Search") {
+        navigationManager.currentDestination = .favorites
+                       }
+        .padding(.bottom,32)
             SearchInputView(searchText: $viewModel.searchText)
             
             if $viewModel.events.isEmpty {
@@ -26,7 +31,7 @@ struct SearchView: View {
                 }
             }
         }
-        .navigationTitle("Search")
+//        .navigationTitle("Search")
         .navigationBarBackButtonHidden()
     }
 }

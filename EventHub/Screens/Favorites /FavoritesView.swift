@@ -17,35 +17,31 @@ struct FavoritesView: View {
 
     var body: some View {
         NavigationView {
-                VStack(spacing: 16) {
-                    if viewModel.favorites.isEmpty {
-                        FavoritesToolBarView(viewModel: viewModel)
-                        FavoriteEmptyView()
-                    } else {
-                        FavoritesToolBarView(viewModel: viewModel)
-                        ScrollView {
-                        ForEach(viewModel.favorites, id: \.self) { event in
+            VStack(spacing: 16) {
+                if viewModel.favorites.isEmpty {
+                    FavoritesToolBarView(viewModel: viewModel)
+                    FavoriteEmptyView()
+                } else {
+                    FavoritesToolBarView(viewModel: viewModel)
+                    ScrollView {
+                        ForEach($viewModel.favorites, id: \.self) { $event in
                             HStack {
-                               
                                 Image("mockNew")
                                     .resizable()
-                                    .frame(
-                                        width: UIScreen.main.bounds.width * 0.2,
-                                        height: UIScreen.main.bounds.height * 0.1
-                                    )
+                                    .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.height * 0.1)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
 
-                                
                                 VStack(alignment: .leading, spacing: 8) {
                                     HStack {
-                                        Text(event.date ?? "Unknown Date")
+                                        Text(event.publicationDate.formattedForEvent() ?? "Unknown Date")
                                             .font(.custom(EventHubFont.subtitle2))
-                                .foregroundColor(.mainBlue)
+                                            .foregroundColor(.mainBlue)
                                         Spacer()
 
-                                     
-                                        Button(action: {
-                                            viewModel.deleteFavorite(event: event)
+        Button(action: {
+            Task{
+                await  viewModel.deleteFavorite(event: event)
+            }
                                         }) {
                                             Image(Buttons.addFavorite)
                                                 .resizable()
@@ -59,11 +55,7 @@ struct FavoritesView: View {
 
                                     HStack(spacing: 4) {
                                         Image("location")
-                                        Text(event.location ?? "Unknown Location")
-                                            .font(.custom(EventHubFont.subtitle2))
-                                            .foregroundColor(.gray)
-                                        
-                                        Text(event.city ?? "Unknown City")
+                        Text(event.location.slug.formattedLocation ?? "Unknown Location")
                                             .font(.custom(EventHubFont.subtitle2))
                                             .foregroundColor(.gray)
                                     }
@@ -81,9 +73,8 @@ struct FavoritesView: View {
                         }
                     }
                 }
-               
             }
-                .padding(.top, 12)
+            .padding(.top, 12)
         }
     }
 }

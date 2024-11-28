@@ -8,15 +8,17 @@ import SwiftUI
 
 struct FavoritesToolBarView: View{
     var toolTitle: String = "Favorites"
+    var searchTitle: String = "Search"
+    @EnvironmentObject var navigationManager: NavigationManager
     @ObservedObject var  viewModel: FavoritesViewModel
     var body: some View {
-        HStack {
-            Text(toolTitle)
+        HStack(spacing:20){
+            Text(viewModel.isSearchTapped ? searchTitle: toolTitle)
                 .font(.custom(EventHubFont.body2.name, size: 24))
                 .foregroundColor(.mainBlack)
             Button(action:{
                 viewModel.isSearchTapped.toggle()
-                
+                navigationManager.currentDestination = .search
             })
             {
                 Image(Buttons.search)
