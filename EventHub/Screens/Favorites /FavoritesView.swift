@@ -79,40 +79,18 @@ struct FavoritesView: View {
     }
 }
 
-#Preview {
-    let mockFavoritesDataController = FavoritesDataController()
-    let mockFavoritesViewModel = FavoritesViewModel(dataController: mockFavoritesDataController)
-
-    // Create a sample event for testing
-    let mockEvent = EventModel(
-        id: 1,
-        publicationDate: Date(),
-        dates: [],
-        title: "Sample Event",
-        shortTitle: "Sample",
-        slug: "sample-event",
-        place: nil,
-        description: "A sample event for testing.",
-        bodyText: "Details about the sample event.",
-        location: ShortLocationModel(slug: .krasnoyarsk), // Adjust this to match your model
-        categories: ["Music", "Festival"],
-        tagline: "Join the fun!",
-        price: "Free",
-        isFree: true,
-        images: [],
-        favoritesCount: 10,
-        commentsCount: 5,
-        siteUrl: URL(string: "https://www.example.com")!,
-        tags: ["test", "event"]
-    )
-
-    mockFavoritesViewModel.favorites = [mockEvent]
-
-    return FavoritesView()
-        .environmentObject(mockFavoritesViewModel)
-        .onAppear {
-            Task {
-                await mockFavoritesViewModel.setup()
-            }
-        }
-}
+//#Preview {
+//    let previewContext = {
+//        let container = NSPersistentContainer(name: "Favorites")
+//        container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
+//        container.loadPersistentStores { _, error in
+//            if let error = error {
+//                fatalError("Failed to load in-memory store: \(error)")
+//            }
+//        }
+//        return container.viewContext
+//    }()
+//
+//    FavoritesView()
+//        .environmentObject(FavoritesDataController())
+//}

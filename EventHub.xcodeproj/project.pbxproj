@@ -115,6 +115,7 @@
 		EB8D01F42CECC976000AB98A /* ActionButtonPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01F32CECC976000AB98A /* ActionButtonPageView.swift */; };
 		EB8D01F62CECDB42000AB98A /* BackgroundEllipseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01F52CECDB42000AB98A /* BackgroundEllipseView.swift */; };
 		EB8D01FA2CECDD06000AB98A /* OnboardingPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8D01F92CECDD06000AB98A /* OnboardingPageModel.swift */; };
+		EBE5B3022CF778E6005DD16C /* String + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5B3012CF778E5005DD16C /* String + Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -201,6 +202,7 @@
 		EB8D01F32CECC976000AB98A /* ActionButtonPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonPageView.swift; sourceTree = "<group>"; };
 		EB8D01F52CECDB42000AB98A /* BackgroundEllipseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundEllipseView.swift; sourceTree = "<group>"; };
 		EB8D01F92CECDD06000AB98A /* OnboardingPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageModel.swift; sourceTree = "<group>"; };
+		EBE5B3012CF778E5005DD16C /* String + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -552,6 +554,7 @@
 			children = (
 				CBB7F10A2CED1B250065366F /* Font + Ext.swift */,
 				793CBF5A2CED1CE100E1B230 /* Date + Ext.swift */,
+				EBE5B3012CF778E5005DD16C /* String + Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -759,6 +762,7 @@
 				EB8D01EE2CECC915000AB98A /* ImagePageView.swift in Sources */,
 				CB199C582CEE467A006D2476 /* LocationModel.swift in Sources */,
 				EB65CB0E2CF0CC51006B5AEC /* ImageEventDetail.swift in Sources */,
+				EBE5B3022CF778E6005DD16C /* String + Ext.swift in Sources */,
 				EB65CB082CF0C7B4006B5AEC /* DefaultLoadImageView.swift in Sources */,
 				AD613BD12CF44227003E6A37 /* SignInView.swift in Sources */,
 				CB199C532CEE431C006D2476 /* NetworkService.swift in Sources */,

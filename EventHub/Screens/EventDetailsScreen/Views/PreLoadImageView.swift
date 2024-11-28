@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct PreLoadImageView: View {
-    var url: String?
+    var url: URL?
     var scaleEffect: CGFloat = 1
     
     var body: some View {
-        if let urlString = url, let imageUrl = URL(string: urlString) {
+        if let imageUrl = url {
             AsyncImage(url: imageUrl) { img in
                 img
                     .resizable()

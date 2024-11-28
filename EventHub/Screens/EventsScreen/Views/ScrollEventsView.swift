@@ -22,7 +22,7 @@ struct ScrollEventsView: View {
                 ScrollView(.vertical) {
                     ForEach(viewModel.events, id: \.self) { event in
                         NavigationLink {
-                            EventDetailsScreen()
+                            EventDetailsScreen(event: event)
                         } label: {
                             EventView(event: event)
                         }
