@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PlaceModel: Decodable {
+struct PlaceModel: Decodable, Identifiable {
     let id: Int
     let title: String?
     let slug: String?
