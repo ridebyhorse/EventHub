@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
-
+import RealmSwift
 struct MainNavigation: View {
     @StateObject private var navigationManager = NavigationManager()
     @ObservedObject var Model: AuthenticationViewModel
+    @EnvironmentObject var favoritesService: FavoritesService
     
     var body: some View {
         NavigationView {
@@ -32,6 +33,7 @@ struct MainNavigation: View {
                 
                 case .favorites:
                     FavoritesView()
+                        .environmentObject(FavoritesService())
                     
                 case .search:
                     SearchView(viewModel: SearchViewModel(location: .msk))

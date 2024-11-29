@@ -63,7 +63,7 @@ class AuthenticationViewModel: ObservableObject {
     @Published var displayName: String = ""
     @Published var showAlert: Bool = false
     @Published var currentUserEmail: String = ""
-    @Published var favoritesDataController: FavoritesDataController
+    @Published var favoritesItem: FavoriteItem
     var emailError: String = "Email or password cannot be empty"
     var passwordError: String = "Passwords do not match"
     var noId: String = "No client ID found in Firebase configuration"
@@ -77,11 +77,11 @@ class AuthenticationViewModel: ObservableObject {
           "passwordMismatch": "Passwords do not match.",
           "unknown": "An unknown error occurred."
       ]
-    
-    init(favoritesDataController: FavoritesDataController) {
-          self.favoritesDataController = favoritesDataController
-          registerAuthStateHandler()
-      }
+
+    init(favoritesItem: FavoriteItem) {
+        self.favoritesItem = favoritesItem
+        registerAuthStateHandler()
+    }
     // MARK: - Handle Whether User Logged or not
     private var authStateHandler: AuthStateDidChangeListenerHandle?
     private func registerAuthStateHandler() {
@@ -90,7 +90,7 @@ class AuthenticationViewModel: ObservableObject {
                     self.user = user
                     self.authenticationState = user == nil ? .unauthenticated : .authenticated
                     self.currentUserEmail = user?.email ?? ""
-                    self.favoritesDataController.currentUserEmail = self.currentUserEmail
+
                 }
             }
         }

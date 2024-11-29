@@ -154,6 +154,6 @@ struct SignInView: View {
 }
 
 #Preview {
-    SignInView(viewModel:AuthenticationViewModel(favoritesDataController: FavoritesDataController()))
+    SignInView(viewModel:AuthenticationViewModel(favoritesItem: FavoriteItem()))
     
 }

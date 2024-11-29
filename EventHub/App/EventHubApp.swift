@@ -7,14 +7,12 @@
 
 import SwiftUI
 import Firebase
-import CoreData
+import RealmSwift
 @main
-struct EventHubApp: App {
-    
+struct EventHubApp: SwiftUI.App {
     var navigationManager = NavigationManager()
-    @StateObject private var dataController = FavoritesDataController()
     let persistenceController = PersistenceController.shared
-
+    
     init(){
         FirebaseApp.configure()
     }
@@ -22,10 +20,10 @@ struct EventHubApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainNavigation(Model: AuthenticationViewModel(favoritesDataController: FavoritesDataController()))
-                .environmentObject(navigationManager)
+            MainNavigation(Model: AuthenticationViewModel(favoritesItem: FavoriteItem()))
+               .environmentObject(navigationManager)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environment(\.managedObjectContext, dataController.container.viewContext)
+
         }
     }
 }

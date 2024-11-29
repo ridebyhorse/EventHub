@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var viewRouter = ViewRouter()
-    @EnvironmentObject var navigationManager: NavigationManager
+//    @EnvironmentObject var navigationManager: NavigationManager
+    @StateObject var favoritesService = FavoritesService()
     var body: some View {
         GeometryReader { geometry in
             let dimensions = TabBarDimensions(geometry: geometry)
@@ -25,6 +26,7 @@ struct ContentView: View {
                     EventsScreenView()
                 case .add:
                     FavoritesView()
+                        .environmentObject(favoritesService)
                 case .map:
                     Text("Map View")
                 case .profile:

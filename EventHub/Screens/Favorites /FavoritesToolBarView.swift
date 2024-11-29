@@ -10,14 +10,14 @@ struct FavoritesToolBarView: View{
     var toolTitle: String = "Favorites"
     var searchTitle: String = "Search"
     @EnvironmentObject var navigationManager: NavigationManager
-    @ObservedObject var  viewModel: FavoritesViewModel
+    @State var isSearchTapped: Bool = false
     var body: some View {
         HStack(spacing:20){
-            Text(viewModel.isSearchTapped ? searchTitle: toolTitle)
+            Text(isSearchTapped ? searchTitle: toolTitle)
                 .font(.custom(EventHubFont.body2.name, size: 24))
                 .foregroundColor(.mainBlack)
             Button(action:{
-                viewModel.isSearchTapped.toggle()
+                    isSearchTapped.toggle()
                 navigationManager.currentDestination = .search
             })
             {
@@ -33,5 +33,9 @@ struct FavoritesToolBarView: View{
     }
 }
 #Preview(){
-    FavoritesToolBarView(viewModel: FavoritesViewModel())
+    FavoritesToolBarView()
+}
+enum Buttons {
+    static let deleteFavorite: String = "favorite"
+    static let search: String = "favoritesSearch"
 }

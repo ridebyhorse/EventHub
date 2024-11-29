@@ -10,7 +10,7 @@ import SwiftUI
 struct EventDetailsScreen: View {
     // MARK: - Properties
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var navigationManager: NavigationManager
+//    @EnvironmentObject var navigationManager: NavigationManager
     @State private var isBookmarked: Bool = true
     @State private var isButtonShow: Bool = true
     @State private var showSharedView: Bool = false

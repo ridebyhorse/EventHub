@@ -1,69 +1,70 @@
 //
-//  FavoritesView.swift
+//  FavoritesView2.swift
 //  EventHub
 //
-//  Created by Ylyas Abdywahytow on 11/23/24.
+//  Created by Ylyas Abdywahytow on 11/27/24.
+//
+
 
 import SwiftUI
-import CoreData
+import RealmSwift
+import FirebaseAuth
 
 struct FavoritesView: View {
-    @EnvironmentObject var favoritesDataController: FavoritesDataController
-    @StateObject private var viewModel: FavoritesViewModel
-
-    init() {
-        _viewModel = StateObject(wrappedValue: FavoritesViewModel())
-    }
+    @EnvironmentObject var viewModel: FavoritesService
+    @ObservedResults(FavoriteItem.self, sortDescriptor: SortDescriptor(keyPath: "eventLocation", ascending: true)) var favorites
 
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {
-                if viewModel.favorites.isEmpty {
-                    FavoritesToolBarView(viewModel: viewModel)
+                FavoritesToolBarView()
+
+                if favorites.isEmpty {
                     FavoriteEmptyView()
                 } else {
-                    FavoritesToolBarView(viewModel: viewModel)
                     ScrollView {
-                        ForEach($viewModel.favorites, id: \.self) { $event in
+                        ForEach(favorites) { favorite in
                             HStack {
                                 Image("mockNew")
                                     .resizable()
                                     .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.height * 0.1)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
 
-                                VStack(alignment: .leading, spacing: 8) {
-                                    HStack {
-                                        Text(event.publicationDate.formattedForEvent() ?? "Unknown Date")
-                                            .font(.custom(EventHubFont.subtitle2))
+                                VStack(alignment: .leading, spacing: 15) {
+                                    HStack(){
+                                        Text(favorite.eventDate.formattedForEvent())
                                             .foregroundColor(.mainBlue)
+                                            .font( .custom(EventHubFont.body2))
                                         Spacer()
-
-        Button(action: {
-            Task{
-                await  viewModel.deleteFavorite(event: event)
-            }
+                                        Button(action: {
+                                            viewModel.deleteEvent(id: favorite.id)
                                         }) {
-                                            Image(Buttons.addFavorite)
-                                                .resizable()
+                                            Image(Buttons.deleteFavorite)
                                                 .frame(width: 16, height: 16)
                                         }
                                     }
-
-                                    Text(event.title ?? "Unknown Title")
-                                        .font(.custom(EventHubFont.body2))
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-
+                                    
+                                    HStack {
+                                        Text(favorite.title)
+                                            .font(.custom(EventHubFont.body2))
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+                                    
                                     HStack(spacing: 4) {
-                                        Image("location")
-                        Text(event.location.slug.formattedLocation ?? "Unknown Location")
+                                        Image("mapPin")
+                                        Text(favorite.eventLocation)
                                             .font(.custom(EventHubFont.subtitle2))
-                                            .foregroundColor(.gray)
+                                            .foregroundColor(.locationGrey)
                                     }
                                     .padding(.top, 1)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 }
+                                .padding(.leading,10)
 
                                 Spacer()
+                            }
+                            .onAppear {
+                                print("Favorites count: \(favorites.count)")
                             }
                             .padding(10)
                             .background(Color.white)
@@ -76,43 +77,29 @@ struct FavoritesView: View {
             }
             .padding(.top, 12)
         }
+        .onAppear {
+            viewModel.getEvent()
+        }
     }
 }
 
 #Preview {
-    let mockFavoritesDataController = FavoritesDataController()
-    let mockFavoritesViewModel = FavoritesViewModel(dataController: mockFavoritesDataController)
-
-    // Create a sample event for testing
-    let mockEvent = EventModel(
-        id: 1,
-        publicationDate: Date(),
-        dates: [],
-        title: "Sample Event",
-        shortTitle: "Sample",
-        slug: "sample-event",
-        place: nil,
-        description: "A sample event for testing.",
-        bodyText: "Details about the sample event.",
-        location: ShortLocationModel(slug: .krasnoyarsk), // Adjust this to match your model
-        categories: ["Music", "Festival"],
-        tagline: "Join the fun!",
-        price: "Free",
-        isFree: true,
-        images: [],
-        favoritesCount: 10,
-        commentsCount: 5,
-        siteUrl: URL(string: "https://www.example.com")!,
-        tags: ["test", "event"]
-    )
-
-    mockFavoritesViewModel.favorites = [mockEvent]
-
-    return FavoritesView()
-        .environmentObject(mockFavoritesViewModel)
-        .onAppear {
-            Task {
-                await mockFavoritesViewModel.setup()
-            }
-        }
+    FavoritesView()
+        .environmentObject(FavoritesService())
 }
+
+//enum RealmMigrator {
+//    static func configureRealm() -> Realm.Configuration {
+//        let config = Realm.Configuration(
+//            schemaVersion: 10,
+//            migrationBlock: { migration, oldSchemaVersion in
+//                if oldSchemaVersion < 10 {
+//                    migration.enumerateObjects(ofType: FavoriteItem.className()) { _, newObject in
+//                        newObject?["eventStatus"] = EventStatus.attended.rawValue
+//                    }
+//                }
+//            }
+//        )
+//        return config
+//    }
+//}
