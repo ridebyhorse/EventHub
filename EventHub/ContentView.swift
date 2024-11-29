@@ -24,11 +24,12 @@ struct ContentView: View {
                 case .events:
                     EventsScreenView()
                 case .add:
-                    Text("Favorites")
+                    FavoritesView()
                 case .map:
                     Text("Map View")
                 case .profile:
-                    Text("Profile View")
+                    ProfileView(viewModel: AuthenticationViewModel(favoritesDataController: FavoritesDataController()))
+
                 }
                 
                 Spacer()

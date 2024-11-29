@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct EventModel: Decodable, Hashable {
+struct EventModel: Decodable, Hashable, Identifiable {
     let id: Int
     let publicationDate: Date
     let dates: [ShortDateRangeModel]

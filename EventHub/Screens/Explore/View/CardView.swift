@@ -6,77 +6,74 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct CardView: View {
-    
+//    @EnvironmentObject var favoritesDataController: FavoritesDataController
+//    @StateObject private var viewModel: FavoritesViewModel
+//
+//    init() {
+//        _viewModel = StateObject(wrappedValue: FavoritesViewModel())
+//    }
     var eventTitle: String
     var eventDate: String
     var attendees: [String]
     var goingCount: Int
     var location: String
     var eventImage: String
-    
     var body: some View {
         ZStack {
             
             RoundedRectangle(cornerRadius: 18)
                 .fill(Color.white)
                 .frame(width: 237, height: 255)
+                .shadow(color: Color(red: 0.31, green: 0.33, blue: 0.53).opacity(0.06), radius: 15, x: 0, y: 8)
             
             VStack(spacing: 10) {
                 // MARK: - Image
                 ZStack(alignment: .top) {
-                    if let url = URL(string: eventImage) {
-                        KFImage(url)
-                            .placeholder {
-                                ProgressView()
-                                    .frame(width: 219, height: 131)
-                            }
-                            .retry(maxCount: 3, interval: .seconds(2)) // Повторные попытки загрузки
-                            .cacheOriginalImage()
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 219, height: 131)
-                            .cornerRadius(10)
-                            .clipped()
-                    } else {
-                        Image("img")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 219, height: 131)
-                            .cornerRadius(10)
-                            .clipped()
-                    }
+//                    viewModel.saveFavorite(title: <#T##String#>, date: <#T##String#>, location: <#T##String#>, city: <#T##String#>)
+                    Image("img")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 219, height: 131)
+                        .cornerRadius(10)
+                        .clipped()
                     
                     HStack {
                         // MARK: - Date
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.white.opacity(0.8))
+                                .fill(Color.white.opacity(0.7))
                                 .frame(width: 45, height: 45)
-                                Text(eventDate)
-                                    .font(.system(size: 16, weight: .light))
-                                    .foregroundColor(.red)
-                                    .lineLimit(2)
-                                    .multilineTextAlignment(.center)
-                                    .frame(width: 38, height: 40)
+                            Text(eventDate)
+                                .font(.system(size: 16, weight: .light))
+                                .foregroundColor(.red)
+                                .lineLimit(2) // Ограничиваем двумя строками
+                                .multilineTextAlignment(.center)
+                                .frame(width: 45, height: 45)
                         }
                         .padding(.top, 8)
                         
                         Spacer()
                         
                         // MARK: - Mark
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 7)
-                                .fill(Color.white.opacity(0.8))
-                                .frame(width: 30, height: 30)
-                            
-                            Image(systemName: "bookmark.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 15, height: 15)
-                                .foregroundColor(.red)
+                            ZStack {
+                                
+                                
+                                RoundedRectangle(cornerRadius: 7)
+                                    .fill(Color.white.opacity(0.7))
+                                    .frame(width: 30, height: 30)
+                                Button(action:{
+                                    
+                                })
+                                {
+                                Image(systemName: "bookmark.fill")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 15, height: 15)
+                                    .foregroundColor(.red)
+                                
+                            }
                         }
                         .padding(.top, -8)
                     }
@@ -95,26 +92,12 @@ struct CardView: View {
                 // MARK: - Persons going
                 HStack(spacing: -8) {
                     ForEach(attendees.prefix(3), id: \.self) { attendee in
-                        if let url = URL(string: attendee){
-                            KFImage(url)
-                                .placeholder {
-                                    Circle()
-                                        .fill(Color.gray.opacity(0.3))
-                                        .frame(width: 24, height: 24)
-                                }
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 24, height: 24)
-                                .cornerRadius(12)
-                                .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.white, lineWidth: 1))
-                        } else {
-                            Image("img")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 24, height: 24)
-                                .cornerRadius(12)
-                                .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.white, lineWidth: 1))
-                        }
+                        Image("img")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 24, height: 24)
+                            .cornerRadius(12)
+                            .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.white, lineWidth: 1))
                     }
                     
                     if goingCount > 3 {
@@ -134,16 +117,15 @@ struct CardView: View {
                         .frame(width: 16, height: 16)
                         .foregroundColor(Color("LightGrey"))
                     Text(location)
-                        .font(.custom(EventHubFont.subtitle2))
+                        .font(.system(size: 13))
                         .foregroundColor(Color("LightGrey"))
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 16)
             }
-            //            .frame(width: 237, height: 255)
+            .frame(width: 237, height: 255)
         }
         .frame(width: 237, height: 255)
-        //        .padding(.vertical, 12)
         
         
     }
@@ -152,12 +134,13 @@ struct CardView: View {
 #Preview {
     CardView(
         eventTitle: "International Band Music Festival",
-        eventDate: "6 Jun",
+        eventDate: "10 JUNE",
         attendees: ["person1", "person2", "person3", "person4"],
         goingCount: 20,
         location: "36 Guild Street London, UK",
         eventImage: "event_image"
     )
+    
 }
 
 
