@@ -6,14 +6,10 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CardView: View {
-//    @EnvironmentObject var favoritesDataController: FavoritesDataController
-//    @StateObject private var viewModel: FavoritesViewModel
-//
-//    init() {
-//        _viewModel = StateObject(wrappedValue: FavoritesViewModel())
-//    }
+    
     var eventTitle: String
     var eventDate: String
     var attendees: [String]
@@ -31,26 +27,43 @@ struct CardView: View {
             VStack(spacing: 10) {
                 // MARK: - Image
                 ZStack(alignment: .top) {
-//                    viewModel.saveFavorite(title: <#T##String#>, date: <#T##String#>, location: <#T##String#>, city: <#T##String#>)
-                    Image("img")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 219, height: 131)
-                        .cornerRadius(10)
-                        .clipped()
+
+                    if let url = URL(string: eventImage) {
+                        KFImage(url)
+                            .placeholder {
+                                Image(randomPlaceholderImageName()) // Replace with your placeholder image name in Assets
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 219, height: 131)
+                                    .cornerRadius(10)
+                            }
+                            .onFailure { _ in
+                                // Use a fallback image in case of a failed download
+                                Image(randomPlaceholderImageName())
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 219, height: 131)
+                                    .cornerRadius(10)
+                            }
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 219, height: 131)
+                            .cornerRadius(10)
+                            .clipped()
+                    }
                     
                     HStack {
                         // MARK: - Date
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.white.opacity(0.7))
+                                .fill(Color.white.opacity(0.9))
                                 .frame(width: 45, height: 45)
                             Text(eventDate)
                                 .font(.system(size: 16, weight: .light))
                                 .foregroundColor(.red)
                                 .lineLimit(2) // Ограничиваем двумя строками
                                 .multilineTextAlignment(.center)
-                                .frame(width: 45, height: 45)
+                                .frame(width: 38, height: 40)
                         }
                         .padding(.top, 8)
                         
@@ -61,7 +74,7 @@ struct CardView: View {
                                 
                                 
                                 RoundedRectangle(cornerRadius: 7)
-                                    .fill(Color.white.opacity(0.7))
+                                    .fill(Color.white.opacity(0.9))
                                     .frame(width: 30, height: 30)
                                 Button(action:{
                                     
@@ -92,7 +105,7 @@ struct CardView: View {
                 // MARK: - Persons going
                 HStack(spacing: -8) {
                     ForEach(attendees.prefix(3), id: \.self) { attendee in
-                        Image("img")
+                        Image(randomPlaceholderImageName())
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 24, height: 24)
@@ -126,9 +139,11 @@ struct CardView: View {
             .frame(width: 237, height: 255)
         }
         .frame(width: 237, height: 255)
-        
-        
     }
+    
+    private func randomPlaceholderImageName() -> String {
+            return "\(Int.random(in: 1...30))" // Random image name between 1 and 30
+        }
 }
 
 #Preview {
