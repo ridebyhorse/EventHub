@@ -66,6 +66,7 @@ struct SectionView: View {
     let title: String
     let events: [EventModel]
     let noEventsMessage: String
+    @State private var showSeeAllScreen: Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -75,11 +76,19 @@ struct SectionView: View {
                 Spacer()
                 Button(action: {
                     print("\(title) See All pressed")
+                    showSeeAllScreen = true
                 }) {
                     Text("See All")
                         .font(.footnote)
                         .foregroundColor(Color.gray)
                 }
+                .background(
+                    NavigationLink(
+                        destination: SeeAllEventsScreenView(viewModel: EventsScreenViewModel()),
+                        isActive: $showSeeAllScreen,
+                        label: { EmptyView() }
+                    )
+                )
             }
             .padding(.horizontal, 16)
             

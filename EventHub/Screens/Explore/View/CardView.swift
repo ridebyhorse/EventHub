@@ -16,6 +16,9 @@ struct CardView: View {
     var goingCount: Int
     var location: String
     var eventImage: String
+    @State private var isMarked: Bool = false
+    
+    
     var body: some View {
         ZStack {
             
@@ -31,14 +34,13 @@ struct CardView: View {
                     if let url = URL(string: eventImage) {
                         KFImage(url)
                             .placeholder {
-                                Image(randomPlaceholderImageName()) // Replace with your placeholder image name in Assets
+                                Image(randomPlaceholderImageName())
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 219, height: 131)
                                     .cornerRadius(10)
                             }
                             .onFailure { _ in
-                                // Use a fallback image in case of a failed download
                                 Image(randomPlaceholderImageName())
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
@@ -61,7 +63,7 @@ struct CardView: View {
                             Text(eventDate)
                                 .font(.system(size: 16, weight: .light))
                                 .foregroundColor(.red)
-                                .lineLimit(2) // Ограничиваем двумя строками
+                                .lineLimit(2)
                                 .multilineTextAlignment(.center)
                                 .frame(width: 38, height: 40)
                         }
@@ -71,16 +73,14 @@ struct CardView: View {
                         
                         // MARK: - Mark
                             ZStack {
-                                
-                                
                                 RoundedRectangle(cornerRadius: 7)
                                     .fill(Color.white.opacity(0.9))
                                     .frame(width: 30, height: 30)
                                 Button(action:{
-                                    
+                                    isMarked.toggle()
                                 })
                                 {
-                                Image(systemName: "bookmark.fill")
+                                    Image(isMarked ? "bkmark" : "bkmark1")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 15, height: 15)
