@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ExploreView: View {
-    @EnvironmentObject var locationViewModel: LocationManager
+    @EnvironmentObject var locationManager: LocationManager
     @StateObject var viewModel = ExploreViewModel()
     @State private var selectedLocation: Location = .newYork
     
@@ -18,10 +18,10 @@ struct ExploreView: View {
             ZStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 10){
                     // MARK: - Header
-                    HeaderView(selectedLocation: $locationViewModel.selectedLocation)
-                        .onChange(of: locationViewModel.selectedLocation) { newLocation in
+                    HeaderView(selectedLocation: $locationManager.selectedLocation)
+                        .onChange(of: locationManager.selectedLocation) { newLocation in
                             viewModel.fetchData(location: newLocation)
-                            locationViewModel.updateMapRegion(for: newLocation)
+                            locationManager.updateMapRegion(for: newLocation)
                         }
                         .frame(height: 200, alignment: .top)
                         .ignoresSafeArea()
@@ -51,8 +51,8 @@ struct ExploreView: View {
             }
             .ignoresSafeArea(edges: .top)
             .onAppear {
-                viewModel.fetchData(location: locationViewModel.selectedLocation)
-                locationViewModel.updateMapRegion(for: locationViewModel.selectedLocation)
+                viewModel.fetchData(location: locationManager.selectedLocation)
+                locationManager.updateMapRegion(for: locationManager.selectedLocation)
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(true)

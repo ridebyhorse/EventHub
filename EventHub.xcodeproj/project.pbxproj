@@ -633,6 +633,7 @@
 			isa = PBXGroup;
 			children = (
 				EB43A7532CF8B28500A33763 /* MapViewScreen.swift */,
+				EB43A74B2CF8949000A33763 /* ExampleView.swift */,
 				EB6111942CF87EA3003F77BF /* Views */,
 				EB61118F2CF87EA3003F77BF /* ViewModel */,
 				EB6111912CF87EA3003F77BF /* Model */,
@@ -661,7 +662,6 @@
 			isa = PBXGroup;
 			children = (
 				EB6111952CF87EA3003F77BF /* SearchBarView.swift */,
-				EB43A74B2CF8949000A33763 /* ExampleView.swift */,
 				EB43A7552CF8D2AC00A33763 /* MapCardView.swift */,
 			);
 			path = Views;
