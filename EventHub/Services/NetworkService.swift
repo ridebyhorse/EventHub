@@ -43,7 +43,7 @@ class NetworkService {
         static let fieldsEventsParameter = "&fields=id,publication_date,dates,title,short_title,slug,place,description,body_text,location,categories,tagline,price,is_free,images,favorites_count,comments_count,site_url,tags"
         static let fieldsFilmsParameter = "&fields=id,title,poster,description,country,director"
         static let fieldsTodayEventsParameter = "&fields=date,object,location,title&expand=event"
-        static let fieldsPlacesParameter = "&fields=id,title,slug,address,phone,isStub,siteUrl,coords,subway,isClosed,location"
+        static let fieldsPlacesParameter = "&fields=id,title,slug,address,phone,isStub,site_url,coords,subway,images,isClosed,location"
     }
     
     private init() {}

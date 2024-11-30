@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ExploreView: View {
+    @EnvironmentObject var locationManager: LocationManager
     @StateObject var viewModel = ExploreViewModel()
     @State private var selectedLocation: Location = .newYork
     
@@ -17,9 +18,10 @@ struct ExploreView: View {
             ZStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 10){
                     // MARK: - Header
-                    HeaderView(selectedLocation: $selectedLocation)
-                        .onChange(of: selectedLocation) { newLocation in
+                    HeaderView(selectedLocation: $locationManager.selectedLocation)
+                        .onChange(of: locationManager.selectedLocation) { newLocation in
                             viewModel.fetchData(location: newLocation)
+                            locationManager.updateMapRegion(for: newLocation)
                         }
                         .frame(height: 200, alignment: .top)
                         .ignoresSafeArea()
@@ -49,7 +51,8 @@ struct ExploreView: View {
             }
             .ignoresSafeArea(edges: .top)
             .onAppear {
-                viewModel.fetchData(location: selectedLocation)
+                viewModel.fetchData(location: locationManager.selectedLocation)
+                locationManager.updateMapRegion(for: locationManager.selectedLocation)
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(true)
@@ -142,4 +145,5 @@ struct SectionView: View {
 }
 #Preview {
     ExploreView()
+        .environmentObject(LocationManager())
 }
