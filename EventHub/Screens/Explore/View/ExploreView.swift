@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ExploreView: View {
-    @EnvironmentObject var locationManager: LocationManager
+    @StateObject var locationManager = LocationManager()
     @StateObject var viewModel = ExploreViewModel()
     @State private var selectedLocation: Location = .newYork
     
