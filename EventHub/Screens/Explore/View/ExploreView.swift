@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ExploreView: View {
-    @StateObject var locationManager = LocationManager()
+    @EnvironmentObject var locationManager: LocationManager
     @StateObject var viewModel = ExploreViewModel()
     @State private var selectedLocation: Location = .newYork
     
@@ -145,5 +145,5 @@ struct SectionView: View {
 }
 #Preview {
     ExploreView()
-        .environmentObject(LocationManager())
+        .environmentObject(LocationManager.shared)
 }

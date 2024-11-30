@@ -63,7 +63,8 @@ class AuthenticationViewModel: ObservableObject {
     @Published var displayName: String = ""
     @Published var showAlert: Bool = false
     @Published var currentUserEmail: String = ""
-    @Published var favoritesDataController: FavoritesDataController
+    @Published var favoritesItem: FavoriteItem
+//    @Published var favoritesDataController: FavoritesDataController
     var emailError: String = "Email or password cannot be empty"
     var passwordError: String = "Passwords do not match"
     var noId: String = "No client ID found in Firebase configuration"
@@ -78,8 +79,9 @@ class AuthenticationViewModel: ObservableObject {
           "unknown": "An unknown error occurred."
       ]
     
-    init(favoritesDataController: FavoritesDataController) {
-          self.favoritesDataController = favoritesDataController
+    init(favoritesItem: FavoriteItem) {
+//          self.favoritesDataController = favoritesDataController
+        self.favoritesItem = favoritesItem
           registerAuthStateHandler()
       }
     // MARK: - Handle Whether User Logged or not
@@ -90,7 +92,7 @@ class AuthenticationViewModel: ObservableObject {
                     self.user = user
                     self.authenticationState = user == nil ? .unauthenticated : .authenticated
                     self.currentUserEmail = user?.email ?? ""
-                    self.favoritesDataController.currentUserEmail = self.currentUserEmail
+//                    self.favoritesDataController.currentUserEmail = self.currentUserEmail
                 }
             }
         }
@@ -108,7 +110,7 @@ class AuthenticationViewModel: ObservableObject {
     func autoSignIn() async {
         if let email = UserDefaults.standard.string(forKey: "rememberedEmail") {
             self.emailText = email
-            try? await SignIn()
+            _ = try? await SignIn()
         }
     }
     
@@ -244,6 +246,18 @@ class AuthenticationViewModel: ObservableObject {
         let key = "username_\(uid)"
         UserDefaults.standard.set(username, forKey: key)
         print("Username '\(username)' saved for user: \(uid)")
+    }
+    
+    // MARK: - saving isRememberMeOn to userDefaults
+    func updateRememberingUser(isRemembered: Bool) {
+        guard let user = Auth.auth().currentUser else {
+            print("No authenticated user found")
+            return
+        }
+        
+        let key = "remember\(user.uid)"
+        UserDefaults.standard.set(isRemembered, forKey: key)
+        print("Username '\(user.email ?? user.uid)' updated RememberMe state to \(isRemembered)")
     }
     
     // MARK: - function for getting username as It's Full name for proile view

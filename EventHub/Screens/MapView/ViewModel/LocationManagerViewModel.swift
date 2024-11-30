@@ -10,6 +10,8 @@ import CoreLocation
 import MapKit
 
 final class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
+    static let shared = LocationManager()
+    
     // MARK: - Properties
     private let locationManager = CLLocationManager()
     private let networkService = NetworkService.shared
@@ -35,7 +37,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObje
         }
     }
     
-    override init() {
+    private override init() {
         self.authorizationStatus = locationManager.authorizationStatus
         self.mapRegion = MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 0, longitude: 0),
@@ -79,7 +81,9 @@ final class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObje
     }
     
     func loadAllPlaces(for location: Location) async {
-        isLoading = true
+        DispatchQueue.main.async { [weak self] in
+            self?.isLoading = true
+        }
         defer { isLoading = false }
         
         await fetchPlaces(for: location)

@@ -47,7 +47,7 @@ private struct SearchInputView: View {
                 
                 ZStack(alignment: .leading) {
                     TextField("| Search...", text: $searchText)
-                        .foregroundColor(.white)
+                        .foregroundColor(.typographyBlack)
                         .font(.system(size: 20))
                         .disableAutocorrection(true)
                 }

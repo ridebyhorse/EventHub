@@ -29,7 +29,7 @@ struct SearchCardView: View {
                     .padding(.top, 22)
                 
                 Text(event.title)
-                    .font(.custom(EventHubFont.title1))
+                    .font(.custom(EventHubFont.title3))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.bottom, 22)
             }

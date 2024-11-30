@@ -34,7 +34,7 @@ class FavoritesViewModel: ObservableObject {
             print("User is not signed in.")
             return
         }
-        await dataController.saveEvent(id: event.id, userEmail: email)
+        dataController.saveEvent(id: event.id, userEmail: email)
         await fetchFavorites()
     }
 
@@ -43,7 +43,7 @@ class FavoritesViewModel: ObservableObject {
             print("User is not signed in.")
             return
         }
-        await dataController.deleteEvent(withId: event.id, for: email)
+        dataController.deleteEvent(withId: event.id, for: email)
         await fetchFavorites()
     }
 
@@ -52,7 +52,7 @@ class FavoritesViewModel: ObservableObject {
             print("User is not signed in.")
             return
         }
-        let ids = await dataController.fetchSavedEvents(for: email)
+        let ids = dataController.fetchSavedEvents(for: email)
         self.favorites = await fetchEventDetails(for: ids)
     }
 

@@ -82,5 +82,5 @@ navigationManager.currentDestination = .signIn
 
     
 #Preview {
-    ResetPasswordView(Model: AuthenticationViewModel(favoritesDataController: FavoritesDataController()))
+    ResetPasswordView(Model: AuthenticationViewModel(favoritesItem: FavoriteItem()))
 }

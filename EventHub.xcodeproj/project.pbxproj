@@ -80,6 +80,7 @@
 		CB199C5E2CEE6542006D2476 /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB199C5D2CEE653E006D2476 /* PlaceModel.swift */; };
 		CB199C622CEE7AD3006D2476 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB199C612CEE7ACE006D2476 /* EventModel.swift */; };
 		CB199C642CEE88D7006D2476 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB199C632CEE88D4006D2476 /* Location.swift */; };
+		CB2EDE562CFB7B670009B80C /* FavoritesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2EDE552CFB7B600009B80C /* FavoritesRepository.swift */; };
 		CB3556AB2CF64D6500178BC1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9379370E2CF46B1B008F3412 /* Kingfisher */; };
 		CB3556AE2CF64ED900178BC1 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3556AD2CF64ED100178BC1 /* NotificationService.swift */; };
 		CB3556B02CF6503200178BC1 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3556AF2CF6500D00178BC1 /* NotificationsView.swift */; };
@@ -88,6 +89,7 @@
 		CB406E202CEFA48F007C8F49 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB406E1A2CEFA48F007C8F49 /* CardView.swift */; };
 		CB406E212CEFA48F007C8F49 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB406E1D2CEFA48F007C8F49 /* HeaderView.swift */; };
 		CB5A4D422CEFD2A6005AD2A9 /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5A4D412CEFD2A6005AD2A9 /* EventsModel.swift */; };
+		CB677C9E2CFB7AAF00D1F99C /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB677C9D2CFB7AA900D1F99C /* StorageService.swift */; };
 		CB71B3282CF2774800716F2F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB71B3272CF2774100716F2F /* SearchViewModel.swift */; };
 		CB71B32A2CF27ADD00716F2F /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB71B3292CF27ADA00716F2F /* SearchView.swift */; };
 		CB71B32D2CF29EB000716F2F /* SearchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB71B32C2CF29E9E00716F2F /* SearchCardView.swift */; };
@@ -96,6 +98,7 @@
 		CB743EC82CEB936700E22966 /* AirbnbCereal_W_Md.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB743EC62CEB936700E22966 /* AirbnbCereal_W_Md.otf */; };
 		CB743EC92CEB936700E22966 /* AirbnbCereal_W_Bd.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB743EC42CEB936700E22966 /* AirbnbCereal_W_Bd.otf */; };
 		CB743ECC2CEB93AC00E22966 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB743ECB2CEB93AC00E22966 /* Font.swift */; };
+		CB7789482CFB8DF800F5C870 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB7789472CFB8DF800F5C870 /* RealmSwift */; };
 		CB7ED11D2CF9001A00CB4814 /* FilmsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7ED11C2CF9001400CB4814 /* FilmsModel.swift */; };
 		CB7ED11F2CF9002000CB4814 /* FilmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7ED11E2CF9001D00CB4814 /* FilmModel.swift */; };
 		CB7ED1212CF903C100CB4814 /* TodayEventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7ED1202CF903B700CB4814 /* TodayEventsModel.swift */; };
@@ -103,6 +106,7 @@
 		CB7ED1252CF9063200CB4814 /* ListsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7ED1242CF9062E00CB4814 /* ListsModel.swift */; };
 		CB7ED1272CF9063A00CB4814 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7ED1262CF9063600CB4814 /* ListModel.swift */; };
 		CB7ED1292CF9077B00CB4814 /* PlacesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7ED1282CF9077600CB4814 /* PlacesModel.swift */; };
+		CBA915F02CFB82D300C35D74 /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA915EE2CFB82D300C35D74 /* FavoriteItem.swift */; };
 		CBB7F1082CED1AC70065366F /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB7F1062CED1AC70065366F /* Persistence.swift */; };
 		CBB7F1092CED1AC70065366F /* EventHub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBB7F1052CED1AC70065366F /* EventHub.xcdatamodeld */; };
 		CBB7F10C2CED1B250065366F /* Font + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB7F10A2CED1B250065366F /* Font + Ext.swift */; };
@@ -185,6 +189,7 @@
 		CB199C5D2CEE653E006D2476 /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		CB199C612CEE7ACE006D2476 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		CB199C632CEE88D4006D2476 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		CB2EDE552CFB7B600009B80C /* FavoritesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRepository.swift; sourceTree = "<group>"; };
 		CB3556AD2CF64ED100178BC1 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		CB3556AF2CF6500D00178BC1 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		CB406E1A2CEFA48F007C8F49 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -192,6 +197,7 @@
 		CB406E1C2CEFA48F007C8F49 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		CB406E1D2CEFA48F007C8F49 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		CB5A4D412CEFD2A6005AD2A9 /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
+		CB677C9D2CFB7AA900D1F99C /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		CB71B3272CF2774100716F2F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		CB71B3292CF27ADA00716F2F /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		CB71B32C2CF29E9E00716F2F /* SearchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardView.swift; sourceTree = "<group>"; };
@@ -207,6 +213,7 @@
 		CB7ED1242CF9062E00CB4814 /* ListsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsModel.swift; sourceTree = "<group>"; };
 		CB7ED1262CF9063600CB4814 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
 		CB7ED1282CF9077600CB4814 /* PlacesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesModel.swift; sourceTree = "<group>"; };
+		CBA915EE2CFB82D300C35D74 /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
 		CBB7F1062CED1AC70065366F /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		CBB7F1072CED1AC70065366F /* EventHub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventHub.xcdatamodel; sourceTree = "<group>"; };
 		CBB7F10A2CED1B250065366F /* Font + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font + Ext.swift"; sourceTree = "<group>"; };
@@ -251,6 +258,7 @@
 				AD508F2C2CED698100CA735C /* FirebasePerformance in Frameworks */,
 				AD508F322CED698100CA735C /* FirebaseStorageCombine-Community in Frameworks */,
 				AD508F392CED6AD700CA735C /* GoogleSignInSwift in Frameworks */,
+				CB7789482CFB8DF800F5C870 /* RealmSwift in Frameworks */,
 				AD508F2E2CED698100CA735C /* FirebaseRemoteConfig in Frameworks */,
 				AD508F182CED698100CA735C /* FirebaseDatabase in Frameworks */,
 				AD508F1A2CED698100CA735C /* FirebaseDynamicLinks in Frameworks */,
@@ -462,6 +470,7 @@
 		AD613BE42CF44300003E6A37 /* Favorites  */ = {
 			isa = PBXGroup;
 			children = (
+				CBA915EF2CFB82D300C35D74 /* FavoritesRealm */,
 				AD674D8C2CF79EF5000E14A6 /* SearchToolBarView.swift */,
 				AD613BDC2CF44300003E6A37 /* FavoritesCoreData */,
 				AD613BDE2CF44300003E6A37 /* Model */,
@@ -610,11 +619,21 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		CBA915EF2CFB82D300C35D74 /* FavoritesRealm */ = {
+			isa = PBXGroup;
+			children = (
+				CBA915EE2CFB82D300C35D74 /* FavoriteItem.swift */,
+			);
+			path = FavoritesRealm;
+			sourceTree = "<group>";
+		};
 		CBB7F1032CED0AE60065366F /* Storage */ = {
 			isa = PBXGroup;
 			children = (
 				CBB7F1052CED1AC70065366F /* EventHub.xcdatamodeld */,
 				CBB7F1062CED1AC70065366F /* Persistence.swift */,
+				CB677C9D2CFB7AA900D1F99C /* StorageService.swift */,
+				CB2EDE552CFB7B600009B80C /* FavoritesRepository.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -779,6 +798,7 @@
 			name = EventHub;
 			packageProductDependencies = (
 				9379370E2CF46B1B008F3412 /* Kingfisher */,
+				CB7789472CFB8DF800F5C870 /* RealmSwift */,
 			);
 			productName = EventHub;
 			productReference = 93083D0B2CEB924D00A0C392 /* EventHub.app */;
@@ -812,6 +832,7 @@
 				AD508F042CED698100CA735C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				AD508F352CED6AD700CA735C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				CB71B32F2CF2A1CB00716F2F /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				CB7789462CFB8DF800F5C870 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 93083D0C2CEB924D00A0C392 /* Products */;
 			projectDirPath = "";
@@ -879,6 +900,7 @@
 				93083D2E2CEB996E00A0C392 /* TabBarIcon.swift in Sources */,
 				EB8D01EE2CECC915000AB98A /* ImagePageView.swift in Sources */,
 				CB199C582CEE467A006D2476 /* LocationModel.swift in Sources */,
+				CBA915F02CFB82D300C35D74 /* FavoriteItem.swift in Sources */,
 				93DB52982CF617D600A93B16 /* ProfileViewModel.swift in Sources */,
 				CB7ED11D2CF9001A00CB4814 /* FilmsModel.swift in Sources */,
 				EB65CB0E2CF0CC51006B5AEC /* ImageEventDetail.swift in Sources */,
@@ -887,6 +909,7 @@
 				EB65CB082CF0C7B4006B5AEC /* DefaultLoadImageView.swift in Sources */,
 				AD613BD12CF44227003E6A37 /* SignInView.swift in Sources */,
 				CB199C532CEE431C006D2476 /* NetworkService.swift in Sources */,
+				CB2EDE562CFB7B670009B80C /* FavoritesRepository.swift in Sources */,
 				EB65CB042CF0C059006B5AEC /* ActionButtonsShareModel.swift in Sources */,
 				EB8D01F02CECC941000AB98A /* TextPageView.swift in Sources */,
 				CBB7F10C2CED1B250065366F /* Font + Ext.swift in Sources */,
@@ -932,6 +955,7 @@
 				CB199C5C2CEE648B006D2476 /* SearchEventModel.swift in Sources */,
 				790A62C12CF4E0780011609E /* SeeAllEventsScreenView.swift in Sources */,
 				93083D0F2CEB924D00A0C392 /* EventHubApp.swift in Sources */,
+				CB677C9E2CFB7AAF00D1F99C /* StorageService.swift in Sources */,
 				93083D442CF11A7600A0C392 /* ExploreViewModel.swift in Sources */,
 				CB7ED1252CF9063200CB4814 /* ListsModel.swift in Sources */,
 				EB8D01FA2CECDD06000AB98A /* OnboardingPageModel.swift in Sources */,
@@ -1194,6 +1218,14 @@
 				minimumVersion = 8.1.1;
 			};
 		};
+		CB7789462CFB8DF800F5C870 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.54.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1336,6 +1368,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB71B32F2CF2A1CB00716F2F /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		CB7789472CFB8DF800F5C870 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB7789462CFB8DF800F5C870 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExampleView: View {
-    @StateObject var locationManager = LocationManager()
+    @StateObject var locationManager = LocationManager.shared
     
     var body: some View {
         TabView {

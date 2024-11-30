@@ -125,7 +125,7 @@ struct MapViewScreen: View {
                             
                             /// CardView
                             MapCardView(
-                                image: selectedLocation.images.first?.image,
+                                image: selectedLocation.images?.first?.image,
                                 date: selectedLocation.phone ?? "",
                                 title: selectedLocation.title ?? "",
                                 adress: selectedLocation.address ?? ""
@@ -177,5 +177,5 @@ struct MapViewScreen: View {
 
 #Preview {
     MapViewScreen()
-        .environmentObject(LocationManager())
+        .environmentObject(LocationManager.shared)
 }

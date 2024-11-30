@@ -134,5 +134,5 @@ struct SignUpView: View {
 
 
 #Preview {
-    SignUpView(Model: AuthenticationViewModel(favoritesDataController: FavoritesDataController()))
+    SignUpView(Model: AuthenticationViewModel(favoritesItem: FavoriteItem()))
 }

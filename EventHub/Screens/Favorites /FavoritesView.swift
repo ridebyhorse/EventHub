@@ -33,14 +33,14 @@ struct FavoritesView: View {
 
                                 VStack(alignment: .leading, spacing: 8) {
                                     HStack {
-                                        Text(event.publicationDate.formattedForEvent() ?? "Unknown Date")
+                                        Text(event.publicationDate.formattedForEvent())
                                             .font(.custom(EventHubFont.subtitle2))
                                             .foregroundColor(.mainBlue)
                                         Spacer()
 
         Button(action: {
             Task{
-                await  viewModel.deleteFavorite(event: event)
+                await viewModel.deleteFavorite(event: event)
             }
                                         }) {
                                             Image(Buttons.addFavorite)
@@ -49,13 +49,13 @@ struct FavoritesView: View {
                                         }
                                     }
 
-                                    Text(event.title ?? "Unknown Title")
+                                    Text(event.title)
                                         .font(.custom(EventHubFont.body2))
                                         .frame(maxWidth: .infinity, alignment: .leading)
 
                                     HStack(spacing: 4) {
                                         Image("location")
-                        Text(event.location.slug.formattedLocation ?? "Unknown Location")
+                        Text(event.location.slug.formattedLocation)
                                             .font(.custom(EventHubFont.subtitle2))
                                             .foregroundColor(.gray)
                                     }

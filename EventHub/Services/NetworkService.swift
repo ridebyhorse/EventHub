@@ -67,7 +67,7 @@ class NetworkService {
         pageSize: Int? = nil
     ) async throws -> SearchEventsModel {
         var urlString = Constants.baseUrl + Constants.search + Constants.language
-        urlString += Constants.locationParameter + location.rawValue
+//        urlString += Constants.locationParameter + location.rawValue
         urlString += Constants.searchQueryParameter + search
         
         if let pageNumber {
@@ -205,6 +205,7 @@ class NetworkService {
     }
     
     private func request<T: Decodable>(url: String, response: T.Type) async throws -> T {
+        print(url)
         guard let url = URL(string: url) else {
             throw URLError(.badURL)
         }
