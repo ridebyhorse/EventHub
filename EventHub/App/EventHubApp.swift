@@ -10,6 +10,8 @@ import Firebase
 import CoreData
 @main
 struct EventHubApp: App {
+    
+    var navigationManager = NavigationManager()
     @StateObject private var dataController = FavoritesDataController()
     let persistenceController = PersistenceController.shared
 
@@ -20,7 +22,8 @@ struct EventHubApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainNavigation(Model: AuthenticationViewModel(favoritesItem: FavoriteItem()))
+                .environmentObject(navigationManager)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environment(\.managedObjectContext, dataController.container.viewContext)
         }

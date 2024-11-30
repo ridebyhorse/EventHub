@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ImageEventDetail: View {
-    var imageURL: String
+    var imageURL: URL?
    
     var body: some View {
         GeometryReader { geometry in

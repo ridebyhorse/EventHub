@@ -31,6 +31,9 @@ final class SearchViewModel: ObservableObject {
     private func mapToEventViewItems() {
         var mappedEvents: [SearchCardViewItem] = []
         for event in eventsResponse {
+            if event.daterange?.startDate == nil {
+                continue
+            }
             mappedEvents.append(
                 .init(
                     image: event.firstImage?.image,
@@ -38,6 +41,9 @@ final class SearchViewModel: ObservableObject {
                     date: event.daterange?.startDate?.formattedForSearchEvent() ?? ""
                 )
             )
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.events = mappedEvents
         }
     }
 }

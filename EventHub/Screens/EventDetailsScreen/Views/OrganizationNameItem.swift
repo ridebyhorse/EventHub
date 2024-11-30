@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OrganizationNameItem: View {
     // MARK: - Properties
-    var imageURL: String
+    var imageURL: URL?
     var name: String
     var position: String
     
@@ -33,8 +33,3 @@ struct OrganizationNameItem: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
-
-#Preview {
-    OrganizationNameItem(imageURL: "EDImageMock2", name: "Ashfak Sayem", position: "Organizer")
-}
-

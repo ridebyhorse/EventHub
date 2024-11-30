@@ -10,15 +10,17 @@ import SwiftUI
 enum NavigationDestination {
     case signIn
     case signUp
-    case contentView
     case resetPassword
     case main
-//    case eventDetail
-//    case events
-//    case search
+    case explore
+    case favorites
+    case search
 }
 
 @MainActor
 class NavigationManager: ObservableObject {
+    
+    
+    @Published var isPresented: Bool = false
     @Published var currentDestination: NavigationDestination = .signIn
 }

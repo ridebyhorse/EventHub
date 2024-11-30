@@ -33,3 +33,7 @@ struct EventsScreenView: View {
         }
     }
 }
+
+#Preview {
+    EventsScreenView(viewModel: EventsScreenViewModel())
+}
