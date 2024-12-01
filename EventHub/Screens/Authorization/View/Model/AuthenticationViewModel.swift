@@ -98,14 +98,11 @@ class AuthenticationViewModel: ObservableObject {
         }
     
     
-    func toggleRememberMe(remember: Bool) {
-        guard let email = Auth.auth().currentUser?.email else { return }
-        if remember {
-            UserDefaults.standard.set(email, forKey: "rememberedEmail")
-        } else {
-            UserDefaults.standard.removeObject(forKey: "rememberedEmail")
-        }
-    }
+//    func toggleRememberMe(remember: Bool) {
+//        if Auth.auth().currentUser != nil {
+//            authenticationState = .authenticated
+//        }
+//    }
 
     func autoSignIn() async {
         if let email = UserDefaults.standard.string(forKey: "rememberedEmail") {
@@ -199,6 +196,8 @@ class AuthenticationViewModel: ObservableObject {
      func signOut() {
         do {
           try Auth.auth().signOut()
+            print(authStateHandler!)
+            authenticationState = .unauthenticated
         }
         catch {
           print(error)
@@ -271,7 +270,16 @@ class AuthenticationViewModel: ObservableObject {
         let key = "username_\(uid)"
         return UserDefaults.standard.string(forKey: key)
     }
-    
+    func updateUsernameFromUserDefaults(username: String) {
+        guard let user = Auth.auth().currentUser else {
+            print("No authenticated user found")
+            return
+        }
+        
+        let uid = user.uid
+        let key = "username_\(uid)"
+        UserDefaults.standard.set(username, forKey: key)
+    }
     
         //MARK: - Getting Data from Google for User (Fullname .etc)
     func fetchGoogleUserData() -> [String: String?]? {

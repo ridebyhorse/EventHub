@@ -8,12 +8,7 @@
 import SwiftUI
 
 struct CardView: View {
-//    @EnvironmentObject var favoritesDataController: FavoritesDataController
-//    @StateObject private var viewModel: FavoritesViewModel
-//
-//    init() {
-//        _viewModel = StateObject(wrappedValue: FavoritesViewModel())
-//    }
+    
     var eventTitle: String
     var eventDate: String
     var attendees: [String]
@@ -31,7 +26,6 @@ struct CardView: View {
             VStack(spacing: 10) {
                 // MARK: - Image
                 ZStack(alignment: .top) {
-//                    viewModel.saveFavorite(title: <#T##String#>, date: <#T##String#>, location: <#T##String#>, city: <#T##String#>)
                     Image("img")
                         .resizable()
                         .aspectRatio(contentMode: .fill)

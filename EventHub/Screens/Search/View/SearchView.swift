@@ -9,12 +9,12 @@ import SwiftUI
 
 struct SearchView: View {
     @ObservedObject var viewModel: SearchViewModel
-   
+    @StateObject var viewRouter = ViewRouter()
     @EnvironmentObject var navigationManager: NavigationManager
     var body: some View {
         VStack {
         SearchToolbarView(title: "Search") {
-        navigationManager.currentDestination = .favorites
+            navigationManager.currentDestination = .main
                        }
         .padding(.bottom,32)
             SearchInputView(searchText: $viewModel.searchText)
