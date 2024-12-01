@@ -63,16 +63,13 @@
 		AD613BDA2CF442C9003E6A37 /* AppTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD613BD82CF442C9003E6A37 /* AppTexts.swift */; };
 		AD613BE62CF44300003E6A37 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD613BDD2CF44300003E6A37 /* FavoritesViewModel.swift */; };
 		AD613BE72CF44300003E6A37 /* FavoritesToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD613BE22CF44300003E6A37 /* FavoritesToolBarView.swift */; };
-		AD613BE82CF44300003E6A37 /* Favorites.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD613BE12CF44300003E6A37 /* Favorites.xcdatamodeld */; };
 		AD613BE92CF44300003E6A37 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD613BE32CF44300003E6A37 /* FavoritesView.swift */; };
 		AD613BEA2CF44300003E6A37 /* FavoriteEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD613BE02CF44300003E6A37 /* FavoriteEmptyView.swift */; };
-		AD613BEB2CF44300003E6A37 /* FavoritesDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD613BDB2CF44300003E6A37 /* FavoritesDataController.swift */; };
 		AD674D8D2CF79EF7000E14A6 /* SearchToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD674D8C2CF79EF5000E14A6 /* SearchToolBarView.swift */; };
 		AD9259982CEC2A9500F74E65 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9259972CEC2A8D00F74E65 /* CustomTextField.swift */; };
 		AD92599C2CEC75CC00F74E65 /* DefaultButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD92599B2CEC75C600F74E65 /* DefaultButtons.swift */; };
 		ADA04A822CEEA7B70001F7E4 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA04A812CEEA7AC0001F7E4 /* NavigationManager.swift */; };
 		ADA04A842CEEA8460001F7E4 /* MainNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA04A832CEEA8340001F7E4 /* MainNavigation.swift */; };
-		ADE2628A2CF6CFD200B27D28 /* EventAdderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE262892CF6CFBD00B27D28 /* EventAdderView.swift */; };
 		CB199C532CEE431C006D2476 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB199C522CEE4314006D2476 /* NetworkService.swift */; };
 		CB199C562CEE44D2006D2476 /* EventCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB199C552CEE44CD006D2476 /* EventCategoryModel.swift */; };
 		CB199C582CEE467A006D2476 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB199C572CEE4674006D2476 /* LocationModel.swift */; };
@@ -173,18 +170,15 @@
 		AD613BD22CF4424C003E6A37 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		AD613BD42CF4426A003E6A37 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		AD613BD82CF442C9003E6A37 /* AppTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTexts.swift; sourceTree = "<group>"; };
-		AD613BDB2CF44300003E6A37 /* FavoritesDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDataController.swift; sourceTree = "<group>"; };
 		AD613BDD2CF44300003E6A37 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		AD613BE02CF44300003E6A37 /* FavoriteEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEmptyView.swift; sourceTree = "<group>"; };
 		AD613BE22CF44300003E6A37 /* FavoritesToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesToolBarView.swift; sourceTree = "<group>"; };
 		AD613BE32CF44300003E6A37 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
-		AD613BE52CF44300003E6A37 /* Favorites.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Favorites.xcdatamodel; sourceTree = "<group>"; };
 		AD674D8C2CF79EF5000E14A6 /* SearchToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchToolBarView.swift; sourceTree = "<group>"; };
 		AD9259972CEC2A8D00F74E65 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		AD92599B2CEC75C600F74E65 /* DefaultButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButtons.swift; sourceTree = "<group>"; };
 		ADA04A812CEEA7AC0001F7E4 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		ADA04A832CEEA8340001F7E4 /* MainNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigation.swift; sourceTree = "<group>"; };
-		ADE262892CF6CFBD00B27D28 /* EventAdderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAdderView.swift; sourceTree = "<group>"; };
 		CB199C522CEE4314006D2476 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		CB199C552CEE44CD006D2476 /* EventCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCategoryModel.swift; sourceTree = "<group>"; };
 		CB199C572CEE4674006D2476 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
@@ -458,14 +452,6 @@
 			path = "AppTexts ";
 			sourceTree = "<group>";
 		};
-		AD613BDC2CF44300003E6A37 /* FavoritesCoreData */ = {
-			isa = PBXGroup;
-			children = (
-				AD613BDB2CF44300003E6A37 /* FavoritesDataController.swift */,
-			);
-			path = FavoritesCoreData;
-			sourceTree = "<group>";
-		};
 		AD613BDE2CF44300003E6A37 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -479,13 +465,10 @@
 			children = (
 				CBA915EF2CFB82D300C35D74 /* FavoritesRealm */,
 				AD674D8C2CF79EF5000E14A6 /* SearchToolBarView.swift */,
-				AD613BDC2CF44300003E6A37 /* FavoritesCoreData */,
 				AD613BDE2CF44300003E6A37 /* Model */,
 				AD613BE02CF44300003E6A37 /* FavoriteEmptyView.swift */,
-				AD613BE12CF44300003E6A37 /* Favorites.xcdatamodeld */,
 				AD613BE22CF44300003E6A37 /* FavoritesToolBarView.swift */,
 				AD613BE32CF44300003E6A37 /* FavoritesView.swift */,
-				ADE262892CF6CFBD00B27D28 /* EventAdderView.swift */,
 			);
 			path = "Favorites ";
 			sourceTree = "<group>";
@@ -910,7 +893,6 @@
 				CB7ED1292CF9077B00CB4814 /* PlacesModel.swift in Sources */,
 				CBB7F1082CED1AC70065366F /* Persistence.swift in Sources */,
 				CB6E13A52CFC6B1600E68914 /* SeeAllExploreViewModel.swift in Sources */,
-				ADE2628A2CF6CFD200B27D28 /* EventAdderView.swift in Sources */,
 				CBB7F1092CED1AC70065366F /* EventHub.xcdatamodeld in Sources */,
 				ADA04A842CEEA8460001F7E4 /* MainNavigation.swift in Sources */,
 				793CBF512CED0F1C00E1B230 /* EventsScreenViewModel.swift in Sources */,
@@ -946,10 +928,8 @@
 				CB5A4D422CEFD2A6005AD2A9 /* EventsModel.swift in Sources */,
 				AD613BE62CF44300003E6A37 /* FavoritesViewModel.swift in Sources */,
 				AD613BE72CF44300003E6A37 /* FavoritesToolBarView.swift in Sources */,
-				AD613BE82CF44300003E6A37 /* Favorites.xcdatamodeld in Sources */,
 				AD613BE92CF44300003E6A37 /* FavoritesView.swift in Sources */,
 				AD613BEA2CF44300003E6A37 /* FavoriteEmptyView.swift in Sources */,
-				AD613BEB2CF44300003E6A37 /* FavoritesDataController.swift in Sources */,
 				EB8D01F62CECDB42000AB98A /* BackgroundEllipseView.swift in Sources */,
 				CBC6D6552CFB54F400DC739D /* ExampleView.swift in Sources */,
 				CBC6D6562CFB54F400DC739D /* SearchBarView.swift in Sources */,
@@ -1397,16 +1377,6 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		AD613BE12CF44300003E6A37 /* Favorites.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				AD613BE52CF44300003E6A37 /* Favorites.xcdatamodel */,
-			);
-			currentVersion = AD613BE52CF44300003E6A37 /* Favorites.xcdatamodel */;
-			path = Favorites.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		CBB7F1052CED1AC70065366F /* EventHub.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
