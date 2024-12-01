@@ -46,6 +46,9 @@ class ExploreViewModel: ObservableObject {
                             self.nearbyEvents = fetchedNearby.results
                             self.filterEventsByCategory()
                             self.isLoading = false
+                            for event in self.nearbyEvents {
+                                print("Event: \(event.title), Images: \(event.images)")
+                            }
                         }
                     } catch {
                         DispatchQueue.main.async {
