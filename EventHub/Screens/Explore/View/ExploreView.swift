@@ -62,12 +62,15 @@ struct ExploreView: View {
 }
 
 // MARK: - Section View
+import SwiftUI
+
 struct SectionView: View {
     let title: String
     let events: [EventModel]
     let noEventsMessage: String
     @State private var showSeeAllScreen: Bool = false
-    
+    @State private var refreshToggle = false
+
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
@@ -91,7 +94,7 @@ struct SectionView: View {
                 )
             }
             .padding(.horizontal, 16)
-            
+
             if events.isEmpty {
                 Text(noEventsMessage)
                     .font(.footnote)
@@ -103,13 +106,19 @@ struct SectionView: View {
                     HStack(spacing: 16) {
                         ForEach(events, id: \.id) { event in
                             NavigationLink(destination: EventDetailsScreen(event: event)) {
+                                let isFavorite = FavoriteService.shared.isEventFavorite(event.id)
+
                                 CardView(
                                     eventTitle: event.title.capitalizingFirstLetter(),
                                     eventDate: formatDate(event.dates.first?.start),
                                     attendees: ["https://example.com/avatar1.jpg", "https://example.com/avatar2.jpg", "https://example.com/avatar3.jpg"],
                                     goingCount: event.favoritesCount,
                                     location: event.location.slug.displayName,
-                                    eventImage: event.images.first?.image?.absoluteString ?? ""
+                                    eventImage: event.images.first?.image?.absoluteString ?? "",
+                                    isFavorite: isFavorite,
+                                    onFavoriteToggle: {
+                                        toggleFavorite(for: event)
+                                    }
                                 )
                             }
                         }
@@ -118,8 +127,18 @@ struct SectionView: View {
             }
         }
         .shadow(color: Color(red: 0.31, green: 0.33, blue: 0.53).opacity(0.06), radius: 15, x: 0, y: 8)
+        .onChange(of: refreshToggle) { _ in }
     }
-    
+
+    private func toggleFavorite(for event: EventModel) {
+        if FavoriteService.shared.isEventFavorite(event.id) {
+            FavoriteService.shared.removeFavoriteEventID(event.id)
+        } else {
+            FavoriteService.shared.addFavoriteEventID(event.id)
+        }
+        refreshToggle.toggle()
+    }
+
     // MARK: - Date Formatter
     private func formatDate(_ date: Date?) -> String {
         guard let date = date else { return "N/A" }
@@ -152,6 +171,7 @@ struct SectionView: View {
         return formattedDate
     }
 }
+
 #Preview {
     ExploreView()
         .environmentObject(LocationManager.shared)
