@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CardView: View {
     
@@ -15,6 +16,9 @@ struct CardView: View {
     var goingCount: Int
     var location: String
     var eventImage: String
+    @State private var isMarked: Bool = false
+    
+    
     var body: some View {
         ZStack {
             
@@ -26,25 +30,42 @@ struct CardView: View {
             VStack(spacing: 10) {
                 // MARK: - Image
                 ZStack(alignment: .top) {
-                    Image("img")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 219, height: 131)
-                        .cornerRadius(10)
-                        .clipped()
+
+                    if let url = URL(string: eventImage) {
+                        KFImage(url)
+                            .placeholder {
+                                Image(randomPlaceholderImageName())
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 219, height: 131)
+                                    .cornerRadius(10)
+                            }
+                            .onFailure { _ in
+                                Image(randomPlaceholderImageName())
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 219, height: 131)
+                                    .cornerRadius(10)
+                            }
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 219, height: 131)
+                            .cornerRadius(10)
+                            .clipped()
+                    }
                     
                     HStack {
                         // MARK: - Date
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.white.opacity(0.7))
+                                .fill(Color.white.opacity(0.9))
                                 .frame(width: 45, height: 45)
                             Text(eventDate)
                                 .font(.system(size: 16, weight: .light))
                                 .foregroundColor(.red)
-                                .lineLimit(2) // Ограничиваем двумя строками
+                                .lineLimit(2)
                                 .multilineTextAlignment(.center)
-                                .frame(width: 45, height: 45)
+                                .frame(width: 38, height: 40)
                         }
                         .padding(.top, 8)
                         
@@ -52,16 +73,14 @@ struct CardView: View {
                         
                         // MARK: - Mark
                             ZStack {
-                                
-                                
                                 RoundedRectangle(cornerRadius: 7)
-                                    .fill(Color.white.opacity(0.7))
+                                    .fill(Color.white.opacity(0.9))
                                     .frame(width: 30, height: 30)
                                 Button(action:{
-                                    
+                                    isMarked.toggle()
                                 })
                                 {
-                                Image(systemName: "bookmark.fill")
+                                    Image(isMarked ? "bkmark" : "bkmark1")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 15, height: 15)
@@ -86,7 +105,7 @@ struct CardView: View {
                 // MARK: - Persons going
                 HStack(spacing: -8) {
                     ForEach(attendees.prefix(3), id: \.self) { attendee in
-                        Image("img")
+                        Image(randomPlaceholderImageName())
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 24, height: 24)
@@ -120,9 +139,11 @@ struct CardView: View {
             .frame(width: 237, height: 255)
         }
         .frame(width: 237, height: 255)
-        
-        
     }
+    
+    private func randomPlaceholderImageName() -> String {
+            return "\(Int.random(in: 1...30))" // Random image name between 1 and 30
+        }
 }
 
 #Preview {

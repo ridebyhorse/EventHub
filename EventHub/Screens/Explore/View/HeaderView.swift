@@ -13,7 +13,7 @@ struct HeaderView: View {
     let locations: [Location] = Location.allCases
     @Binding var selectedLocation: Location
     @State private var isFilterViewPresented = false
-    @State private var searchText: String = ""
+    @State private var showSearchView = false
     
     var body: some View {
         ZStack {
@@ -21,7 +21,7 @@ struct HeaderView: View {
                 .fill(Color("MainBlue"))
             
             VStack(alignment: .leading, spacing: 20) {
-// MARK: - Location
+                // MARK: - Location
                 HStack {
                     Menu {
                         ForEach(locations, id: \.self) { location in
@@ -52,7 +52,7 @@ struct HeaderView: View {
                     
                     Spacer()
                     
-// MARK: - Notificztions
+                    // MARK: - Notificztions
                     Button {
                         print("notification pressed")
                     } label: {
@@ -63,26 +63,21 @@ struct HeaderView: View {
                 }
                 .padding(.horizontal, 24)
                 
-// MARK: - Search
+                // MARK: - Search
                 HStack {
                     HStack {
                         Image("search")
                             .foregroundColor(.white.opacity(0.6))
                         
-                        ZStack(alignment: .leading) {
-                            if searchText.isEmpty {
-                                Text("| Search...")
-                                    .foregroundColor(.white.opacity(0.6))
-                                    .font(.system(size: 20))
-                            }
-                            
-                            TextField("", text: $searchText)
-                                .foregroundColor(.white)
+                        Button {
+                            showSearchView = true
+                        } label: {
+                            Text("| Search...")
+                                .foregroundColor(.white.opacity(0.6))
                                 .font(.system(size: 20))
-                                .disableAutocorrection(true)
+                                .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
-                    
                     
                     Spacer()
                     // MARK: - Filter
@@ -109,6 +104,9 @@ struct HeaderView: View {
                     }
                     .sheet(isPresented: $isFilterViewPresented) {
                         FiltersView()
+                    }
+                    .sheet(isPresented: $showSearchView) {
+                        SearchView(viewModel: SearchViewModel(location: selectedLocation))
                     }
                 }
                 .padding(.horizontal, 24)

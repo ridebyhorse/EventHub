@@ -90,6 +90,8 @@
 		CB406E212CEFA48F007C8F49 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB406E1D2CEFA48F007C8F49 /* HeaderView.swift */; };
 		CB5A4D422CEFD2A6005AD2A9 /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5A4D412CEFD2A6005AD2A9 /* EventsModel.swift */; };
 		CB677C9E2CFB7AAF00D1F99C /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB677C9D2CFB7AA900D1F99C /* StorageService.swift */; };
+		CB6E13A32CFC6AF300E68914 /* SeeAllExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E13A22CFC6AEC00E68914 /* SeeAllExploreView.swift */; };
+		CB6E13A52CFC6B1600E68914 /* SeeAllExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E13A42CFC6B0900E68914 /* SeeAllExploreViewModel.swift */; };
 		CB71B3282CF2774800716F2F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB71B3272CF2774100716F2F /* SearchViewModel.swift */; };
 		CB71B32A2CF27ADD00716F2F /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB71B3292CF27ADA00716F2F /* SearchView.swift */; };
 		CB71B32D2CF29EB000716F2F /* SearchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB71B32C2CF29E9E00716F2F /* SearchCardView.swift */; };
@@ -198,6 +200,8 @@
 		CB406E1D2CEFA48F007C8F49 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		CB5A4D412CEFD2A6005AD2A9 /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
 		CB677C9D2CFB7AA900D1F99C /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		CB6E13A22CFC6AEC00E68914 /* SeeAllExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllExploreView.swift; sourceTree = "<group>"; };
+		CB6E13A42CFC6B0900E68914 /* SeeAllExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllExploreViewModel.swift; sourceTree = "<group>"; };
 		CB71B3272CF2774100716F2F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		CB71B3292CF27ADA00716F2F /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		CB71B32C2CF29E9E00716F2F /* SearchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardView.swift; sourceTree = "<group>"; };
@@ -313,6 +317,7 @@
 		796256502CEBC5820019F6E4 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				CB6E13A12CFC6AE100E68914 /* SeeAllExplore */,
 				CBC6D6522CFB54F400DC739D /* MapView */,
 				CBC6D6542CFB54F400DC739D /* WebView */,
 				93DB52922CF6179800A93B16 /* Profile */,
@@ -571,6 +576,15 @@
 				CB406E1D2CEFA48F007C8F49 /* HeaderView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CB6E13A12CFC6AE100E68914 /* SeeAllExplore */ = {
+			isa = PBXGroup;
+			children = (
+				CB6E13A22CFC6AEC00E68914 /* SeeAllExploreView.swift */,
+				CB6E13A42CFC6B0900E68914 /* SeeAllExploreViewModel.swift */,
+			);
+			path = SeeAllExplore;
 			sourceTree = "<group>";
 		};
 		CB71B3262CF276EC00716F2F /* Search */ = {
@@ -866,6 +880,7 @@
 			files = (
 				793CBF4C2CED03FE00E1B230 /* EventView.swift in Sources */,
 				AD613BD52CF4426A003E6A37 /* ResetPasswordView.swift in Sources */,
+				CB6E13A32CFC6AF300E68914 /* SeeAllExploreView.swift in Sources */,
 				CB199C5E2CEE6542006D2476 /* PlaceModel.swift in Sources */,
 				AD9259982CEC2A9500F74E65 /* CustomTextField.swift in Sources */,
 				CB3556AE2CF64ED900178BC1 /* NotificationService.swift in Sources */,
@@ -890,6 +905,7 @@
 				93DB529A2CF6551600A93B16 /* ImagePicker.swift in Sources */,
 				CB7ED1292CF9077B00CB4814 /* PlacesModel.swift in Sources */,
 				CBB7F1082CED1AC70065366F /* Persistence.swift in Sources */,
+				CB6E13A52CFC6B1600E68914 /* SeeAllExploreViewModel.swift in Sources */,
 				ADE2628A2CF6CFD200B27D28 /* EventAdderView.swift in Sources */,
 				CBB7F1092CED1AC70065366F /* EventHub.xcdatamodeld in Sources */,
 				ADA04A842CEEA8460001F7E4 /* MainNavigation.swift in Sources */,
