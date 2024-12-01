@@ -25,7 +25,7 @@ struct EventModel: Decodable, Hashable, Identifiable {
     let images: [ImageModel]
     let favoritesCount: Int
     let commentsCount: Int
-    let siteUrl: URL
+    let siteUrl: URL?
     let tags: [String]
     
     private enum CodingKeys: String, CodingKey {
