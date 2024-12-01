@@ -12,6 +12,7 @@ struct ExploreView: View {
     @EnvironmentObject var locationManager: LocationManager
     @StateObject var viewModel = ExploreViewModel()
     @State private var selectedLocation: Location = .newYork
+    @State private var favoriteEventIDs: Set<Int> = []
     
     var body: some View {
         NavigationView {
@@ -54,6 +55,9 @@ struct ExploreView: View {
                 viewModel.fetchData(location: locationManager.selectedLocation)
                 locationManager.updateMapRegion(for: locationManager.selectedLocation)
             }
+            .onReceive(NotificationCenter.default.publisher(for: .favoritesChanged)) { _ in
+                favoriteEventIDs = Set(FavoriteService.shared.getFavoriteEventIDs())
+            }
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(true)
         }
@@ -64,13 +68,16 @@ struct ExploreView: View {
 // MARK: - Section View
 import SwiftUI
 
+import SwiftUI
+
 struct SectionView: View {
     let title: String
     let events: [EventModel]
     let noEventsMessage: String
     @State private var showSeeAllScreen: Bool = false
     @State private var refreshToggle = false
-
+    @State private var favoriteEventIDs: Set<Int> = []
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
@@ -94,7 +101,7 @@ struct SectionView: View {
                 )
             }
             .padding(.horizontal, 16)
-
+            
             if events.isEmpty {
                 Text(noEventsMessage)
                     .font(.footnote)
@@ -106,8 +113,8 @@ struct SectionView: View {
                     HStack(spacing: 16) {
                         ForEach(events, id: \.id) { event in
                             NavigationLink(destination: EventDetailsScreen(event: event)) {
-                                let isFavorite = FavoriteService.shared.isEventFavorite(event.id)
-
+                                let isFavorite = favoriteEventIDs.contains(event.id)
+                                
                                 CardView(
                                     eventTitle: event.title.capitalizingFirstLetter(),
                                     eventDate: formatDate(event.dates.first?.start),
@@ -127,18 +134,23 @@ struct SectionView: View {
             }
         }
         .shadow(color: Color(red: 0.31, green: 0.33, blue: 0.53).opacity(0.06), radius: 15, x: 0, y: 8)
+        .onAppear {
+            favoriteEventIDs = Set(FavoriteService.shared.getFavoriteEventIDs())
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .favoritesChanged)) { _ in
+            favoriteEventIDs = Set(FavoriteService.shared.getFavoriteEventIDs())
+        }
         .onChange(of: refreshToggle) { _ in }
     }
-
+    
     private func toggleFavorite(for event: EventModel) {
-        if FavoriteService.shared.isEventFavorite(event.id) {
+        if favoriteEventIDs.contains(event.id) {
             FavoriteService.shared.removeFavoriteEventID(event.id)
         } else {
             FavoriteService.shared.addFavoriteEventID(event.id)
         }
-        refreshToggle.toggle()
     }
-
+    
     // MARK: - Date Formatter
     private func formatDate(_ date: Date?) -> String {
         guard let date = date else { return "N/A" }

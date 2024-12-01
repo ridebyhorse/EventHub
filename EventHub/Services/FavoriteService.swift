@@ -7,7 +7,11 @@
 
 import Foundation
 
-class FavoriteService {
+extension Notification.Name {
+    static let favoritesChanged = Notification.Name("favoritesChanged")
+}
+
+final class FavoriteService {
     static let shared = FavoriteService()
 
     private let favoritesKey = "favoriteEventIDs"
@@ -19,6 +23,7 @@ class FavoriteService {
         if !favorites.contains(id) {
             favorites.append(id)
             saveFavoriteEventIDs(favorites)
+            NotificationCenter.default.post(name: .favoritesChanged, object: nil)
         }
     }
 
@@ -27,12 +32,12 @@ class FavoriteService {
         if let index = favorites.firstIndex(of: id) {
             favorites.remove(at: index)
             saveFavoriteEventIDs(favorites)
+            NotificationCenter.default.post(name: .favoritesChanged, object: nil)
         }
     }
 
     func isEventFavorite(_ id: Int) -> Bool {
-        let favorites = getFavoriteEventIDs()
-        return favorites.contains(id)
+        return getFavoriteEventIDs().contains(id)
     }
 
     func getFavoriteEventIDs() -> [Int] {
@@ -43,31 +48,5 @@ class FavoriteService {
     private func saveFavoriteEventIDs(_ ids: [Int]) {
         let defaults = UserDefaults.standard
         defaults.set(ids, forKey: favoritesKey)
-    }
-    
-    func fetchFavoriteEvents() async throws -> [EventModel] {
-        let favoriteIDs = FavoriteService.shared.getFavoriteEventIDs()
-        var favoriteEvents: [EventModel] = []
-
-        await withTaskGroup(of: EventModel?.self) { group in
-            for id in favoriteIDs {
-                group.addTask {
-                    do {
-                        return try await NetworkService.shared.getEventByID(id)
-                    } catch {
-                        print("Ошибка при загрузке события с ID \(id): \(error)")
-                        return nil
-                    }
-                }
-            }
-
-            for await event in group {
-                if let event = event {
-                    favoriteEvents.append(event)
-                }
-            }
-        }
-
-        return favoriteEvents
     }
 }
