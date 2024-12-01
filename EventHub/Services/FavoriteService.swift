@@ -5,16 +5,16 @@
 //  Created by Иван Семикин on 01/12/2024.
 //
 
-import Foundation
+import SwiftUI
 
 extension Notification.Name {
     static let favoritesChanged = Notification.Name("favoritesChanged")
 }
 
-final class FavoriteService {
+final class FavoriteService: ObservableObject {
     static let shared = FavoriteService()
 
-    private let favoritesKey = "favoriteEventIDs"
+    @AppStorage("favoriteEventIDs") private var favoriteEventIDsData: Data = Data()
 
     private init() {}
 
@@ -41,12 +41,15 @@ final class FavoriteService {
     }
 
     func getFavoriteEventIDs() -> [Int] {
-        let defaults = UserDefaults.standard
-        return defaults.array(forKey: favoritesKey) as? [Int] ?? []
+        guard let favorites = try? JSONDecoder().decode([Int].self, from: favoriteEventIDsData) else {
+            return []
+        }
+        return favorites
     }
 
     private func saveFavoriteEventIDs(_ ids: [Int]) {
-        let defaults = UserDefaults.standard
-        defaults.set(ids, forKey: favoritesKey)
+        if let data = try? JSONEncoder().encode(ids) {
+            favoriteEventIDsData = data
+        }
     }
 }
