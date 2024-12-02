@@ -15,6 +15,9 @@ struct EventDetailsScreen: View {
     @State private var isButtonShow: Bool = true
     @State private var showSharedView: Bool = false
     @State private var scrollOffset: CGFloat = 0
+    @State private var showWebView = false
+    @State private var webViewURL: URL?
+
     
     let event: EventModel
     
@@ -37,19 +40,33 @@ struct EventDetailsScreen: View {
                     /// Image and ButtonShare
                     ZStack(alignment: .bottomTrailing) {
                         ImageEventDetail(imageURL: event.images.first?.image)
-                        
-                        ActionButtonHeader(
-                            isSelected: $isButtonShow,
-                            icon: "shared",
-                            iconChange: "shared",
-                            action: {
-                                showSharedView = true
-                                isButtonShow.toggle()
-                            }
-                        )
-                        .opacity(isButtonShow ? 1 : 0)
-                        .padding(.trailing, 20)
-                        .padding(.bottom, 14)
+                        VStack{
+                            ActionButtonHeader(
+                                icon: "safari.fill",
+                                iconChange: "safari.fill",
+                                action: {
+                                    if let url = event.siteUrl {
+                                        webViewURL = url
+                                        showWebView = true
+                                    }
+                                }
+                            )
+                            .opacity(isButtonShow ? 1000 : 0)
+                            .padding(.trailing, 20)
+                            .padding(.bottom, 6)
+                            
+                            ActionButtonHeader(
+                                icon: "shared",
+                                iconChange: "shared",
+                                action: {
+                                    showSharedView = true
+                                    isButtonShow.toggle()
+                                }
+                            )
+                            .opacity(isButtonShow ? 1000 : 0)
+                            .padding(.trailing, 20)
+                            .padding(.bottom, 14)
+                        }
                     }
                     .frame(height: 180)
                     
@@ -160,6 +177,13 @@ struct EventDetailsScreen: View {
             /// SharedView
             SharedView(isShowing: $showSharedView, isShowingButton: $isButtonShow)
         }
+        .background(
+            NavigationLink(
+                destination: WebViewScreen(urlPage: webViewURL),
+                isActive: $showWebView,
+                label: { EmptyView() }
+            )
+        )
     }
     
     // MARK: - Methods

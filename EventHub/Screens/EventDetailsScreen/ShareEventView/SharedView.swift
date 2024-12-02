@@ -73,7 +73,9 @@ struct SharedView: View {
                 .frame(height: 380)
                 .frame(maxWidth: .infinity)
                 .background(Color.white)
-                .cornerRadius(38)
+                .clipShape(
+                    RoundedRectangle(corners: [.topLeft, .topRight], radius: 38)
+                )
                 .transition(.move(edge: .bottom))
             }
         }
@@ -87,6 +89,21 @@ struct SharedView: View {
         stride(from: 0, to: buttons.count, by: columns).map {
             Array(buttons[$0..<min($0 + columns, buttons.count)])
         }
+    }
+}
+
+// MARK: - RoundedCornerShape
+struct RoundedCornersShape: Shape {
+    var corners: UIRectCorner
+    var radius: CGFloat
+    
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(
+            roundedRect: rect,
+            byRoundingCorners: corners,
+            cornerRadii: CGSize(width: radius, height: radius)
+        )
+        return Path(path.cgPath)
     }
 }
 
