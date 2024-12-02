@@ -16,6 +16,8 @@ struct ProfileView: View {
     @State private var aboutMe: String = ""
     @State private var profileImage: UIImage? = nil
     @State private var showImagePicker: Bool = false
+    @State private var isExpanded: Bool = false
+    private let maxCharacterLimit = 100
     
     var body: some View {
 
@@ -108,10 +110,26 @@ struct ProfileView: View {
                                 .stroke(Color.gray.opacity(0.5), lineWidth: 0.5)
                         )
                 } else {
-                    Text(aboutMe)
-                        .font(.system(size: 16, weight: .regular))
-                        .foregroundColor(.gray)
-                        .multilineTextAlignment(.leading)
+                    VStack(alignment: .leading, spacing: 8) {
+                                Text(isExpanded || aboutMe.count <= maxCharacterLimit
+                                     ? aboutMe
+                                     : "\(aboutMe.prefix(maxCharacterLimit))...")
+                                .font(.custom(EventHubFont.body1.name, size: 16))
+                                    .foregroundColor(.gray)
+                                    .multilineTextAlignment(.leading)
+                                
+                                if aboutMe.count > maxCharacterLimit {
+                                    Button(action: {
+                                        isExpanded.toggle()
+                                    }) {
+                                        Text(isExpanded ? "Read Less" : "Read More")
+                                            .font(.system(size: 14, weight: .bold))
+                                            .foregroundColor(.mainBlue)
+                                            .padding(.top, 5)
+                                    }
+                                }
+                            }
+                    
                 }
             }
             .padding(.top, 20)
@@ -138,6 +156,7 @@ struct ProfileView: View {
         .padding(.top, 50)
         .onAppear {
             loadProfile()
+            loadProfileImage()
         }
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(image: $profileImage)
@@ -150,12 +169,28 @@ struct ProfileView: View {
         print("Select Image")
     }
     
+    private func saveProfileImage() {
+        if let profileImage = profileImage, let imageData = profileImage.jpegData(compressionQuality: 0.8) {
+            UserDefaults.standard.set(imageData, forKey: "profileImage")
+            print("Profile image saved.")
+        }
+    }
+
+    private func loadProfileImage() {
+        if let imageData = UserDefaults.standard.data(forKey: "profileImage"),
+           let savedImage = UIImage(data: imageData) {
+            self.profileImage = savedImage
+            print("Profile image loaded.")
+        }
+    }
+    
     private func saveProfile() {
         // Save profile changes to Firebase or CoreData
         if !name.isEmpty {
-             viewModel.updateUsernameFromUserDefaults(username: name)
-             print("Profile Saved: \(name), \(aboutMe)")
-         }
+               viewModel.updateUsernameFromUserDefaults(username: name)
+           }
+           saveProfileImage() 
+           print("Profile saved: \(name), \(aboutMe)")
     }
     
     private func signOut() {
@@ -170,7 +205,14 @@ struct ProfileView: View {
         } else {
             name = viewModel.displayName.isEmpty ? "Name" : viewModel.displayName
         }
-        print("Loaded username: \(name)")
+        
+        if let savedAboutMe = viewModel.getAboutMe(), !savedAboutMe.isEmpty {
+            aboutMe = savedAboutMe
+        } else {
+            aboutMe = "Tell us about yourself."
+        }
+        
+        print("Loaded username: \(name), About Me: \(aboutMe)")
     }
 }
 

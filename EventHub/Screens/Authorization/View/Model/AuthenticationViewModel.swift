@@ -97,12 +97,17 @@ class AuthenticationViewModel: ObservableObject {
             }
         }
     
-    
-//    func toggleRememberMe(remember: Bool) {
-//        if Auth.auth().currentUser != nil {
-//            authenticationState = .authenticated
-//        }
-//    }
+    // Function to update the About Me section in UserDefaults
+    func updateAboutMe(aboutMe: String) {
+        let defaults = UserDefaults.standard
+        defaults.set(aboutMe, forKey: "aboutMe")
+    }
+
+    // Function to retrieve the About Me section from UserDefaults
+    func getAboutMe() -> String? {
+        let defaults = UserDefaults.standard
+        return defaults.string(forKey: "aboutMe")
+    }
 
     func autoSignIn() async {
         if let email = UserDefaults.standard.string(forKey: "rememberedEmail") {

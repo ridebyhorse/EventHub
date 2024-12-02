@@ -23,5 +23,4 @@ class NavigationManager: ObservableObject {
     
     @Published var isPresented: Bool = false
     @Published var currentDestination: NavigationDestination = .signIn
-    @Published var currentTab: Tab = .explore
 }
