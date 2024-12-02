@@ -37,6 +37,14 @@ final class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObje
         }
     }
     
+    var filteredPlaces: [PlaceModel] {
+        if searchText.isEmpty {
+            return places
+        } else {
+            return places.filter { $0.title?.lowercased().contains(searchText.lowercased()) ?? false }
+        }
+    }
+    
     private override init() {
         self.authorizationStatus = locationManager.authorizationStatus
         self.mapRegion = MKCoordinateRegion(

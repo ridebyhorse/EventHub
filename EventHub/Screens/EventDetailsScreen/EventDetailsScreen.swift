@@ -17,7 +17,7 @@ struct EventDetailsScreen: View {
     @State private var scrollOffset: CGFloat = 0
     @State private var showWebView = false
     @State private var webViewURL: URL?
-    
+
     let event: EventModel
     
     // MARK: - Body
@@ -55,7 +55,6 @@ struct EventDetailsScreen: View {
                                 .padding(.trailing, 20)
                                 .padding(.bottom, 6)
                             
-                            
                             ActionButtonHeader(
                                 icon: "shared",
                                 iconChange: "shared",
@@ -67,7 +66,6 @@ struct EventDetailsScreen: View {
                             .opacity(isButtonShow ? 1000 : 0)
                             .padding(.trailing, 20)
                             .padding(.bottom, 14)
-                            
                         }
                     }
                     .frame(height: 180)

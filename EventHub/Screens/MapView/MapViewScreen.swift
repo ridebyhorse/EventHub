@@ -25,7 +25,7 @@ struct MapViewScreen: View {
         NavigationView {
             ZStack {
                 /// Map
-                Map(coordinateRegion: $locationManager.mapRegion, annotationItems: locationManager.places) { place -> MapAnnotation<AnyView> in
+                Map(coordinateRegion: $locationManager.mapRegion, annotationItems: locationManager.filteredPlaces) { place -> MapAnnotation<AnyView> in
                     guard let latitude = place.coords?.lat,
                           let longitude = place.coords?.lon,
                           latitude != 0, longitude != 0 else {
