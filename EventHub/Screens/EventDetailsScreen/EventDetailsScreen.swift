@@ -28,6 +28,7 @@ struct EventDetailsScreen: View {
                     Color.clear
                         .onAppear {
                             scrollOffset = geometry.frame(in: .global).minY
+                            isBookmarked = FavoriteService.shared.isEventFavorite(event.id)
                         }
                         .onChange(of: geometry.frame(in: .global).minY) { newValue in
                             scrollOffset = newValue
@@ -37,7 +38,6 @@ struct EventDetailsScreen: View {
                 VStack {
                     /// Image and ButtonShare
                     ZStack(alignment: .bottomTrailing) {
-                        
                         ImageEventDetail(imageURL: event.images.first?.image)
                         VStack {
                            
@@ -69,7 +69,6 @@ struct EventDetailsScreen: View {
                             .padding(.bottom, 14)
                             
                         }
-                  
                     }
                     .frame(height: 180)
                     
@@ -154,10 +153,15 @@ struct EventDetailsScreen: View {
                     
                     /// BookmarkButton
                     ActionButtonHeader(
+                        isSelected: $isBookmarked,
                         icon: "bookmarkED",
                         iconChange: "bookmarkFillED",
                         action: {
-                            isBookmarked.toggle()
+                            if isBookmarked {
+                                FavoriteService.shared.addFavoriteEventID(event.id)
+                            } else {
+                                FavoriteService.shared.removeFavoriteEventID(event.id)
+                            }
                         }
                     )
                     .padding(.trailing, 20)
@@ -183,6 +187,7 @@ struct EventDetailsScreen: View {
             )
         )
     }
+    
     // MARK: - Methods
     private func removeHTMLTags(from htmlString: String) -> String {
         let regex = try! NSRegularExpression(pattern: "<.*?>", options: [])

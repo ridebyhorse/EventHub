@@ -63,7 +63,8 @@ class AuthenticationViewModel: ObservableObject {
     @Published var displayName: String = ""
     @Published var showAlert: Bool = false
     @Published var currentUserEmail: String = ""
-    @Published var favoritesDataController: FavoritesDataController
+    @Published var favoritesItem: FavoriteItem
+//    @Published var favoritesDataController: FavoritesDataController
     var emailError: String = "Email or password cannot be empty"
     var passwordError: String = "Passwords do not match"
     var noId: String = "No client ID found in Firebase configuration"
@@ -78,8 +79,9 @@ class AuthenticationViewModel: ObservableObject {
           "unknown": "An unknown error occurred."
       ]
     
-    init(favoritesDataController: FavoritesDataController) {
-          self.favoritesDataController = favoritesDataController
+    init(favoritesItem: FavoriteItem) {
+//          self.favoritesDataController = favoritesDataController
+        self.favoritesItem = favoritesItem
           registerAuthStateHandler()
       }
     // MARK: - Handle Whether User Logged or not
@@ -90,25 +92,31 @@ class AuthenticationViewModel: ObservableObject {
                     self.user = user
                     self.authenticationState = user == nil ? .unauthenticated : .authenticated
                     self.currentUserEmail = user?.email ?? ""
-                    self.favoritesDataController.currentUserEmail = self.currentUserEmail
+//                    self.favoritesDataController.currentUserEmail = self.currentUserEmail
                 }
             }
         }
     
-    
-    func toggleRememberMe(remember: Bool) {
-        guard let email = Auth.auth().currentUser?.email else { return }
-        if remember {
-            UserDefaults.standard.set(email, forKey: "rememberedEmail")
-        } else {
-            UserDefaults.standard.removeObject(forKey: "rememberedEmail")
-        }
+    // Function to update the About Me section in UserDefaults
+    func updateAboutMe(aboutMe: String) {
+        let defaults = UserDefaults.standard
+        defaults.set(aboutMe, forKey: "aboutMe")
     }
+
+    // Function to retrieve the About Me section from UserDefaults
+    func getAboutMe() -> String? {
+        let defaults = UserDefaults.standard
+        return defaults.string(forKey: "aboutMe")
+    }
+    
+    func saveAboutMe(aboutMe: String) {
+           UserDefaults.standard.set(aboutMe, forKey: "aboutMe")
+       }
 
     func autoSignIn() async {
         if let email = UserDefaults.standard.string(forKey: "rememberedEmail") {
             self.emailText = email
-            try? await SignIn()
+            _ = try? await SignIn()
         }
     }
     
@@ -197,6 +205,8 @@ class AuthenticationViewModel: ObservableObject {
      func signOut() {
         do {
           try Auth.auth().signOut()
+            print(authStateHandler!)
+            authenticationState = .unauthenticated
         }
         catch {
           print(error)
@@ -246,6 +256,18 @@ class AuthenticationViewModel: ObservableObject {
         print("Username '\(username)' saved for user: \(uid)")
     }
     
+    // MARK: - saving isRememberMeOn to userDefaults
+    func updateRememberingUser(isRemembered: Bool) {
+        guard let user = Auth.auth().currentUser else {
+            print("No authenticated user found")
+            return
+        }
+        
+        let key = "remember\(user.uid)"
+        UserDefaults.standard.set(isRemembered, forKey: key)
+        print("Username '\(user.email ?? user.uid)' updated RememberMe state to \(isRemembered)")
+    }
+    
     // MARK: - function for getting username as It's Full name for proile view
     func getUsernameFromUserDefaults() -> String? {
         guard let user = Auth.auth().currentUser else {
@@ -257,7 +279,16 @@ class AuthenticationViewModel: ObservableObject {
         let key = "username_\(uid)"
         return UserDefaults.standard.string(forKey: key)
     }
-    
+    func updateUsernameFromUserDefaults(username: String) {
+        guard let user = Auth.auth().currentUser else {
+            print("No authenticated user found")
+            return
+        }
+        
+        let uid = user.uid
+        let key = "username_\(uid)"
+        UserDefaults.standard.set(username, forKey: key)
+    }
     
         //MARK: - Getting Data from Google for User (Fullname .etc)
     func fetchGoogleUserData() -> [String: String?]? {

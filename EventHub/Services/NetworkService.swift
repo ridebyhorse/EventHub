@@ -67,7 +67,7 @@ class NetworkService {
         pageSize: Int? = nil
     ) async throws -> SearchEventsModel {
         var urlString = Constants.baseUrl + Constants.search + Constants.language
-        urlString += Constants.locationParameter + location.rawValue
+//        urlString += Constants.locationParameter + location.rawValue
         urlString += Constants.searchQueryParameter + search
         
         if let pageNumber {
@@ -204,7 +204,13 @@ class NetworkService {
         return try await request(url: urlString, response: PlacesModel.self)
     }
     
+    func getEventByID(_ id: Int) async throws -> EventModel {
+        let urlString = Constants.baseUrl + Constants.events + "\(id)/" + Constants.language + Constants.fieldsEventsParameter
+        return try await request(url: urlString, response: EventModel.self)
+    }
+    
     private func request<T: Decodable>(url: String, response: T.Type) async throws -> T {
+        print(url)
         guard let url = URL(string: url) else {
             throw URLError(.badURL)
         }
@@ -213,4 +219,5 @@ class NetworkService {
         
         return response
     }
+    
 }

@@ -9,12 +9,12 @@ import SwiftUI
 
 struct SearchView: View {
     @ObservedObject var viewModel: SearchViewModel
-   
+    @StateObject var viewRouter = ViewRouter()
     @EnvironmentObject var navigationManager: NavigationManager
     var body: some View {
         VStack {
         SearchToolbarView(title: "Search") {
-        navigationManager.currentDestination = .favorites
+            navigationManager.currentDestination = .main
                        }
         .padding(.bottom,32)
             SearchInputView(searchText: $viewModel.searchText)
@@ -47,7 +47,7 @@ private struct SearchInputView: View {
                 
                 ZStack(alignment: .leading) {
                     TextField("| Search...", text: $searchText)
-                        .foregroundColor(.white)
+                        .foregroundColor(.typographyBlack)
                         .font(.system(size: 20))
                         .disableAutocorrection(true)
                 }

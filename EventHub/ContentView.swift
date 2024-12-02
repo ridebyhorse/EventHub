@@ -21,14 +21,16 @@ struct ContentView: View {
                 switch viewRouter.currentTab {
                 case .explore:
                     ExploreView()
+                        .environmentObject(LocationManager.shared)
                 case .events:
                     EventsScreenView()
                 case .add:
                     FavoritesView()
                 case .map:
-                    Text("Map View")
+                    MapViewScreen()
+                        .environmentObject(LocationManager.shared)
                 case .profile:
-                    ProfileView(viewModel: AuthenticationViewModel(favoritesDataController: FavoritesDataController()))
+                    ProfileView(viewModel: AuthenticationViewModel(favoritesItem: FavoriteItem()))
 
                 }
                 

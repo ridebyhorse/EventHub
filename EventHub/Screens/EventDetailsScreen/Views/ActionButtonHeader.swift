@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ActionButtonHeader: View {
     // MARK: - Properties
-    @State private var isNoteSelected: Bool = false
+    @Binding var isSelected: Bool
     
     var icon: String
     var iconChange: String
@@ -18,7 +18,7 @@ struct ActionButtonHeader: View {
     // MARK: - Body
     var body: some View {
         Button(action: {
-            isNoteSelected.toggle()
+            isSelected.toggle()
             action?()
         }) {
             Rectangle()
@@ -27,14 +27,10 @@ struct ActionButtonHeader: View {
                 .cornerRadius(10)
                 .frame(width: 36, height: 36)
                 .overlay(
-                    Image(isNoteSelected ? iconChange : icon)
+                    Image(isSelected ? iconChange : icon)
                         .frame(width: 16, height: 16)
                 )
         }
         .buttonStyle(.plain)
     }
-}
-
-#Preview {
-    ActionButtonHeader(icon: "bookmarkED", iconChange: "bookmarkFillED", action: {})
 }

@@ -17,7 +17,7 @@ struct PlaceModel: Decodable, Identifiable {
     let siteUrl: URL?
     let coords: CoordinatesModel?
     let subway: String?
-    let images: [ImageModel]
+    let images: [ImageModel]?
     let isClosed: Bool?
     let location: String?
     

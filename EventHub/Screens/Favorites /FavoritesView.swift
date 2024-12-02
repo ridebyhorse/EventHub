@@ -8,12 +8,7 @@ import SwiftUI
 import CoreData
 
 struct FavoritesView: View {
-    @EnvironmentObject var favoritesDataController: FavoritesDataController
-    @StateObject private var viewModel: FavoritesViewModel
-
-    init() {
-        _viewModel = StateObject(wrappedValue: FavoritesViewModel())
-    }
+    @StateObject private var viewModel = FavoritesViewModel()
 
     var body: some View {
         NavigationView {
@@ -30,39 +25,41 @@ struct FavoritesView: View {
                                     .resizable()
                                     .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.height * 0.1)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
-
+                                
                                 VStack(alignment: .leading, spacing: 8) {
                                     HStack {
-                                        Text(event.publicationDate.formattedForEvent() ?? "Unknown Date")
+                                        Text(event.publicationDate.formattedForEvent())
                                             .font(.custom(EventHubFont.subtitle2))
                                             .foregroundColor(.mainBlue)
                                         Spacer()
-
-        Button(action: {
-            Task{
-                await  viewModel.deleteFavorite(event: event)
-            }
+                                        
+                                        Button(action: {
+                                            Task{
+                                                viewModel.deleteFavorite(event: event)
+                                            }
                                         }) {
                                             Image(Buttons.addFavorite)
                                                 .resizable()
                                                 .frame(width: 16, height: 16)
                                         }
                                     }
-
-                                    Text(event.title ?? "Unknown Title")
+                                    
+                                    Text(event.title)
                                         .font(.custom(EventHubFont.body2))
                                         .frame(maxWidth: .infinity, alignment: .leading)
-
+                                    
                                     HStack(spacing: 4) {
-                                        Image("location")
-                        Text(event.location.slug.formattedLocation ?? "Unknown Location")
+                                        Image(AppTexts.Common.locationButton)
+                                            .resizable()
+                                            .frame(width: 14, height: 14)
+                                        Text(event.location.slug.formattedLocation)
                                             .font(.custom(EventHubFont.subtitle2))
                                             .foregroundColor(.gray)
                                     }
                                     .padding(.top, 1)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 }
-
+                                
                                 Spacer()
                             }
                             .padding(10)
@@ -75,22 +72,11 @@ struct FavoritesView: View {
                 }
             }
             .padding(.top, 12)
+            .onAppear {
+                Task {
+                    await viewModel.fetchFavorites()
+                }
+            }
         }
     }
 }
-
-//#Preview {
-//    let previewContext = {
-//        let container = NSPersistentContainer(name: "Favorites")
-//        container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
-//        container.loadPersistentStores { _, error in
-//            if let error = error {
-//                fatalError("Failed to load in-memory store: \(error)")
-//            }
-//        }
-//        return container.viewContext
-//    }()
-//
-//    FavoritesView()
-//        .environmentObject(FavoritesDataController())
-//}

@@ -62,13 +62,19 @@ struct SignInView: View {
 
                 //MARK: - Toggle
                 HStack {
-                    Toggle(togglePrompt, isOn: $isSaved)
-                   
-                    .padding(.leading, 28)
-                    .tint(.primaryBlue)
-                    .frame(width: 32.3, height: 19)
-                    .scaleEffect(0.7)
-                    .frame(width: 32.3, height: 19)
+                    if #available(iOS 17.0, *) {
+                        Toggle(togglePrompt, isOn: $isSaved)
+                            .onChange(of: isSaved) {
+                                viewModel.updateRememberingUser(isRemembered: isSaved)
+                            }
+                            .padding(.leading, 28)
+                            .tint(.primaryBlue)
+                            .frame(width: 32.3, height: 19)
+                            .scaleEffect(0.7)
+                            .frame(width: 32.3, height: 19)
+                    } else {
+                        // Fallback on earlier versions
+                    }
                   
                     
                     Text(AppTexts.Common.toggleText)
@@ -145,15 +151,18 @@ struct SignInView: View {
         }
         .onAppear {
                     Task {
-                        await viewModel.autoSignIn()
+//                        await viewModel.autoSignIn()
                         isSaved = UserDefaults.standard.string(forKey: "rememberedEmail") != nil
                         print("sucess")
+                if viewModel.authenticationState == .authenticated {
+                navigationManager.currentDestination = .main
                     }
-                }
+            }
+        }
     }
 }
 
 #Preview {
-    SignInView(viewModel:AuthenticationViewModel(favoritesDataController: FavoritesDataController()))
+    SignInView(viewModel:AuthenticationViewModel(favoritesItem: FavoriteItem()))
     
 }

@@ -9,17 +9,18 @@ import SwiftUI
 import WebKit
 
 struct WebViewScreen: View {
+    // MARK: - Properties
     @Environment(\.presentationMode) var presentationMode
     
-    let urlPage: String
+    let urlPage: URL?
     
+    // MARK: - Body
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ZStack {
-                WebViewPresent(urlString: urlPage)
+                WebViewPresent(url: urlPage)
             }
             .navigationTitle("")
-            .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
@@ -32,19 +33,22 @@ struct WebViewScreen: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 
 struct WebViewPresent: UIViewRepresentable {
-    let urlString: String?
+    // MARK: - Properties
+    let url: URL?
     
+    // MARK: - Methods
     func makeUIView(context: Context) -> WKWebView {
         return WKWebView()
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        if let urlString = urlString, let url = URL(string: urlString) {
+        if let url = url {
             let request = URLRequest(url: url)
             uiView.load(request)
         } else {
@@ -54,5 +58,5 @@ struct WebViewPresent: UIViewRepresentable {
 }
 
 #Preview {
-    WebViewScreen(urlPage: "https://kudago.com/follow/basta/")
+    WebViewScreen(urlPage: URL(string: "https://kudago.com/follow/basta/"))
 }

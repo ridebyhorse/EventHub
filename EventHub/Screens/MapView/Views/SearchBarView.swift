@@ -26,7 +26,7 @@ struct SearchBarView: View {
             .overlay(
                 HStack {
                     TextField("Find for food or restaurant...", text: $searchText)
-                        .foregroundColor(.red) // Цвет текста при вводе
+                        .foregroundColor(.typographyDarkGrey)
                         .font(.system(size: 16))
                         .textFieldStyle(PlainTextFieldStyle())
                         .disableAutocorrection(true)
@@ -40,7 +40,6 @@ struct SearchBarView: View {
             )
     }
 }
-
 
 #Preview {
     SearchBarView(searchText: .constant(" "))
