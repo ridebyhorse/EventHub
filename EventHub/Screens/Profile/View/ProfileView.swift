@@ -10,11 +10,14 @@ import FirebaseAuth
 
 struct ProfileView: View {
     @ObservedObject var viewModel: AuthenticationViewModel
+    @EnvironmentObject var navigationManager: NavigationManager
     @State private var isEditing: Bool = false
     @State private var name: String = ""
     @State private var aboutMe: String = ""
     @State private var profileImage: UIImage? = nil
     @State private var showImagePicker: Bool = false
+    @State private var isExpanded: Bool = false
+    private let maxCharacterLimit = 100
     
     var body: some View {
 
@@ -54,14 +57,14 @@ struct ProfileView: View {
             
             // Name
             if isEditing {
-                TextField("Enter your name", text: $viewModel.displayName)
+                TextField("Enter your name", text: $name)
                     .font(.system(size: 24, weight: .medium))
                     .multilineTextAlignment(.center)
                     .foregroundColor(.black)
                     .padding(.top, 20)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
             } else {
-                Text(viewModel.displayName.isEmpty ? "Name" : viewModel.displayName)
+                Text(name.isEmpty ? (viewModel.displayName.isEmpty ? "Name" : viewModel.displayName) : name)
                     .font(.system(size: 24, weight: .medium))
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color(red: 0.07, green: 0.05, blue: 0.15))
@@ -72,7 +75,6 @@ struct ProfileView: View {
             Button {
                 isEditing.toggle()
                 if !isEditing {
-                    viewModel.saveUsernameToUserDefaults(username: name)
                     saveProfile()
                 }
             } label: {
@@ -108,10 +110,26 @@ struct ProfileView: View {
                                 .stroke(Color.gray.opacity(0.5), lineWidth: 0.5)
                         )
                 } else {
-                    Text(aboutMe)
-                        .font(.system(size: 16, weight: .regular))
-                        .foregroundColor(.gray)
-                        .multilineTextAlignment(.leading)
+                    VStack(alignment: .leading, spacing: 8) {
+                                Text(isExpanded || aboutMe.count <= maxCharacterLimit
+                                     ? aboutMe
+                                     : "\(aboutMe.prefix(maxCharacterLimit))...")
+                                .font(.custom(EventHubFont.body1.name, size: 16))
+                                    .foregroundColor(.gray)
+                                    .multilineTextAlignment(.leading)
+                                
+                                if aboutMe.count > maxCharacterLimit {
+                                    Button(action: {
+                                        isExpanded.toggle()
+                                    }) {
+                                        Text(isExpanded ? "Read Less" : "Read More")
+                                            .font(.system(size: 14, weight: .bold))
+                                            .foregroundColor(.mainBlue)
+                                            .padding(.top, 5)
+                                    }
+                                }
+                            }
+                    
                 }
             }
             .padding(.top, 20)
@@ -120,7 +138,8 @@ struct ProfileView: View {
             
             // Sign Out Button
             Button{
-                viewModel.signOut()
+               viewModel.signOut()
+                navigationManager.currentDestination = .signIn
             } label: {
                 HStack {
                     Image(systemName: "arrow.backward.square")
@@ -136,13 +155,8 @@ struct ProfileView: View {
         .padding()
         .padding(.top, 50)
         .onAppear {
-            if let currentUser = Auth.auth().currentUser {
-                viewModel.displayName = currentUser.displayName ?? viewModel.getUsernameFromUserDefaults() ?? "Name"
-            } else {
-                viewModel.displayName = viewModel.getUsernameFromUserDefaults() ?? "Name"
-            }
-            print("Current displayName: \(viewModel.displayName)")
-
+            loadProfile()
+            loadProfileImage()
         }
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(image: $profileImage)
@@ -155,14 +169,53 @@ struct ProfileView: View {
         print("Select Image")
     }
     
+    private func saveProfileImage() {
+        if let profileImage = profileImage, let imageData = profileImage.jpegData(compressionQuality: 0.8) {
+            UserDefaults.standard.set(imageData, forKey: "profileImage")
+            print("Profile image saved.")
+        }
+    }
+
+    private func loadProfileImage() {
+        if let imageData = UserDefaults.standard.data(forKey: "profileImage"),
+           let savedImage = UIImage(data: imageData) {
+            self.profileImage = savedImage
+            print("Profile image loaded.")
+        }
+    }
+    
     private func saveProfile() {
         // Save profile changes to Firebase or CoreData
-        print("Profile Saved: \(name), \(aboutMe)")
+        if !name.isEmpty {
+               viewModel.updateUsernameFromUserDefaults(username: name)
+           }
+           saveProfileImage()
+            if !aboutMe.isEmpty {
+               viewModel.saveAboutMe(aboutMe: aboutMe)
+           }
+           print("Profile saved: \(name), \(aboutMe)")
     }
     
     private func signOut() {
         // Logic for signing out
         print("User signed out")
+    }
+    
+    
+    private func loadProfile() {
+        if let username = viewModel.getUsernameFromUserDefaults(), !username.isEmpty {
+            name = username
+        } else {
+            name = viewModel.displayName.isEmpty ? "Name" : viewModel.displayName
+        }
+        
+        if let savedAboutMe = viewModel.getAboutMe(), !savedAboutMe.isEmpty {
+            aboutMe = savedAboutMe
+        } else {
+            aboutMe = "Tell us about yourself."
+        }
+        
+        print("Loaded username: \(name), About Me: \(aboutMe)")
     }
 }
 

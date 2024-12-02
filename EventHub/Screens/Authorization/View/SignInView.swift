@@ -151,11 +151,14 @@ struct SignInView: View {
         }
         .onAppear {
                     Task {
-                        await viewModel.autoSignIn()
+//                        await viewModel.autoSignIn()
                         isSaved = UserDefaults.standard.string(forKey: "rememberedEmail") != nil
                         print("sucess")
+                if viewModel.authenticationState == .authenticated {
+                navigationManager.currentDestination = .main
                     }
-                }
+            }
+        }
     }
 }
 

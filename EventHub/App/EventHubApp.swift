@@ -13,6 +13,7 @@ struct EventHubApp: App {
     
     var navigationManager = NavigationManager()
     let persistenceController = PersistenceController.shared
+    
 
     init(){
         FirebaseApp.configure()

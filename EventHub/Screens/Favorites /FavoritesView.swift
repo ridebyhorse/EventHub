@@ -49,7 +49,9 @@ struct FavoritesView: View {
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                     
                                     HStack(spacing: 4) {
-                                        Image("location")
+                                        Image(AppTexts.Common.locationButton)
+                                            .resizable()
+                                            .frame(width: 14, height: 14)
                                         Text(event.location.slug.formattedLocation)
                                             .font(.custom(EventHubFont.subtitle2))
                                             .foregroundColor(.gray)
