@@ -6,6 +6,11 @@
 //
 import SwiftUI
 
+enum Buttons {
+    static let addFavorite: String = "favorite"
+    static let search: String = "favoritesSearch"
+}
+
 struct FavoritesToolBarView: View{
     var toolTitle: String = "Favorites"
     var searchTitle: String = "Search"

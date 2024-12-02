@@ -12,7 +12,6 @@ import CoreData
 struct EventHubApp: App {
     
     var navigationManager = NavigationManager()
-    @StateObject private var dataController = FavoritesDataController()
     let persistenceController = PersistenceController.shared
     
 
@@ -26,7 +25,6 @@ struct EventHubApp: App {
             MainNavigation(Model: AuthenticationViewModel(favoritesItem: FavoriteItem()))
                 .environmentObject(navigationManager)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }
