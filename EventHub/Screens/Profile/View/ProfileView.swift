@@ -189,7 +189,10 @@ struct ProfileView: View {
         if !name.isEmpty {
                viewModel.updateUsernameFromUserDefaults(username: name)
            }
-           saveProfileImage() 
+           saveProfileImage()
+            if !aboutMe.isEmpty {
+               viewModel.saveAboutMe(aboutMe: aboutMe)
+           }
            print("Profile saved: \(name), \(aboutMe)")
     }
     

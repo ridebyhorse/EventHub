@@ -54,5 +54,6 @@ struct AppTexts {
         static let forgotPass = "Forgot Password?"
         static let noAccount = "Don’t have an account?"
         static let signUp = "Sign Up"
+        static let locationButton = "favLocation"
     }
 }

@@ -108,6 +108,10 @@ class AuthenticationViewModel: ObservableObject {
         let defaults = UserDefaults.standard
         return defaults.string(forKey: "aboutMe")
     }
+    
+    func saveAboutMe(aboutMe: String) {
+           UserDefaults.standard.set(aboutMe, forKey: "aboutMe")
+       }
 
     func autoSignIn() async {
         if let email = UserDefaults.standard.string(forKey: "rememberedEmail") {
