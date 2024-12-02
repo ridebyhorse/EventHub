@@ -17,13 +17,14 @@ final class SeeAllExploreViewModel: ObservableObject {
     private let networkService = NetworkService.shared
     
     @Published var mode: SeeAllMode
-    @Published var upcomingEvents: [EventModel] = []
-    @Published var nearbyEvents: [EventModel] = []
     @Published var isLoading: Bool = false
     @Published var events: [EventModel] = []
     
     init(mode: SeeAllMode) {
         self.mode = mode
+        Task {
+            await loadAllEvents(for: LocationManager.shared.selectedLocation)
+        }
     }
     
     func loadAllEvents(for location: Location) async {
@@ -36,36 +37,25 @@ final class SeeAllExploreViewModel: ObservableObject {
         case .nearby:
             await fetchNearbyEvents(for: location)
         }
-        
-        updateDisplayedEvents()
     }
     
     func fetchUpcomingEvents(for location: Location) async {
         do {
             let eventsModel = try await networkService.getEvents(type: .upcoming, location: location)
-            upcomingEvents = eventsModel.results
+            events = eventsModel.results
         } catch {
             print("Ошибка при загрузке предстоящих событий: \(error.localizedDescription)")
-            upcomingEvents = []
+            events = []
         }
     }
 
     func fetchNearbyEvents(for location: Location) async {
         do {
             let eventsModel = try await networkService.getEvents(type: .nearby, location: location)
-            nearbyEvents = eventsModel.results
+            events = eventsModel.results
         } catch {
             print("Ошибка при загрузке событий рядом: \(error.localizedDescription)")
-            nearbyEvents = []
-        }
-    }
-    
-    func updateDisplayedEvents() {
-        switch mode {
-        case .upcoming:
-            events = upcomingEvents
-        case .nearby:
-            events = nearbyEvents
+            events = []
         }
     }
 }

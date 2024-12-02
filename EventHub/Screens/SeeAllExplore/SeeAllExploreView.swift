@@ -14,7 +14,6 @@ struct SeeAllExploreView: View {
     
     var body: some View {
         SeeAllExploreScrollView(viewModel: viewModel)
-        
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {

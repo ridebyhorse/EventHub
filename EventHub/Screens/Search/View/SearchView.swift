@@ -14,7 +14,7 @@ struct SearchView: View {
     var body: some View {
         VStack {
         SearchToolbarView(title: "Search") {
-        navigationManager.currentDestination = .favorites
+            navigationManager.currentDestination = .main
                        }
         .padding(.bottom,32)
             SearchInputView(searchText: $viewModel.searchText)

@@ -34,6 +34,7 @@ struct ExploreView: View {
                     // MARK: - Upcoming events
                     ScrollView(.vertical, showsIndicators: false ){
                         SectionView(
+                            mode: .upcoming,
                             title: "Upcoming Events",
                             events: viewModel.selectedCategory == nil ? viewModel.upcomingEvents : viewModel.filteredUpcomingEvents,
                             noEventsMessage: viewModel.selectedCategory == nil ? "" : "Sorry, there are no Upcoming Events available in \(viewModel.selectedCategory?.name ?? "") category."
@@ -41,6 +42,7 @@ struct ExploreView: View {
                         
                         // MARK: - Nearby Events
                         SectionView(
+                            mode: .nearby,
                             title: "Nearby You",
                             events: viewModel.selectedCategory == nil ? viewModel.nearbyEvents : viewModel.filteredNearbyEvents,
                             noEventsMessage: viewModel.selectedCategory == nil ? "" : "Sorry, there are no Nearby Events available in \(viewModel.selectedCategory?.name ?? "") category."
@@ -68,9 +70,8 @@ struct ExploreView: View {
 // MARK: - Section View
 import SwiftUI
 
-import SwiftUI
-
 struct SectionView: View {
+    let mode: SeeAllMode
     let title: String
     let events: [EventModel]
     let noEventsMessage: String
@@ -94,7 +95,7 @@ struct SectionView: View {
                 }
                 .background(
                     NavigationLink(
-                        destination: SeeAllEventsScreenView(viewModel: EventsScreenViewModel()),
+                        destination: SeeAllExploreView(viewModel: SeeAllExploreViewModel(mode: mode)),
                         isActive: $showSeeAllScreen,
                         label: { EmptyView() }
                     )
