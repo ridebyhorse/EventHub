@@ -26,6 +26,7 @@ struct EventDetailsScreen: View {
                     Color.clear
                         .onAppear {
                             scrollOffset = geometry.frame(in: .global).minY
+                            isBookmarked = FavoriteService.shared.isEventFavorite(event.id)
                         }
                         .onChange(of: geometry.frame(in: .global).minY) { newValue in
                             scrollOffset = newValue
@@ -35,10 +36,10 @@ struct EventDetailsScreen: View {
                 VStack {
                     /// Image and ButtonShare
                     ZStack(alignment: .bottomTrailing) {
-                        
                         ImageEventDetail(imageURL: event.images.first?.image)
                         
                         ActionButtonHeader(
+                            isSelected: $isButtonShow,
                             icon: "shared",
                             iconChange: "shared",
                             action: {
@@ -46,7 +47,7 @@ struct EventDetailsScreen: View {
                                 isButtonShow.toggle()
                             }
                         )
-                        .opacity(isButtonShow ? 1000 : 0)
+                        .opacity(isButtonShow ? 1 : 0)
                         .padding(.trailing, 20)
                         .padding(.bottom, 14)
                     }
@@ -133,10 +134,15 @@ struct EventDetailsScreen: View {
                     
                     /// BookmarkButton
                     ActionButtonHeader(
+                        isSelected: $isBookmarked,
                         icon: "bookmarkED",
                         iconChange: "bookmarkFillED",
                         action: {
-                            isBookmarked.toggle()
+                            if isBookmarked {
+                                FavoriteService.shared.addFavoriteEventID(event.id)
+                            } else {
+                                FavoriteService.shared.removeFavoriteEventID(event.id)
+                            }
                         }
                     )
                     .padding(.trailing, 20)
@@ -155,6 +161,7 @@ struct EventDetailsScreen: View {
             SharedView(isShowing: $showSharedView, isShowingButton: $isButtonShow)
         }
     }
+    
     // MARK: - Methods
     private func removeHTMLTags(from htmlString: String) -> String {
         let regex = try! NSRegularExpression(pattern: "<.*?>", options: [])
